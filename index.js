@@ -40,7 +40,7 @@ function postPicture(name) {
         attachments: [],
     };
 
-    request.post({ url: '127.0.0.1:8081/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
+    request.post({ url: 'http://127.0.0.1:8081/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
         if (err) {
             return console.error('upload failed:', err);
         }
