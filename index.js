@@ -46,7 +46,7 @@ function postPicture(name) {
         }
     };
 
-    request.post({ url: 'http://47.93.7.57:8081/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
+    request.post({ url: 'http://47.93.7.57:3000/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
         if (err) {
             return console.error('upload failed:', err);
         }
