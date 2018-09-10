@@ -21,7 +21,7 @@ board.on("ready", function() {
 
 
 function takePicture(name) {
-    exec("fswebcam " + name + ".jpg", (err, stdout, stderr) => {
+    exec("fswebcam /home/pi/Desktop/secure_camera/canera_imgs/" + name + ".jpg", (err, stdout, stderr) => {
         console.log('Taking Picture Successful!');
         postPicture(name);
     })
