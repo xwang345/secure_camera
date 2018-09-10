@@ -37,13 +37,6 @@ function postPicture(name) {
         // Pass data via Streams
         my_file: fs.createReadStream(__dirname + '/canera_imgs/' + name + '.jpg'),
         // Pass multiple values /w an Array
-        attachments: [],
-        custom_file: {
-            options: {
-                filename: 'topsecret.jpg',
-                contentType: 'image/jpeg'
-            }
-        }
     };
 
     request.post({ url: 'http://47.93.7.57:3000/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
