@@ -35,7 +35,7 @@ function postPicture(name) {
         // Pass data via Buffers
         my_buffer: Buffer.from([1, 2, 3]),
         // Pass data via Streams
-        my_file: fs.createReadStream(__dirname + '/canera_imgs/' + name + '.jpg'),
+        my_file: fs.createReadStream(__dirname + '/camera_imgs/' + name + '.jpg'),
         // Pass multiple values /w an Array
     };
 
