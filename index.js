@@ -3,6 +3,7 @@ const exec = require('child_process').exec;
 const five = require('johnny-five');
 const Raspi = require('raspi-io');
 const request = require('request');
+const fs = require('fs');
 
 const app = express();
 const board = new five.Board({
