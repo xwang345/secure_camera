@@ -38,9 +38,15 @@ function postPicture(name) {
         my_file: fs.createReadStream(__dirname + '/canera_imgs/' + name + '.jpg'),
         // Pass multiple values /w an Array
         attachments: [],
+        custom_file: {
+            options: {
+                filename: 'topsecret.jpg',
+                contentType: 'image/jpeg'
+            }
+        }
     };
 
-    request.post({ url: 'http://127.0.0.1:8081/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
+    request.post({ url: 'http://47.93.7.57:8081/uploadImg', formData: formData }, function optionalCallback(err, httpResponse, body) {
         if (err) {
             return console.error('upload failed:', err);
         }
