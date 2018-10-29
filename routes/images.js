@@ -24,5 +24,22 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
     });
 });
 
+/**
+ * GET /books/:id
+ *
+ * Display a book.
+ */
+router.get('/:image', (req, res, next) => {
+    getModel().read(req.params.image, (err, entity) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.render('view.ejs', {
+            image: entity
+        });
+    });
+});
+
 
 module.exports = router;
