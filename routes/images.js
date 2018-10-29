@@ -30,7 +30,7 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
  * Display a book.
  */
 router.get('/:image', (req, res, next) => {
-    getModel().read(req.params.image, (err, entity) => {
+    modelDatastore.read(req.params.image, (err, entity) => {
         if (err) {
             next(err);
             return;
