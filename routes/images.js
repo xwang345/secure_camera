@@ -35,6 +35,7 @@ router.get('/:image', (req, res, next) => {
             next(err);
             return;
         }
+        console.log(entity)
         res.render('view.ejs', {
             image: entity
         });
