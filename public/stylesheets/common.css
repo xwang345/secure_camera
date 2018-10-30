@@ -72,3 +72,22 @@ ol {
     justify-content: center;
     box-shadow: 0px -2px 4px 0px #ccc;
 }
+
+.common__btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    transition: 200ms;
+}
+
+.common__btn:hover {
+    box-shadow: 0px 0px 6px 1px #ccc;
+}
+
+.common__btn:active {
+    box-shadow: 0px 0px 2px 1px #4d4dff;
+}

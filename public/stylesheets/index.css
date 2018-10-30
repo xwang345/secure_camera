@@ -2,10 +2,19 @@
     width: 100%;
     flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
 }
 
 .index__section {
     margin-bottom: 10px;
+}
+
+.index__main__right {
+    width: 0px;
+    overflow-x: hidden;
+    transition: 200ms;
+}
+
+.index__main__left {
+    flex: 1 1 auto;
+    margin: 20px;
 }

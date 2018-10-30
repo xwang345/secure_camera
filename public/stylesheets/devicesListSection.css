@@ -1,0 +1,18 @@
+.devicesList__devicesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.devicesList__diviceBox {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #222231;
+    color: #fff;
+    box-shadow: 0px 0px 2px 1px #ccc;
+    cursor: pointer;
+}
