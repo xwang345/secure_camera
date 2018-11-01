@@ -5,6 +5,8 @@ var modelDatastore = require('../lib/model-datastore');
 
 var router = express.Router();
 
+const socket = router.socket;
+
 /* GET home page. */
 router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
     let data = req.body;
@@ -22,9 +24,6 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
             return;
         }
 
-        socketIo.on('connection', function(socket) {
-            console.log('1234');
-        });
         res.redirect('/')
 
     });
@@ -47,6 +46,5 @@ router.get('/:image', (req, res, next) => {
         });
     });
 });
-
 
 module.exports = router;

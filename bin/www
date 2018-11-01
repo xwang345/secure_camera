@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('secure-camera:server');
 var http = require('http');
-var imageIo = require('../lib/imageIo');
+var socketIo = require('socket.io');
 
 
 /**
@@ -22,8 +22,11 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
-imageIo.initialize(server);
+var io = socketIo(server);
+io.on('connection', function(socket) {
+    console.log('HAHAHAHA');
+    app.socket = socket;
+});
 /**
  * Listen on provided port, on all network interfaces.
  */
