@@ -7,6 +7,8 @@ for (device of deviceBoxs) {
     }
 }
 
+var socket = io();
+
 function toggleSideColumn(sideColumn, state) {
     if (state === 'open') {
         sideColumn.style.width = "400px";
