@@ -1,5 +1,6 @@
 var express = require('express');
 var myImages = require('../lib/my-images');
+var imageIo = require('../lib/imageIo');
 var modelDatastore = require('../lib/model-datastore');
 
 var router = express.Router();
@@ -20,7 +21,9 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
             next(err);
             return;
         }
-        res.redirect(`${req.baseUrl}/${savedData.id}`);
+
+        imageIo.socket.emit('receive image', data.imageUrl)
+
     });
 });
 

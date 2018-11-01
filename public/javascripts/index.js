@@ -8,6 +8,9 @@ for (device of deviceBoxs) {
 }
 
 var socket = io();
+socket.on('receive image', function(imgUrl) {
+    console.log(imgUrl);
+});
 
 function toggleSideColumn(sideColumn, state) {
     if (state === 'open') {
