@@ -22,7 +22,7 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
             return;
         }
 
-        imageIo.socket.emit('receive image', data.imageUrl)
+        imageIo.socket().emit('receive image', data.imageUrl)
 
     });
 });
