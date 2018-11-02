@@ -25,7 +25,7 @@ var server = http.createServer(app);
 var io = socketIo(server);
 io.on('connection', function(socket) {
     console.log('A new client is connected...');
-    app.socket(socket);
+    app.socket(socket, io);
 });
 /**
  * Listen on provided port, on all network interfaces.

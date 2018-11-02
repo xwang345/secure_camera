@@ -6,8 +6,8 @@ var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
-router.socket = function(socket) {
-    ioListener.initialize(socket);
+router.socket = function(socket, io) {
+    ioListener.initialize(socket, io);
 
     /* GET home page. */
     router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
@@ -45,9 +45,9 @@ router.socket = function(socket) {
                 return;
             }
 
-            console.log(entities);
+            io.emit('reload images', entities);
 
-            res.end('HAHA');
+            res.end();
         })
     });
 
