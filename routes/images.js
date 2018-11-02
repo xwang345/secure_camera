@@ -51,7 +51,7 @@ router.socket = function(socket) {
     });
 
     router.get('/loadAll', (req, res, next) => {
-        res.send("AHAH")
+
     });
 }
 
