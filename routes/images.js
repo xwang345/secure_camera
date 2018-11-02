@@ -27,7 +27,7 @@ router.socket = function(socket) {
                 next(err);
                 return;
             }
-            res.redirect('/')
+            res.redirect(`${req.baseUrl}/loadAll`)
 
         });
     });
