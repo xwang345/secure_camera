@@ -9,7 +9,10 @@ var imagesRouter = require('./routes/images');
 
 var app = express();
 
-app.socket = imagesRouter.socket;
+app.socket = function(socket) {
+    indexRouter.socket(socket);
+    imagesRouter.socket(socket);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

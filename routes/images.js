@@ -13,6 +13,8 @@ router.socket = function(socket) {
     router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
         let data = req.body;
 
+        data.time = new Date();
+
         // Was an image uploaded? If so, we'll use its public URL
         // in cloud storage.
         if (req.file && req.file.cloudStoragePublicUrl) {
@@ -25,7 +27,6 @@ router.socket = function(socket) {
                 next(err);
                 return;
             }
-            socket.emit('receive image', data.imageUrl);
             res.redirect('/')
 
         });
@@ -46,6 +47,17 @@ router.socket = function(socket) {
             res.render('view.ejs', {
                 image: entity
             });
+        });
+    });
+
+    router.get('/loadAll', (req, res, next) => {
+        modelDatastore.list((err, entities) => {
+            if (err) {
+                next(err);
+                return;
+            }
+            console.log(entities)
+            res.redirect('/');
         });
     });
 }
