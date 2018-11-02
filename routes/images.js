@@ -51,14 +51,7 @@ router.socket = function(socket) {
     });
 
     router.get('/loadAll', (req, res, next) => {
-        modelDatastore.list((err, entities) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            console.log(entities)
-            res.redirect('/');
-        });
+        res.end();
     });
 }
 
