@@ -37,22 +37,32 @@ router.socket = function(socket) {
      *
      * Display a book.
      */
-    router.get('/:image', (req, res, next) => {
-        modelDatastore.read(req.params.image, (err, entity) => {
+
+    router.get('/loadAll', (req, res, next) => {
+        modelDatastore.list((err, entities) => {
             if (err) {
                 next(err);
                 return;
             }
-            console.log(entity.imageUrl)
-            res.render('view.ejs', {
-                image: entity
-            });
-        });
+
+            console.log(entities);
+
+            res.end('HAHA');
+        })
     });
 
-    router.get('/loadAll', (req, res, next) => {
-        res.redirect('/');
-    });
+    // router.get('/:image', (req, res, next) => {
+    //     modelDatastore.read(req.params.image, (err, entity) => {
+    //         if (err) {
+    //             next(err);
+    //             return;
+    //         }
+    //         console.log(entity.imageUrl)
+    //         res.render('view.ejs', {
+    //             image: entity
+    //         });
+    //     });
+    // });
 }
 
 module.exports = router;
