@@ -1,6 +1,6 @@
 .deviceMesBox__container {
     width: 400px;
-    height: 100%;
+    height: 500px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
