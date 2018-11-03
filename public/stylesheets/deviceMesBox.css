@@ -19,10 +19,11 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin: 5px;
 }
 
 .deviceMesBox__imgTime {
-    color: #fff;
+    color: #000;
 }
 
 .deviceMesBox__imgElement img {
