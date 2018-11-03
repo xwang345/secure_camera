@@ -42,7 +42,7 @@ router.get('/loadAll', (req, res, next) => {
             router.io.emit('reload images', entities);
         }
 
-        res.redirect('/upload');
+        res.end();
     })
 });
 

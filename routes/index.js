@@ -13,9 +13,6 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.get('/upload', function(req, res, next) {
-    res.render('uploadImg');
-});
 
 
 module.exports = router;
