@@ -17,13 +17,14 @@
 .deviceMesBox__mesWindow {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .deviceMesBox__imgElement {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 95%;
     margin: 5px 10px;
     box-shadow: 0px 2px 2px 0px #ccc;
 }
@@ -34,7 +35,6 @@
 
 .deviceMesBox__imgElement img {
     width: 100%;
-    margin: 5px;
 }
 
 .deviceMesBox__mesWindow {
