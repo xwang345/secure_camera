@@ -1,5 +1,18 @@
 .deviceMesBox__container {
     width: 400px;
     height: 100%;
-    background-color: yellow;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.deviceMesBox__imgElement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.deviceMesBox__imgElement img {
+    width: 100%;
 }
