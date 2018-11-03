@@ -4,8 +4,9 @@ var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
-router.socket = function(socket, io) {
-    ioListener.initialize(socket, io);
+router.setSocketIo = function(socket, io) {
+    router.io = io;
+    router.socket = socket;
 }
 
 router.get('/', function(req, res, next) {
