@@ -5,43 +5,49 @@ var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
+var io = null;
+var socket = null;
+
 router.socket = function(socket, io) {
-    ioListener.initialize(socket, io);
+    io = io;
+    socket = socket;
+}
 
-    // add a image to google cloud storage
-    router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
-        let data = req.body;
+// add a image to google cloud storage
+router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
+    let data = req.body;
 
-        data.time = new Date();
+    data.time = new Date();
 
-        if (req.file && req.file.cloudStoragePublicUrl) {
-            data.imageUrl = req.file.cloudStoragePublicUrl;
+    if (req.file && req.file.cloudStoragePublicUrl) {
+        data.imageUrl = req.file.cloudStoragePublicUrl;
+    }
+
+    // Save the data to the database.
+    modelDatastore.create(data, (err, savedData) => {
+        if (err) {
+            next(err);
+            return;
         }
 
-        // Save the data to the database.
-        modelDatastore.create(data, (err, savedData) => {
-            if (err) {
-                next(err);
-                return;
-            }
+        res.redirect(`${req.baseUrl}/loadAll`)
 
-            res.redirect(`${req.baseUrl}/loadAll`)
-
-        });
     });
+});
 
-    router.get('/loadAll', (req, res, next) => {
-        modelDatastore.list((err, entities) => {
-            if (err) {
-                next(err);
-                return;
-            }
+router.get('/loadAll', (req, res, next) => {
+    modelDatastore.list((err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
 
+        if (io) {
             io.emit('reload images', entities);
+        }
 
-            res.redirect('/uploadImg');
-        })
-    });
-}
+        res.redirect('/uploadImg');
+    })
+});
 
 module.exports = router;
