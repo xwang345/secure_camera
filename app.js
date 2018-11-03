@@ -10,7 +10,7 @@ var imagesRouter = require('./routes/images');
 var app = express();
 
 app.socket = function(socket, io) {
-    indexRouter.socket(socket, io);
+    indexRouter.setSocketIo(socket, io);
     imagesRouter.setSocketIo(socket, io);
 }
 

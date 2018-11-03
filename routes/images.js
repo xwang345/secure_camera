@@ -1,7 +1,6 @@
 var express = require('express');
 var myImages = require('../lib/my-images');
 var modelDatastore = require('../lib/model-datastore');
-var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
