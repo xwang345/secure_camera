@@ -1,5 +1,5 @@
 var socket = io();
-var messageList = document.getElementById('deviceMessageList');
+var messageList = document.getElementById('deviceMesBox');
 
 socket.on('reload images', function(entities) {
     entities.forEach(e => {

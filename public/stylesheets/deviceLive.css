@@ -1,0 +1,6 @@
+.deviceLive__container {
+    flex: 1 1 auto;
+    height: 500px;
+    margin: 0px 20px;
+    background-color: blue;
+}

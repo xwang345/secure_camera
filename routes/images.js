@@ -1,6 +1,5 @@
 var express = require('express');
 var myImages = require('../lib/my-images');
-var socketIo = require('socket.io');
 var modelDatastore = require('../lib/model-datastore');
 var ioListener = require('../lib/ioListener');
 
@@ -8,61 +7,41 @@ var router = express.Router();
 
 router.socket = function(socket, io) {
     ioListener.initialize(socket, io);
+}
 
-    /* GET home page. */
-    router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
-        let data = req.body;
+// add a image to google cloud storage
+router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
+    let data = req.body;
 
-        data.time = new Date();
+    data.time = new Date();
 
-        // Was an image uploaded? If so, we'll use its public URL
-        // in cloud storage.
-        if (req.file && req.file.cloudStoragePublicUrl) {
-            data.imageUrl = req.file.cloudStoragePublicUrl;
+    if (req.file && req.file.cloudStoragePublicUrl) {
+        data.imageUrl = req.file.cloudStoragePublicUrl;
+    }
+
+    // Save the data to the database.
+    modelDatastore.create(data, (err, savedData) => {
+        if (err) {
+            next(err);
+            return;
         }
 
-        // Save the data to the database.
-        modelDatastore.create(data, (err, savedData) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.redirect(`${req.baseUrl}/loadAll`)
+        res.redirect(`${req.baseUrl}/loadAll`)
 
-        });
     });
+});
 
-    /**
-     * GET /books/:id
-     *
-     * Display a book.
-     */
+router.get('/loadAll', (req, res, next) => {
+    modelDatastore.list((err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
 
-    router.get('/loadAll', (req, res, next) => {
-        modelDatastore.list((err, entities) => {
-            if (err) {
-                next(err);
-                return;
-            }
+        io.emit('reload images', entities);
 
-            io.emit('reload images', entities);
-
-            res.end();
-        })
-    });
-
-    // router.get('/:image', (req, res, next) => {
-    //     modelDatastore.read(req.params.image, (err, entity) => {
-    //         if (err) {
-    //             next(err);
-    //             return;
-    //         }
-    //         console.log(entity.imageUrl)
-    //         res.render('view.ejs', {
-    //             image: entity
-    //         });
-    //     });
-    // });
-}
+        res.redirect('/uploadImg');
+    })
+});
 
 module.exports = router;

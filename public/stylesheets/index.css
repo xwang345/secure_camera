@@ -1,20 +1,16 @@
-.index__main {
-    width: 100%;
-    flex: 1 1 auto;
+.main__title {
+    margin-left: 5px;
+}
+
+.main__container {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
 }
 
-.index__section {
-    margin-bottom: 10px;
-}
-
-.index__main__right {
-    width: 0px;
-    overflow-x: hidden;
-    transition: 200ms;
-}
-
-.index__main__left {
-    flex: 1 1 auto;
-    margin: 20px;
+.main__footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
