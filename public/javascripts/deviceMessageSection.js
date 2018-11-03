@@ -5,6 +5,7 @@ $(document).ready(function() {
     socket.on('load images', loadImages(entities));
 
     function loadImages(entities) {
+        console.log(123);
         var content = '';
 
         entities.forEach(e => {
