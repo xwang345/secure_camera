@@ -26,6 +26,9 @@ var server = http.createServer(app);
 var io = socketIo(server);
 io.on('connection', function(socket) {
     console.log('A new client is connected...');
+
+    socket.emit('load images', entities);
+
     app.socket(socket, io);
 });
 /**

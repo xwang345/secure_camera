@@ -2,6 +2,14 @@ $(document).ready(function() {
     var socket = io();
 
     socket.on('reload images', function(entities) {
+        loadImages(entities);
+    });
+
+    socket.on('load images', function(entities) {
+        loadImages(entities);
+    });
+
+    function loadImages(entities) {
         console.log(123);
         var content = '';
 
@@ -17,5 +25,5 @@ $(document).ready(function() {
         });
 
         $("#deviceMesBox").html(content);
-    });
+    }
 });
