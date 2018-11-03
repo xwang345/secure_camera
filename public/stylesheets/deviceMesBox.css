@@ -3,7 +3,15 @@
     height: 600px;
     overflow-y: auto;
     display: flex;
+    position: relative;
     flex-direction: column;
+    margin-bottom: 10px;
+    transition: width 200ms;
+}
+
+.deviceMesBox__container .closeBtn {
+    left: 7px;
+    top: 0px;
 }
 
 .deviceMesBox__imgElement {
@@ -19,4 +27,11 @@
 
 .deviceMesBox__imgElement img {
     width: 100%;
+}
+
+.deviceMesBox__mesWindow {
+    background-color: #fff;
+    width: 100%;
+    flex: 1 1 auto;
+    margin-top: 35px;
 }

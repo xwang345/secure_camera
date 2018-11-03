@@ -24,6 +24,6 @@ $(document).ready(function() {
             content += imgElement;
         });
 
-        $("#deviceMesBox").html(content);
+        $(".deviceMesBox__mesWindow:first").html(content);
     }
 });
