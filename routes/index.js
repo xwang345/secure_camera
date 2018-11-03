@@ -1,6 +1,6 @@
 var express = require('express');
-var router = express.Router();
-var ioListener = require('../lib/ioListener');
+var myImages = require('../lib/my-images');
+var modelDatastore = require('../lib/model-datastore');
 
 router.setSocketIo = function(socket, io) {
     router.io = io;

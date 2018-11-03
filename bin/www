@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('secure-camera:server');
 var http = require('http');
 var socketIo = require('socket.io');
+var myImages = require('../lib/my-images');
+var modelDatastore = require('../lib/model-datastore');
 
 
 /**
@@ -27,7 +29,14 @@ var io = socketIo(server);
 io.on('connection', function(socket) {
     console.log('A new client is connected...');
 
-    socket.emit('load images', entities);
+    modelDatastore.list((err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
+
+        socket.emit('reload images', entities);
+    })
 
     app.socket(socket, io);
 });
