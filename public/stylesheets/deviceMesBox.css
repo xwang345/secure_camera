@@ -1,7 +1,6 @@
 .deviceMesBox__container {
     width: 0;
     height: 600px;
-    overflow-y: auto;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -18,6 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .deviceMesBox__imgElement {
