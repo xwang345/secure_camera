@@ -43,10 +43,11 @@ router.get('/loadAll', (req, res, next) => {
         }
 
         if (io) {
+            console.log(io);
             io.emit('reload images', entities);
         }
 
-        res.redirect('/uploadImg');
+        res.redirect('/upload');
     })
 });
 
