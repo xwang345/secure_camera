@@ -11,7 +11,7 @@ var app = express();
 
 app.socket = function(socket, io) {
     indexRouter.socket(socket, io);
-    imagesRouter.socket(socket, io);
+    imagesRouter.setSocketIo(socket, io);
 }
 
 // view engine setup
