@@ -5,12 +5,9 @@ var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
-var io = null;
-var socket = null;
-
-router.socket = function(socket, io) {
-    io = io;
-    socket = socket;
+router.setSocketIo = function(socket, io) {
+    router.io = io;
+    router.socket = socket;
 }
 
 // add a image to google cloud storage
@@ -42,9 +39,9 @@ router.get('/loadAll', (req, res, next) => {
             return;
         }
 
-        if (io) {
-            console.log(io);
-            io.emit('reload images', entities);
+        if (router.io) {
+            console.log(router.io);
+            router.io.emit('reload images', entities);
         }
 
         res.redirect('/upload');
