@@ -5,6 +5,7 @@ var modelDatastore = require('../lib/model-datastore');
 var router = express.Router();
 
 router.setSocketIo = function(socket, io) {
+    console.log(1234)
     router.io = io;
     router.socket = socket;
 }

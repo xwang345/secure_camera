@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
         socket.emit('load images', entities);
     })
 
-    app.socket(socket, io);
+    app.setSocketIo(socket, io);
 });
 /**
  * Listen on provided port, on all network interfaces.
