@@ -39,7 +39,6 @@ router.get('/loadAll', (req, res, next) => {
         }
 
         if (router.io) {
-            console.log('XIXI')
             router.io.emit('reload images', entities);
         }
 

@@ -3,14 +3,16 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
+        console.log(123);
     });
 
     socket.on('load images', function(entities) {
         loadImages(entities);
+        console.log(000);
     });
 
     function loadImages(entities) {
-        console.log(123);
+
         var content = '';
 
         entities.forEach(e => {
