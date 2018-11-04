@@ -3,12 +3,12 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
-        console.log(123);
+        console.log('reload images');
     });
 
     socket.on('load images', function(entities) {
         loadImages(entities);
-        console.log(000);
+        console.log('load images');
     });
 
     function loadImages(entities) {
