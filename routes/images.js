@@ -27,7 +27,24 @@ router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (
             return;
         }
 
-        res.redirect(`${req.baseUrl}/loadAll`)
+        // res.redirect(`${req.baseUrl}/loadAll`)
+
+        modelDatastore.list((err, entities) => {
+            if (err) {
+                next(err);
+                return;
+            }
+
+            if (router.io) {
+                console.log('reload images');
+                router.io.emit('reload images', entities);
+                res.json({ result: 'success' });
+            } else {
+                res.json({ result: 'fail' });
+            }
+
+            res.end();
+        })
 
     });
 });
