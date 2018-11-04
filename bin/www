@@ -34,7 +34,7 @@ io.on('connection', function(socket) {
             return;
         }
 
-        socket.emit('load images', entities);
+        socket.emit('load images1', entities);
     })
 
     app.socket(socket, io);
