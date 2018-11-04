@@ -5,9 +5,10 @@ var modelDatastore = require('../lib/model-datastore');
 var router = express.Router();
 
 router.setSocketIo = function(socket, io) {
-    console.log(1234)
     router.io = io;
     router.socket = socket;
+
+    console.log(router.io)
 }
 
 // add a image to google cloud storage
@@ -42,9 +43,12 @@ router.get('/loadAll', (req, res, next) => {
         if (router.io) {
             console.log('reload images');
             router.io.emit('reload images', entities);
+            res.json({ result: 'success' });
+        } else {
+            res.json({ result: 'fail' });
         }
 
-        res.json({ result: 'success' });
+        res.end();
     })
 });
 
