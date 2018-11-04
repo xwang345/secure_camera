@@ -8,7 +8,6 @@ router.setSocketIo = function(socket, io) {
     router.io = io;
     router.socket = socket;
 
-    console.log(Boolean(router.io))
 }
 
 // add a image to google cloud storage
