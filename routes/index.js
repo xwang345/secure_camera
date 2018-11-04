@@ -9,9 +9,19 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 }
 
-router.get('/', function(req, res, next) {
-    res.render('index');
+router.get(['/dashboard', '/'], function(req, res, next) {
+    res.render('dashboard');
 });
+
+router.get('/howto', function(req, res, next) {
+    res.render('howto');
+});
+
+router.get('/aboutUs', function(req, res, next) {
+    res.render('aboutUs');
+});
+
+
 
 
 
