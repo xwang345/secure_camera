@@ -11,6 +11,15 @@
 .deviceMesBox__container .closeBtn {
     left: 7px;
     top: 0px;
+    cursor: pointer;
+    color: #fff;
+    transition: 200ms;
+    position: absolute;
+    font-size: 20px;
+}
+
+.deviceMesBox__container .closeBtn:hover {
+    color: #ddd;
 }
 
 .deviceMesBox__mesWindow {
