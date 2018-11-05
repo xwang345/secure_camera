@@ -3,7 +3,7 @@ var fs = require('fs'),
     WebSocket = require('ws');
 
 var STREAM_SECRET = '123456',
-    STREAM_PORT = 8080,
+    STREAM_PORT = 80,
     WEBSOCKET_PORT = 3000,
     RECORD_STREAM = false;
 
