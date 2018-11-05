@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ioListener = require('../lib/ioListener');
+
 
 var router = express.Router();
 
