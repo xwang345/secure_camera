@@ -1,6 +1,0 @@
-{
-    "GCLOUD_PROJECT": "home-security-220818",
-    "DATA_BACKEND": "datastore",
-    "CLOUD_BUCKET": "home-security-imgs"
-
-}
