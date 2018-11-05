@@ -21,9 +21,6 @@ router.get('/aboutUs', function(req, res, next) {
     res.render('aboutUs');
 });
 
-router.get('/test', function(req, res, next) {
-    res.render('test');
-});
 
 
 
