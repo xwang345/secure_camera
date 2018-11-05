@@ -31,9 +31,12 @@ io.on('connection', function(socket) {
 
     modelDatastore.list((err, entities) => {
         if (err) {
+            console.log('有错误')
             return;
         }
+
         console.log('load images')
+
         socket.emit('load images', entities);
     })
 
