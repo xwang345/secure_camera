@@ -8,8 +8,8 @@ var app = require('../app');
 var debug = require('debug')('secure-camera:server');
 var http = require('http');
 var socketIo = require('socket.io');
-var myImages = require('../lib/my-images');
 var modelDatastore = require('../lib/model-datastore');
+var argv = require('optimist').argv;
 
 
 /**
@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, argv.fe_ip);
 server.on('error', onError);
 server.on('listening', onListening);
 
