@@ -1,0 +1,23 @@
+{
+  "name": "secure_camera_live",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garrik-Liu/secure_camera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Garrik-Liu/secure_camera/issues"
+  },
+  "homepage": "https://github.com/Garrik-Liu/secure_camera#readme",
+  "dependencies": {
+    "ws": "^6.1.0"
+  }
+}
