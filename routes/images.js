@@ -14,6 +14,8 @@ router.setSocketIo = function(socket, io) {
 router.post('/add', myImages.multer.single('image'), myImages.sendUploadToGCS, (req, res, next) => {
     let data = req.body;
 
+    data.time = new Date();
+
     if (req.file && req.file.cloudStoragePublicUrl) {
         data.imageUrl = req.file.cloudStoragePublicUrl;
     }
