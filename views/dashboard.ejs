@@ -20,7 +20,10 @@
         <%- include("./components/header.ejs") %>
         <%- include("./components/devicesListRow.ejs") %>
         <div class="deviceControl__row">
-            <div id="imgShowBox">
+            <div id="imgShowBoxId" class="imgShowBox--close">
+            <span class="closeBtn">
+                <i class="fas fa-times"></i>
+            </span>
                 <img src="" alt="" />
             </div>
             <%- include("./components/deviceLive.ejs") %>

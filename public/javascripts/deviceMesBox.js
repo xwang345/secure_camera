@@ -39,17 +39,18 @@ $(document).ready(function() {
 
         $(".deviceMesBox__mesWindow:first").html(content);
 
-        ImageEventListener('.deviceMesBox__imgElement', '#imgShowBox');
+        ImageEventListener('.deviceMesBox__imgElement', '.imgShowBox:first', '#imgShowBoxId .closeBtn:first');
     }
 
-    function ImageEventListener(imgEleClass, imgShowId) {
-        console.log($(imgEleClass));
+    function ImageEventListener(imgEleClass, imgShowClass, btnClass) {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
-                console.log(this);
-                $(imgShowId).css('z-index', 1000);
+                $(imgShowClass).toggleClass('imgShowBox--close').toggleClass('imgShowBox')
             })
         })
-    }
 
+        $(btnClass).click(function() {
+            $(imgShowClass).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
+        })
+    }
 });

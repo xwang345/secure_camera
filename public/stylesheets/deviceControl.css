@@ -4,13 +4,46 @@
     position: relative;
 }
 
-#imgShowBox {
+.imgShowBox {
     position: absolute;
-    z-index: -1000;
     top: 0;
     right: 0;
-    left: 0;
-    bottom: 0;
-    opacity: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
     background-color: #333;
+}
+
+.imgShowBox--close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    opacity: 0.9;
+    background-color: #333;
+}
+
+.imgShowBox .closeBtn {
+    left: 7px;
+    top: 0px;
+    cursor: pointer;
+    color: #fff;
+    transition: 200ms;
+    position: absolute;
+    font-size: 40px;
+}
+
+.imgShowBox .closeBtn:hover {
+    color: #ddd;
+}
+
+.imgShowBox--close .closeBtn {
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+    color: #fff;
+    transition: 200ms;
+    position: absolute;
+    font-size: 0px;
 }
