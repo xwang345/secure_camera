@@ -46,8 +46,8 @@ $(document).ready(function() {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
                 $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
-                console.log($(imgShowId).children('img:first'));
-                console.log(this.children('img:first'))
+                console.log($(imgShowId).children('img:first').attr('src'));
+                console.log($(this).children('img:first').attr('src'))
             })
         })
 
