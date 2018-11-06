@@ -37,7 +37,7 @@
 }
 
 .imgShowBox .closeBtn {
-    left: 7px;
+    left: 10px;
     top: 0px;
     cursor: pointer;
     color: #fff;
@@ -58,4 +58,11 @@
     transition: 200ms;
     position: absolute;
     font-size: 0px;
+}
+
+@media screen and (max-width: 1200px) {
+    .imgShowBox img {
+        padding: 10px;
+        width: 100%;
+    }
 }
