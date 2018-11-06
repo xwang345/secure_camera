@@ -42,7 +42,7 @@ $(document).ready(function() {
         ImageEventListener('.deviceMesBox__imgElement', '#imgShowBox');
     }
 
-    function ImageEventListener(imgEleClas, imgShowId) {
+    function ImageEventListener(imgEleClass, imgShowId) {
         console.log($(imgEleClass));
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
