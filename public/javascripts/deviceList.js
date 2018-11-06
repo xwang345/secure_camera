@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    var deviceMesBox = $('.deviceMesBox__container:first');
-
+    var deviceMesBox = $('.deviceMesBox__container--close:first');
+    var deviceMesBoxCloseBtn = $('.deviceMesBox__container--close .closeBtn:first');
 
     $('.deviceList__deviceBtn').each(function(index) {
         $(this).click(function() {
@@ -14,13 +14,9 @@ $(document).ready(function() {
 
     function toggleSideColumn(sideColumn, state) {
         if (state === 'open') {
-            console.log('open');
-            console.log(sideColumn.classList)
             sideColumn.toggleClass('deviceMesBox__container--close')
                 .toggleClass('deviceMesBox__container');
         } else if (state === 'close') {
-            console.log('close');
-            console.log(sideColumn.classList)
             sideColumn.toggleClass('deviceMesBox__container')
                 .toggleClass('deviceMesBox__container--close');
         }
