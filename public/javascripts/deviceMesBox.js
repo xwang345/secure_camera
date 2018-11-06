@@ -3,8 +3,8 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
-        console.log($('#deviceMesBox').attr('width'));
-        if ($('#deviceMesBox').attr('width') == 0) {
+        console.log($('#deviceMesBox').css('width'));
+        if ($('#deviceMesBox').css('width') == 0) {
             $('#deviceBtnMesCount').css('opacity', 1);
             let num = Number($('#deviceBtnMesCount .mesCount__number:first').text());
             $('#deviceBtnMesCount .mesCount__number:first').text(num++);
