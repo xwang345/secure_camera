@@ -3,10 +3,12 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
-        $('#deviceBtnMesCount').css('opacity', 1);
-        console.log($('#deviceBtnMesCount .mesCount__number:first'));
-        let num = Number($('#deviceBtnMesCount .mesCount__number').text());
-        $('#deviceBtnMesCount .mesCount__number').text(num++);
+        console.log($('#deviceMesBox').attr('width'));
+        if ($('#deviceMesBox').attr('width') == 0) {
+            $('#deviceBtnMesCount').css('opacity', 1);
+            let num = Number($('#deviceBtnMesCount .mesCount__number:first').text());
+            $('#deviceBtnMesCount .mesCount__number:first').text(num++);
+        }
     });
 
     socket.on('load images', function(entities) {
