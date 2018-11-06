@@ -1,4 +1,7 @@
 .deviceLive__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1 1 auto;
     height: 500px;
     margin: 0px 20px;
