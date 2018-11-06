@@ -20,5 +20,6 @@
     }
     .deviceLive__container {
         height: auto;
+        margin-bottom: auto
     }
 }
