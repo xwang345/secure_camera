@@ -38,6 +38,8 @@ $(document).ready(function() {
         });
 
         $(".deviceMesBox__mesWindow:first").html(content);
+
+        ImageEventListener('.deviceMesBox__imgElement', '#imgShowBox');
     }
 
     function ImageEventListener(imgEleClas, imgShowId) {
