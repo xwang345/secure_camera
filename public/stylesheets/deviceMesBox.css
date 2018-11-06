@@ -1,5 +1,5 @@
 .deviceMesBox__container {
-    width: 400px;
+    width: 300px;
     height: 600px;
     display: flex;
     position: relative;
@@ -78,4 +78,19 @@
 
 .deviceMesBox__imgElement img {
     width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+    .deviceMesBox__container {
+        position: absolute;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .deviceMesBox__container {
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
 }
