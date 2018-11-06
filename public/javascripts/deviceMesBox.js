@@ -20,7 +20,7 @@ $(document).ready(function() {
 
         entities.forEach(e => {
 
-            console.log(e.time, typeof Date.parse(e.time))
+            console.log(e.time, typeof Date(e.time))
 
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
