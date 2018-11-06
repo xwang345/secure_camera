@@ -15,10 +15,24 @@
     color: #fff;
     transition: 200ms;
     position: absolute;
+    font-size: 20px;
+}
+
+.deviceMesBox__container--close .closeBtn {
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+    color: #fff;
+    transition: 200ms;
+    position: absolute;
     font-size: 0px;
 }
 
 .deviceMesBox__container .closeBtn:hover {
+    color: #ddd;
+}
+
+.deviceMesBox__container--close .closeBtn:hover {
     color: #ddd;
 }
 

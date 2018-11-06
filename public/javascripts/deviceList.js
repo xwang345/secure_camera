@@ -1,29 +1,24 @@
 $(document).ready(function() {
     var deviceMesBox = $('.deviceMesBox__container:first');
-    var deviceMesBoxCloseBtn = $('.deviceMesBox__container .closeBtn:first');
-    var deviceMesBoxImgElement = $('.deviceMesBox__container .deviceMesBox_imgElement');
+
 
     $('.deviceList__deviceBtn').each(function(index) {
         $(this).click(function() {
-            toggleSideColumn(deviceMesBox, deviceMesBoxCloseBtn, deviceMesBoxImgElement, 'open');
+            toggleSideColumn(deviceMesBox, 'open');
         })
     })
 
     deviceMesBoxCloseBtn.click(function() {
-        toggleSideColumn(deviceMesBox, deviceMesBoxCloseBtn, deviceMesBoxImgElement, 'close');
+        toggleSideColumn(deviceMesBox, 'close');
     })
 
-    function toggleSideColumn(sideColumn, closeBtn, imgEle, state) {
+    function toggleSideColumn(sideColumn, state) {
         if (state === 'open') {
-            sideColumn.css('width', 400);
-            sideColumn.css('padding', 5);
-            closeBtn.css('font-size', '20px');
-            imgEle.css('margin', '5px 10px');
+            sideColumn.removeClass('.deviceMesBox__container--close');
+            sideColumn.addClass('.deviceMesBox__container');
         } else if (state === 'close') {
-            sideColumn.css('width', 0);
-            sideColumn.css('padding', 0);
-            closeBtn.css('font-size', '0px');
-            imgEle.css('margin', '0');
+            sideColumn.removeClass('.deviceMesBox__container');
+            sideColumn.addClass('.deviceMesBox__container--close');
         }
     }
 });
