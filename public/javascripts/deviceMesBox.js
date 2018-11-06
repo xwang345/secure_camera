@@ -45,7 +45,7 @@ $(document).ready(function() {
     function ImageEventListener(imgEleClas, imgShowId) {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
-                $(imgShowId).css('index', 1000);
+                $(imgShowId).css('z-index', 1000);
             })
         })
     }
