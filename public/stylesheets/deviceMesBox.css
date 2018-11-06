@@ -7,6 +7,7 @@
     margin-bottom: 10px;
     transition: width 200ms;
     flex: 0 0 auto;
+    box-shadow: 0px 0px 2px 0px #ccc;
 }
 
 .deviceMesBox__container--close {
@@ -17,6 +18,7 @@
     flex-direction: column;
     margin-bottom: 10px;
     transition: width 200ms;
+    box-shadow: none;
 }
 
 .deviceMesBox__container .closeBtn {
@@ -54,6 +56,13 @@
     overflow-y: auto;
 }
 
+.deviceMesBox__mesWindow {
+    background-color: #fff;
+    width: 100%;
+    flex: 1 1 auto;
+    margin-top: 35px;
+}
+
 .deviceMesBox__imgElement {
     display: flex;
     flex-direction: column;
@@ -69,11 +78,4 @@
 
 .deviceMesBox__imgElement img {
     width: 100%;
-}
-
-.deviceMesBox__mesWindow {
-    background-color: #fff;
-    width: 100%;
-    flex: 1 1 auto;
-    margin-top: 35px;
 }
