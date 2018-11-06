@@ -20,12 +20,14 @@ $(document).ready(function() {
 
         entities.forEach(e => {
 
-            console.log(e.time, typeof new Date(e.time))
+            var eTime = new Date(e.time);
+
+            var imgTimeStr = eTime.getFullYear();
 
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
                     <span class="deviceMesBox__imgTime">
-                      ${e.time}
+                      ${imgTimeStr}
                     </span>
                     <img src=${e.imageUrl} alt="Snapshot" />
                 </div>
