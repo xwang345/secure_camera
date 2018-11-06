@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('.deviceList__deviceBtn').each(function(index) {
         $(this).click(function() {
             toggleSideColumn(deviceMesBox, 'open');
-            console.log($('#deviceBtnMesCount'));
+            $('#deviceBtnMesCount .mesCount__number').html('0')
             $('#deviceBtnMesCount').css('opacity', 0);
         })
     })
