@@ -9,18 +9,18 @@ $(document).ready(function() {
     })
 
     deviceMesBoxCloseBtn.click(function() {
-        toggleSideColumn(deviceMesBox, 'close');
+        toggleSideColumn(deviceMesBox, deviceMesBoxCloseBtn, 'close');
     })
 
-    function toggleSideColumn(sideColumn, state) {
+    function toggleSideColumn(sideColumn, closeBtn, state) {
         if (state === 'open') {
             sideColumn.css('width', 400);
             sideColumn.css('padding', 5);
-            sideColumn.css('font-size', '20px');
+            closeBtn.css('font-size', '20px');
         } else if (state === 'close') {
             sideColumn.css('width', 0);
             sideColumn.css('padding', 0);
-            sideColumn.css('font-size', '0px');
+            closeBtn.css('font-size', '0px');
         }
     }
 });
