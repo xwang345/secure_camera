@@ -7,8 +7,7 @@ $(document).ready(function() {
         if ($('#deviceMesBox').css('width') == '0px') {
             $('#deviceBtnMesCount').css('opacity', 1);
             let num = Number($('#deviceBtnMesCount .mesCount__number:first').text());
-            console.log(num);
-            $('#deviceBtnMesCount .mesCount__number:first').text(num++);
+            $('#deviceBtnMesCount .mesCount__number:first').html(++num);
         }
     });
 
