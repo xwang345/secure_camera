@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
-        console.log($('#deviceMesBox').css('width'));
         if ($('#deviceMesBox').css('width') == '0px') {
             $('#deviceBtnMesCount').css('opacity', 1);
             let num = Number($('#deviceBtnMesCount .mesCount__number:first').text());
@@ -22,7 +21,9 @@ $(document).ready(function() {
         entities.forEach(e => {
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
-                    <span class="deviceMesBox__imgTime">${e.time}</span>
+                    <span class="deviceMesBox__imgTime">
+                      ${e.time.getFullYear()} - ${e.time.getMonth() + 1} - ${e.time.getDate()} ${e.time.geHours()}:${e.time.getMinutes()}:${e.time.getSeconds()}
+                    </span>
                     <img src=${e.imageUrl} alt="Snapshot" />
                 </div>
             `;
