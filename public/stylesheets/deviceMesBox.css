@@ -1,4 +1,14 @@
 .deviceMesBox__container {
+    width: 450px;
+    height: 600px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 10px;
+    transition: width 200ms;
+}
+
+.deviceMesBox__container--close {
     width: 0;
     height: 600px;
     display: flex;
