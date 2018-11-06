@@ -28,7 +28,7 @@ $(document).ready(function() {
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
                     <span class="deviceMesBox__imgTime">
-                      ${e.time}
+                      ${eTime.toLocaleString()}
                     </span>
                     <img src=${e.imageUrl} alt="Snapshot" />
                 </div>
