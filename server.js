@@ -58,6 +58,7 @@ var streamServer = http.createServer(function(request, response) {
     );
 
     request.on('data', function(data) {
+        console.log(data);
         socketServer.broadcast(data);
         if (request.socket.recording) {
             request.socket.recording.write(data);
@@ -80,3 +81,12 @@ var streamServer = http.createServer(function(request, response) {
 
 console.log('Listening for incomming MPEG-TS Stream on http://35.243.158.28:' + STREAM_PORT + '/<secret>');
 console.log('Awaiting WebSocket connections on ws://35.243.158.28:' + WEBSOCKET_PORT + '/');
+
+// ffmpeg \
+// -f v4l2 \
+// -framerate 24 -video_size 640x480 -i /dev/video0 \ 
+// -f mpegts \ 
+// -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 \ 
+// http://35.243.158.28:80/123456
+
+// ffmpeg -f v4l2 -framerate 24 -video_size 640x480 -i /dev/video0 -f mpegts -f mpeg1video -b 800k -r 30 http://35.243.158.28:80/123456
