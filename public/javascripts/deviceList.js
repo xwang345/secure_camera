@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     $('.deviceList__deviceBtn').each(function(index) {
         $(this).click(function() {
-            toggleSideColumn(deviceMesBox, 'open');
+            toggleSideColumn(deviceMesBox, deviceMesBoxCloseBtn, 'open');
         })
     })
 
