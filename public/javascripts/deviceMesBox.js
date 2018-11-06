@@ -4,7 +4,7 @@ $(document).ready(function() {
     socket.on('reload images', function(entities) {
         loadImages(entities);
         console.log($('#deviceMesBox').css('width'));
-        if ($('#deviceMesBox').css('width') == 0) {
+        if ($('#deviceMesBox').css('width') == '0px') {
             $('#deviceBtnMesCount').css('opacity', 1);
             let num = Number($('#deviceBtnMesCount .mesCount__number:first').text());
             $('#deviceBtnMesCount .mesCount__number:first').text(num++);
