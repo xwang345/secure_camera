@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     socket.on('reload images', function(entities) {
         loadImages(entities);
-        showMesCount('#deviceMesBox', '#deviceBtnMesCount')
     });
 
     socket.on('load images', function(entities) {
@@ -28,14 +27,4 @@ $(document).ready(function() {
         $(".deviceMesBox__mesWindow:first").html(content);
     }
 
-    function showMesCount(mesBoxId, mesCountId) {
-        let mesBox = $(mesBoxId);
-        let mesCount = $(mesCountId);
-
-        if (mesBox.attr('width') > 0) {
-            mesCount.css('opacity', 0);
-        }
-
-
-    }
 });
