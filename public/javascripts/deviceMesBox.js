@@ -46,7 +46,7 @@ $(document).ready(function() {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
                 $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
-                $(imgShowId).attr('src', this.children('img:first').attr('src'));
+                $(imgShowId).children('img:first').attr('src', this.children('img:first').attr('src'));
             })
         })
 
