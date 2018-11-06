@@ -6,6 +6,7 @@ $(document).ready(function() {
         $(this).click(function() {
             toggleSideColumn(deviceMesBox, 'open');
             showMesCount('#deviceMesBox', '#deviceBtnMesCount');
+            $('#deviceBtnMesCount').css('opacity', 0);
         })
     })
 
@@ -21,16 +22,5 @@ $(document).ready(function() {
             sideColumn.toggleClass('deviceMesBox__container')
                 .toggleClass('deviceMesBox__container--close');
         }
-    }
-
-    function showMesCount(mesBoxId, mesCountId) {
-        let mesBox = $(mesBoxId);
-        let mesCount = $(mesCountId);
-
-        if (mesBox.attr('width') > 0) {
-            mesCount.css('opacity', 0);
-        }
-
-
     }
 });
