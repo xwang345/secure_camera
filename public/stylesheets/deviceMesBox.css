@@ -1,6 +1,6 @@
 .deviceMesBox__container {
     width: 300px;
-    height: 600px;
+    height: 100%;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -12,7 +12,7 @@
 
 .deviceMesBox__container--close {
     width: 0;
-    height: 600px;
+    height: 100%;
     display: flex;
     position: relative;
     flex-direction: column;
