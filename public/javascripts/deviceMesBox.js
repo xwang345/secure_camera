@@ -43,6 +43,7 @@ $(document).ready(function() {
     }
 
     function ImageEventListener(imgEleClas, imgShowId) {
+        console.log($(imgEleClass));
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
                 console.log(this);
