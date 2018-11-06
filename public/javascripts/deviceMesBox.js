@@ -2,7 +2,7 @@ $(document).ready(function() {
     var socket = io();
 
     $('#imgShowBoxId .closeBtn:first').click(function() {
-        $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
+        $('#imgShowBoxId').toggleClass('imgShowBox--close').toggleClass('imgShowBox');
     })
 
     socket.on('reload images', function(entities) {
