@@ -22,7 +22,8 @@ $(document).ready(function() {
 
             var eTime = new Date(e.time);
 
-            var imgTimeStr = eTime.getFullYear();
+            var imgTimeStr = eTime.getFullYear() + '-' + (eTime.getMonth() + 1) + '-' + eTime.getDate() + ' ' +
+                eTime.getHours() + ':' + eTime.getMinutes() + ':' + eTime.getSeconds();
 
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
