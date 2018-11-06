@@ -45,7 +45,8 @@ $(document).ready(function() {
     function ImageEventListener(imgEleClass, imgShowId, btnClass) {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
-                $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox')
+                $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
+                $(imgShowId).attr('src', this.children('img:first').attr('src'));
             })
         })
 
