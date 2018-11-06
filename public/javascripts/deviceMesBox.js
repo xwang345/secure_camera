@@ -19,10 +19,13 @@ $(document).ready(function() {
         var content = '';
 
         entities.forEach(e => {
+
+            console.log(e.time, typeof e.time)
+
             var imgElement = `
                 <div class="deviceMesBox__imgElement">
                     <span class="deviceMesBox__imgTime">
-                      ${e.time.getFullYear()} - ${e.time.getMonth() + 1} - ${e.time.getDate()} ${e.time.geHours()}:${e.time.getMinutes()}:${e.time.getSeconds()}
+                      ${e.time}
                     </span>
                     <img src=${e.imageUrl} alt="Snapshot" />
                 </div>
