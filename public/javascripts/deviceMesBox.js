@@ -1,6 +1,10 @@
 $(document).ready(function() {
     var socket = io();
 
+    $('#imgShowBoxId .closeBtn:first').click(function() {
+        $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
+    })
+
     socket.on('reload images', function(entities) {
         loadImages(entities);
         if ($('#deviceMesBox').css('width') == '0px') {
@@ -39,20 +43,16 @@ $(document).ready(function() {
 
         $(".deviceMesBox__mesWindow:first").html(content);
 
-        ImageEventListener('.deviceMesBox__imgElement', '#imgShowBoxId', '#imgShowBoxId .closeBtn:first');
+        ImageEventListener('.deviceMesBox__imgElement', '#imgShowBoxId');
     }
 
-    function ImageEventListener(imgEleClass, imgShowId, btnClass) {
+    function ImageEventListener(imgEleClass, imgShowId) {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
                 $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
                 $(imgShowId).children('img:first').attr('src', $(this).children('img:first').attr('src'));
 
             })
-        })
-
-        $(btnClass).click(function() {
-            $(imgShowId).toggleClass('imgShowBox--close').toggleClass('imgShowBox');
         })
     }
 });
