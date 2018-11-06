@@ -40,4 +40,12 @@ $(document).ready(function() {
         $(".deviceMesBox__mesWindow:first").html(content);
     }
 
+    function ImageEventListener(imgEleClas, imgShowId) {
+        $(imgEleClass).each(function(index) {
+            $(this).click(function() {
+                $(imgShowId).css('index', 1000);
+            })
+        })
+    }
+
 });
