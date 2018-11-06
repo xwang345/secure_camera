@@ -58,6 +58,7 @@ var streamServer = http.createServer(function(request, response) {
     );
 
     request.on('data', function(data) {
+
         console.log(data);
         socketServer.broadcast(data);
         if (request.socket.recording) {
