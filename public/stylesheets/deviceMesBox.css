@@ -6,6 +6,7 @@
     flex-direction: column;
     margin-bottom: 10px;
     transition: width 200ms;
+    flex: 0 0 auto;
 }
 
 .deviceMesBox__container--close {
