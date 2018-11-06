@@ -14,11 +14,13 @@ $(document).ready(function() {
 
     function toggleSideColumn(sideColumn, state) {
         if (state === 'open') {
-            sideColumn.removeClass('deviceMesBox__container--close');
-            sideColumn.addClass('deviceMesBox__container');
+            console.log('open');
+            sideColumn.toggleClass('deviceMesBox__container--close')
+                .toggleClass('deviceMesBox__container');
         } else if (state === 'close') {
-            sideColumn.removeClass('deviceMesBox__container');
-            sideColumn.addClass('deviceMesBox__container--close');
+            console.log('close');
+            sideColumn.toggleClass('deviceMesBox__container')
+                .toggleClass('deviceMesBox__container--close');
         }
     }
 });
