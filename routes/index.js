@@ -21,6 +21,10 @@ router.get('/aboutUs', function(req, res, next) {
     res.render('aboutUs');
 });
 
+router.get("/header", (req, res) => {
+    res.render("header");
+});
+
 
 
 
