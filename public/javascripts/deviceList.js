@@ -16,9 +16,11 @@ $(document).ready(function() {
         if (state === 'open') {
             sideColumn.css('width', 400);
             sideColumn.css('padding', 5);
+            sideColumn.css('font-size', '20px');
         } else if (state === 'close') {
             sideColumn.css('width', 0);
             sideColumn.css('padding', 0);
+            sideColumn.css('font-size', '0px');
         }
     }
 });
