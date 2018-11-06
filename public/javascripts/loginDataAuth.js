@@ -12,7 +12,7 @@ var userSchema = new Schema({
 });
 var Comment; // to be defined on new connection (see initialize)
 
-var dbURI = "mongodb://xwang345:AOiwxc93!@ds151463.mlab.com:51463/home_security"
+var dbURI = "mongodb://xwang345:Aoiwxc93!@ds145395.mlab.com:45395/web322_a7"
 
 module.exports.initialize = () => {
     console.log("============================================");
@@ -24,18 +24,21 @@ module.exports.initialize = () => {
     console.log(">>> DB dbURI: " + dbURI + " <<<");
     console.log("\n")
     return new Promise((resolve, reject) => {
-        let db = mongoose.connect(dbURI,{useNewUrlParser: true});
-        
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-        // db.on('error', (err) => {
-        //     reject(err); // reject the promise with the provided error
-        // });
-        // db.once('open', () => {
-        //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        //     Comment = db.model("users", userSchema);
-        //     // Comment.remove({ }, function (err) { }); // remove collection
-        //     resolve("Secess initialize MongoDB");
-        // });
+        let db = mongoose.createConnection(dbURI);
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+
+        db.on('error', (err) => {
+            reject(err); // reject the promise with the provided error
+        });
+        db.once('open', () => {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Comment = db.model("users", userSchema);
+            // Comment.remove({ }, function (err) { }); // remove collection
+            resolve("Secess initialize MongoDB");
+        });
     });
 };
 
