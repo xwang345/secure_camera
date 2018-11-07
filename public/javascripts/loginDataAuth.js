@@ -32,7 +32,7 @@ module.exports.initialize = () => {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            Comment = db.model("users", userSchema);
+            Comment = db.model("user", userSchema);
             // Comment.remove({ }, function (err) { }); // remove collection
             resolve("Secess initialize MongoDB");
             console.log(chalk.red("+++++++++++++++"));
@@ -69,8 +69,7 @@ module.exports.registerUser = (userData) => {
                         console.log(chalk.blue("============================================"));
                         console.log(chalk.blue("This is User object id from userSchema: " + newUser._id));
                         console.log(chalk.green(newUser));
-                        // resolve();
-                        newUser.save(callback);
+                        resolve();
                     }).catch((err) => {
                         if (err) {
                             if (err.code == 11000) {

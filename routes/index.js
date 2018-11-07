@@ -38,16 +38,27 @@ router.get("/loginpage", (req, res) => {
 
 //-----------------------------post router-----------------------------------------------------
 
-router.post("/registerpage", (req, res)=>{
+router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
-        res.render("dashboard");
+        res.render("registerPage", {successMessage: "User created"});
     }).catch((err) => {
-
+        res.render("registerPage", {errorMessage: err, user: "req.body.user"});
     });
 });
 
-router.post("/loginpage", (req, res) => {
-    
+router.post("/login", (req, res) => {
+    dataServiceAuth.checkUser(req.body).then(() => {
+        const username = req.body.user;
+        console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
+        console.log(chalk.bgGreen(JSON.stringify(req.body.user)));
+        req.session.user = {
+            username: username
+        };
+        res.redirect("/employees");
+    }).catch((err) => {
+        // res.send(22222222222222222);
+        res.render("login", {errorMessage: err, user: req.body.user});
+    });
 });
 
 router.post("/api/updatePassword", (req, res) =>{
@@ -66,10 +77,5 @@ router.post("/api/updatePassword", (req, res) =>{
         res.send({errorMessage: err});
     });
 });
-
-
-
-
-
 
 module.exports = router;
