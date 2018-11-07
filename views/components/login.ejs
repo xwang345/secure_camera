@@ -1,28 +1,26 @@
-<form class="login" action="login" method="POST">
-    <div class="modal fade" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="loginBoxLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="loginBoxLabel">Log In</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+<form class="login" action="loginpage" method="POST">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginBoxLabel">Log In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="loginAccountInput">Account</label>
+            <input type="text" class="form-control" id="loginAccountInput" name="account" aria-describedby="emailHelp" placeholder="Enter account">
           </div>
-          <div class="modal-body">
-                <div class="form-group">
-                    <label for="loginAccountInput">Account</label>
-                    <input type="text" class="form-control" id="loginAccountInput" name="account" aria-describedby="emailHelp" placeholder="Enter account">
-                </div>
-                <div class="form-group">
-                    <label for="loginPasswordInput">Password</label>
-                    <input type="password" class="form-control" id="loginPasswordInput" name="password" aria-describedby="emailHelp" placeholder="Enter password">
-                </div>
+          <div class="form-group">
+            <label for="loginPasswordInput">Password</label>
+            <input type="password" class="form-control" id="loginPasswordInput" name="password" aria-describedby="emailHelp" placeholder="Enter password">
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary pull-right">Login</button>
         </div>
       </div>
     </div>
-    </form>
+  </div>
+</form>
