@@ -30,6 +30,11 @@ router.get("/registerpage", (req, res) => {
     res.render("registerpage");
 });
 
+router.get("/loginpage", (req, res) => {
+    res.render("loginpage");
+});
+
+
 
 //-----------------------------post router-----------------------------------------------------
 
@@ -37,7 +42,12 @@ router.post("/registerpage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
         res.render("dashboard");
     }).catch((err) => {
+
     });
+});
+
+router.post("/loginpage", (req, res) => {
+    
 });
 
 router.post("/api/updatePassword", (req, res) =>{
