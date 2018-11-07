@@ -13,7 +13,7 @@ var userSchema = new Schema({
 });
 var Comment; // to be defined on new connection (see initialize)
 
-var dbURI = "mongodb://xwang345:Aoiwxc93!@ds145395.mlab.com:45395/web322_a7"
+var dbURI = "mongodb://xwang345:Aoiwxc93!@ds151463.mlab.com:51463/home_security"
 
 module.exports.initialize = () => {
     console.log("============================================");
@@ -25,6 +25,7 @@ module.exports.initialize = () => {
     console.log(">>> DB dbURI: " + dbURI + " <<<");
     console.log("\n")
     return new Promise((resolve, reject) => {
+        // let db = mongoose.createConnection(dbURI);
         let db = mongoose.createConnection(dbURI, { useNewUrlParser: true });
 
         db.on('error', (err) => {
@@ -57,6 +58,7 @@ module.exports.registerUser = (userData) => {
                 }
                 bcrypt.hash(userData.password, salt, function(err, hash) { // encrypt the password: "myPassword123"
                     // TODO: Store the resulting "hash" value in the DB
+
                     console.log(chalk.yellow(hash));
                     newUser.password = hash;
                     console.log(chalk.red(newUser));
@@ -67,8 +69,8 @@ module.exports.registerUser = (userData) => {
                         console.log(chalk.blue("============================================"));
                         console.log(chalk.blue("This is User object id from userSchema: " + newUser._id));
                         console.log(chalk.green(newUser));
-                        resolve();
-                        //newUser.save(callback);
+                        // resolve();
+                        newUser.save(callback);
                     }).catch((err) => {
                         if (err) {
                             if (err.code == 11000) {

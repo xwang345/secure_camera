@@ -1,4 +1,4 @@
-<div class="modal fade" id="registerBox" tabindex="-1" role="dialog" aria-labelledby="registerBox" aria-hidden="true">
+<form class="register" action="registerpage" method="POST">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,20 +10,19 @@
         <div class="modal-body">
               <div class="form-group">
                   <label for="registerAccountInput">username</label>
-                  <input type="text" class="form-control" id="registerBoxAccountInput" name="username" aria-describedby="emailHelp" placeholder="Enter account name">
+                  <input type="text" class="form-control" id="registerBoxAccountInput" name="username"  placeholder="Enter account name" required value="" />
               </div>
               <div class="form-group">
                   <label for="registerBoxPasswordInput">Password</label>
-                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password" aria-describedby="emailHelp" placeholder="Enter password">
+                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password" placeholder="Enter password" required />
               </div>
               <div class="form-group">
                   <label for="registerBoxPasswordInput">Type Password again</label>
-                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password2" aria-describedby="emailHelp" placeholder="Enter password again">
+                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password2" placeholder="Enter password again" required />
               </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </div>
       </div>
     </div>

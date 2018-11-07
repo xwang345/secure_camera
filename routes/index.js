@@ -26,16 +26,16 @@ router.get("/header", (req, res) => {
     res.render("header");
 });
 
-router.get("/registerPage", (req, res) => {
-    res.render("registerPage");
+router.get("/registerpage", (req, res) => {
+    res.render("registerpage");
 });
 
 
 //-----------------------------post router-----------------------------------------------------
 
-router.post("/registerPage", (req, res)=>{
+router.post("/registerpage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
-        res.render("header");
+        res.render("dashboard");
     }).catch((err) => {
     });
 });
