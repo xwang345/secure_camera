@@ -5,20 +5,20 @@ var dataServiceAuth = require('../public/javascripts/loginDataAuth');
 
 var router = express.Router();
 
-router.setSocketIo = function(socket, io) {
+router.setSocketIo = (socket, io) => {
     router.io = io;
     router.socket = socket;
 }
 
-router.get(['/dashboard', '/'], function(req, res, next) {
+router.get(['/dashboard', '/'], (req, res, next) => {
     res.render('dashboard');
 });
 
-router.get('/howto', function(req, res, next) {
+router.get('/howto', (req, res, next) => {
     res.render('howto');
 });
 
-router.get('/aboutUs', function(req, res, next) {
+router.get('/aboutUs', (req, res, next) => {
     res.render('aboutUs');
 });
 
@@ -26,11 +26,16 @@ router.get("/header", (req, res) => {
     res.render("header");
 });
 
+router.get("/registerPage", (req, res) => {
+    res.render("registerPage");
+});
+
 
 //-----------------------------post router-----------------------------------------------------
-router.post("/api/register", (req, res)=>{
+
+router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
-        
+        res.render("header");
     }).catch((err) => {
     });
 });

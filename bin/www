@@ -48,23 +48,23 @@ io.on('connection', function(socket) {
  * Listen on provided port, on all network interfaces.
  */
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true }));
 
-// function ensureLogin(req, res, next) {
-//     if (!req.session.user) {
-//       res.redirect("/login");
-//     } else {
-//       next();
-//     }
-// }
+function ensureLogin(req, res, next) {
+    if (!req.session.user) {
+      res.redirect("/login");
+    } else {
+      next();
+    }
+}
 
-// app.use(clientSessions({
-//     cookieName: "session", // this is the object name that will be added to 'req'
-//     secret: "HomeSecurity", // this should be a long un-guessable string.
-//     duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
-//     activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
-// }));
+app.use(clientSessions({
+    cookieName: "session", // this is the object name that will be added to 'req'
+    secret: "HomeSecurity", // this should be a long un-guessable string.
+    duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
+    activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+}));
 
 // app.use(bodyParser.urlencoded({ extended: false }));
 

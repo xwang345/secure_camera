@@ -5,6 +5,7 @@ var crypto = require('crypto');
 let Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
+mongoose.set('useCreateIndex', true);
 
 var userSchema = new Schema({
     "user": {type: String, unique: true},
@@ -24,7 +25,7 @@ module.exports.initialize = () => {
     console.log(">>> DB dbURI: " + dbURI + " <<<");
     console.log("\n")
     return new Promise((resolve, reject) => {
-        let db = mongoose.createConnection(dbURI);
+        let db = mongoose.createConnection(dbURI, { useNewUrlParser: true });
 
         db.on('error', (err) => {
             reject(err); // reject the promise with the provided error
@@ -33,6 +34,7 @@ module.exports.initialize = () => {
             Comment = db.model("users", userSchema);
             // Comment.remove({ }, function (err) { }); // remove collection
             resolve("Secess initialize MongoDB");
+            console.log(chalk.red("+++++++++++++++"));
         });
     });
 };
@@ -44,42 +46,42 @@ module.exports.registerUser = (userData) => {
     console.log("===                                      ===");
     console.log("============================================");
     console.log("\n");
-    // return new Promise((resolve, reject) => {
-    //     if (userData.password != userData.password2) {
-    //         reject("Passwords do not match.");
-    //     } else {
-    //         let newUser = new Comment(userData);
-    //          bcrypt.genSalt(10, function(err, salt) { // Generate a "salt" using 10 rounds
-    //             if (err) {
-    //                 reject("There was an error encrypting the password");
-    //             }
-    //             bcrypt.hash(userData.password, salt, function(err, hash) { // encrypt the password: "myPassword123"
-    //                 // TODO: Store the resulting "hash" value in the DB
-    //                 console.log(chalk.yellow(hash));
-    //                 newUser.password = hash;
-    //                 console.log(chalk.red(newUser));
-    //                 newUser.save((err) => {
-    //                     console.log(chalk.blue("===   Object is saving in the database.  ==="));
-    //                     console.log(chalk.blue("============================================"));
-    //                     console.log(userData);
-    //                     console.log(chalk.blue("============================================"));
-    //                     console.log(chalk.blue("This is User object id from userSchema: " + newUser._id));
-    //                     console.log(chalk.green(newUser));
-    //                     resolve();
-    //                     //newUser.save(callback);
-    //                 }).catch((err) => {
-    //                     if (err) {
-    //                         if (err.code == 11000) {
-    //                             reject("User Name already taken");
-    //                         } else {
-    //                             reject("There was an error creating the user: ${user}");
-    //                         }
-    //                     }
-    //         // reject("There was an error creating the user222222");
-    //                 });
-    //             });
-    //          });
-    //     }});
+    return new Promise((resolve, reject) => {
+        if (userData.password != userData.password2) {
+            reject("Passwords do not match.");
+        } else {
+            let newUser = new Comment(userData);
+             bcrypt.genSalt(10, function(err, salt) { // Generate a "salt" using 10 rounds
+                if (err) {
+                    reject("There was an error encrypting the password");
+                }
+                bcrypt.hash(userData.password, salt, function(err, hash) { // encrypt the password: "myPassword123"
+                    // TODO: Store the resulting "hash" value in the DB
+                    console.log(chalk.yellow(hash));
+                    newUser.password = hash;
+                    console.log(chalk.red(newUser));
+                    newUser.save((err) => {
+                        console.log(chalk.blue("===   Object is saving in the database.  ==="));
+                        console.log(chalk.blue("============================================"));
+                        console.log(userData);
+                        console.log(chalk.blue("============================================"));
+                        console.log(chalk.blue("This is User object id from userSchema: " + newUser._id));
+                        console.log(chalk.green(newUser));
+                        resolve();
+                        //newUser.save(callback);
+                    }).catch((err) => {
+                        if (err) {
+                            if (err.code == 11000) {
+                                reject("User Name already taken");
+                            } else {
+                                reject("There was an error creating the user: ${user}");
+                            }
+                        }
+            // reject("There was an error creating the user222222");
+                    });
+                });
+             });
+        }});
     }
 
 module.exports.checkUser = (userData) =>{
