@@ -1,4 +1,12 @@
-<form class="register" action="registerpage" method="POST">
+<% if(successMessage ==="User created"){ %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="alert alert-success"> <strong>Success:</strong><%= successMessage %></div>
+      <a class="btn btn-success pull-right" href="/loginpage">&nbsp;&nbsp;&nbsp;Proceed to Log in&nbsp;&nbsp;&nbsp;</a><br /><br /><br />
+  </div>
+</div>
+<% } else { %>
+  <form class="register" action="registerpage" method="POST">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,7 +18,7 @@
         <div class="modal-body">
               <div class="form-group">
                   <label for="registerAccountInput">username</label>
-                  <input type="text" class="form-control" id="registerBoxAccountInput" name="username"  placeholder="Enter account name" required value="" />
+                  <input type="text" class="form-control" id="registerBoxAccountInput" name="user"  placeholder="Enter account name" required value="" />
               </div>
               <div class="form-group">
                   <label for="registerBoxPasswordInput">Password</label>
@@ -28,3 +36,4 @@
     </div>
 </div>
 </form>
+<!-- <% } %> -->

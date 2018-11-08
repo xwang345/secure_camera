@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ioListener = require('../lib/ioListener');
-var dataServiceAuth = require('../public/javascripts/loginDataAuth');
+var dataServiceAuth = require('../lib/loginDataAuth');
 
 var router = express.Router();
 
@@ -27,7 +27,7 @@ router.get("/header", (req, res) => {
 });
 
 router.get("/registerpage", (req, res) => {
-    res.render("registerpage");
+    res.render("registerpage", {successMessage: undefined});
 });
 
 router.get("/loginpage", (req, res) => {
@@ -42,7 +42,7 @@ router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
         res.render("registerPage", {successMessage: "User created"});
     }).catch((err) => {
-        res.render("registerPage", {errorMessage: err, user: "req.body.user"});
+        res.render("registerPage", {successMessage: undefined, errorMessage: err, user: "req.body.user"});
     });
 });
 
@@ -56,7 +56,6 @@ router.post("/login", (req, res) => {
         };
         res.redirect("/employees");
     }).catch((err) => {
-        // res.send(22222222222222222);
         res.render("login", {errorMessage: err, user: req.body.user});
     });
 });

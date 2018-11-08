@@ -14,7 +14,7 @@ const clientSessions = require("client-sessions");
 var chalk = require('chalk');
 var myImages = require('../lib/my-images');
 var modelDatastore = require('../lib/model-datastore');
-var dataServiceAuth= require('../public/javascripts/loginDataAuth');
+var dataServiceAuth= require('../lib/loginDataAuth');
 
 
 /**
