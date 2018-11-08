@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 .main__title {
     margin-left: 5px;
 }
@@ -19,17 +23,4 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-}
-
-.closeBtn {
-    cursor: pointer;
-    color: #fff;
-    transition: 200ms;
-    position: absolute;
-    font-size: 20px;
-    padding: 5px;
-}
-
-.closeBtn:hover {
-    color: #ddd;
 }

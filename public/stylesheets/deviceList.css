@@ -29,6 +29,8 @@
     position: absolute;
     top: -15px;
     right: -15px;
+    opacity: 0;
+    transition: opacity, 200ms;
 }
 
 .deviceList__deviceBtn__mesCount .badge {

@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
 var imagesRouter = require('./routes/images');
-
+//
 var app = express();
 
 app.setSocketIo = function(socket, io) {
