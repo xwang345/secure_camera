@@ -8,8 +8,18 @@ var app = require('../app');
 var debug = require('debug')('secure-camera:server');
 var http = require('http');
 var socketIo = require('socket.io');
+// -----------------------
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+const clientSessions = require("client-sessions");
+var chalk = require('chalk');
+var myImages = require('../lib/my-images');
+var modelDatastore = require('../lib/model-datastore');
+var dataServiceAuth= require('../lib/loginDataAuth');
+// -----------------------
 var modelDatastore = require('../lib/model-datastore');
 var argv = require('optimist').argv;
+
 
 
 /**
@@ -46,7 +56,53 @@ io.on('connection', function(socket) {
  * Listen on provided port, on all network interfaces.
  */
 
+// -----------------------
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true }));
+
+function ensureLogin(req, res, next) {
+    if (!req.session.user) {
+      res.redirect("/login");
+    } else {
+      next();
+    }
+}
+
+app.use(clientSessions({
+    cookieName: "session", // this is the object name that will be added to 'req'
+    secret: "HomeSecurity", // this should be a long un-guessable string.
+    duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
+    activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+}));
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
+server.listen(port,function onHttpStart(){
+    console.log(chalk.yellow("==========    System is running   =========="));
+    console.log(chalk.yellow("===                                      ==="));
+    console.log(chalk.yellow("== Express http server listening on: " + "3000" + " =="));
+    console.log(chalk.yellow("===                                      ==="));
+    console.log(chalk.yellow("============================================"));
+    return new Promise((res, req) => {
+        dataServiceAuth.initialize().then(() => {
+            console.log("\n");
+            console.log(chalk.green("====================================================================="));
+            console.log(chalk.green(">>> Call initialize Suceess!!! where from data-service-auth.js    <<<"));
+            console.log(chalk.green("====================================================================="));
+            console.log("\n");
+           }).catch((err) => {
+               console.log(err);
+            });
+        }).catch(()=> {
+            console.log("unable to start dataService");
+    });
+});
+
+// -----------------------
 server.listen(port, argv.fe_ip);
+
 server.on('error', onError);
 server.on('listening', onListening);
 

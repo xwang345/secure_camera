@@ -1,0 +1,39 @@
+<% if(successMessage ==="User created"){ %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="alert alert-success"> <strong>Success:</strong><%= successMessage %></div>
+      <a class="btn btn-success pull-right" href="/loginpage">&nbsp;&nbsp;&nbsp;Proceed to Log in&nbsp;&nbsp;&nbsp;</a><br /><br /><br />
+  </div>
+</div>
+<% } else { %>
+  <form class="register" action="registerpage" method="POST">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerBox">register</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              <div class="form-group">
+                  <label for="registerAccountInput">username</label>
+                  <input type="text" class="form-control" id="registerBoxAccountInput" name="user"  placeholder="Enter account name" required value="" />
+              </div>
+              <div class="form-group">
+                  <label for="registerBoxPasswordInput">Password</label>
+                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password" placeholder="Enter password" required />
+              </div>
+              <div class="form-group">
+                  <label for="registerBoxPasswordInput">Type Password again</label>
+                  <input type="password" class="form-control" id="registerBoxPasswordInput" name="password2" placeholder="Enter password again" required />
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary pull-right">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+</form>
+<!-- <% } %> -->
