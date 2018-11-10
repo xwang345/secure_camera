@@ -12,7 +12,7 @@ router.setSocketIo = (socket, io) => {
     router.socket = socket;
 }
 
-router.get(['/dashboard', '/'], (req, res, next) => {
+router.get(['/dashboard', '/'],(req, res, next) => {
     res.render('dashboard');
 });
 
@@ -29,7 +29,7 @@ router.get("/header", (req, res) => {
 });
 
 router.get("/registerpage", (req, res) => {
-    res.render("registerpage", {successMessage: undefined});
+    res.render("registerpage", {successMessage: undefined, errorMessage: undefined});
 });
 
 router.get("/loginpage", (req, res) => {
@@ -44,11 +44,11 @@ router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
         res.render("registerPage", {successMessage: "User created"});
     }).catch((err) => {
-        res.render("registerPage", {successMessage: undefined, errorMessage: err, user: "req.body.user"});
+        res.render("registerPage", {errorMessage: err, user: req.body.user});
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/loginpage", (req, res) => {
     dataServiceAuth.checkUser(req.body).then(() => {
         const username = req.body.user;
         console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
@@ -56,9 +56,9 @@ router.post("/login", (req, res) => {
         req.session.user = {
             username: username
         };
-        res.redirect("/employees");
+        res.redirect("/dashboard");
     }).catch((err) => {
-        res.render("login", {errorMessage: err, user: req.body.user});
+        res.render("loginpage", {errorMessage: err, user: req.body.user});
     });
 });
 
