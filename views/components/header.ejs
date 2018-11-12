@@ -25,10 +25,10 @@
                 <a class="nav-link" href="/registerpage">Sign up</a>
             </li>
         </ul>
-        <!-- TODO -->
+        <% if (user) { %>
         <span class="nav-link">
             <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"><!-- TODO --><span class="caret"></span>
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"><%= user %><span class="caret"></span>
             </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li data-toggle="modal" data-target="#profileModal"><a href="#">Profile</a></li>
@@ -37,7 +37,6 @@
                 </ul>
             </div>
         </span>
-        <!-- TODO -->
         <div class="modal fade" id="profileModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="profileModalTitle">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -51,7 +50,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>User Name:</label>
-                                        <input type="text" disabled class="form-control" >
+                                        <input type="text" disabled class="form-control" value="<%= user %>">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -88,5 +87,6 @@
                 </div>
             </div>
         </div>
+        <% } %>
     </div>
 </nav>

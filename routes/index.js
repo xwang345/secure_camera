@@ -4,6 +4,7 @@ var router = express.Router();
 // -----------------------
 var ioListener = require('../lib/ioListener');
 var dataServiceAuth = require('../lib/loginDataAuth');
+const chalk = require('chalk');
 // -----------------------
 
 var router = express.Router();
@@ -13,28 +14,36 @@ router.setSocketIo = (socket, io) => {
     router.socket = socket;
 }
 
+function ensureLogin(req, res, next) {
+    if (!req.session.user) {
+      res.redirect("/loginpage");
+    } else {
+      next();
+    }
+  }
+
 router.get(['/dashboard', '/'], (req, res, next) => {
-    res.render('dashboard');
+    res.render('dashboard', {user: undefined});
 });
 
 router.get('/howto', (req, res, next) => {
-    res.render('howto');
+    res.render('howto',{user: undefined});
 });
 
 router.get('/aboutUs', (req, res, next) => {
-    res.render('aboutUs');
+    res.render('aboutUs', {user: undefined});
 });
 
 router.get("/header", (req, res) => {
-    res.render("header");
+    res.render("header", {user: undefined});
 });
 
 router.get("/registerpage", (req, res) => {
-    res.render("registerpage", {successMessage: undefined, errorMessage: undefined});
+    res.render("registerpage", {successMessage: undefined, errorMessage: undefined, user: undefined});
 });
 
 router.get("/loginpage", (req, res) => {
-    res.render("loginpage", {errorMessage: undefined});
+    res.render("loginpage", {errorMessage: undefined, user: undefined});
 });
 
 
@@ -44,24 +53,24 @@ router.get("/loginpage", (req, res) => {
 router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
         console.log("++++++++++++++++++++");
-        res.render("registerPage", {successMessage: "User created"});
+        res.render("registerPage", {successMessage: "User created", user:undefined});
     }).catch((err) => {
         console.log("++++++++++++++++++++"+ err);
-        res.render("registerPage", {successMessage: undefined, errorMessage: err, user: "req.body.user"});
+        res.render("registerPage", {successMessage: undefined, errorMessage: err, user: req.body.user});
     });
 });
 
 router.post("/loginpage", (req, res) => {
     dataServiceAuth.checkUser(req.body).then(() => {
-        // const username = req.body.user;
-        // console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
-        // console.log(chalk.bgGreen(JSON.stringify(req.body.user)));
-        // req.session.user = {
-        //     username: username
-        // };
+        const username = req.body.user;
+        console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
+        console.log(chalk.bgGreen(JSON.stringify(req.body.user)));
+        req.session.user = {
+            username: username
+        };
         res.redirect("/dashboard");
     }).catch((err) => {
-        res.render("loginpage", {errorMessage: err, user: req.body.user});
+        res.render("loginpage", {errorMessage: err, user:req.body.user});
     });
 });
 
@@ -80,6 +89,11 @@ router.post("/api/updatePassword", (req, res) =>{
         console.log(err);
         res.send({errorMessage: err});
     });
+});
+
+router.get("/logout", (req, res) => {
+    req.session.reset();
+    res.redirect('/');
 });
 
 
