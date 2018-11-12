@@ -1,4 +1,5 @@
 var express = require('express');
+// var errorHandler = require('errorhandler');
 var router = express.Router();
 // -----------------------
 var ioListener = require('../lib/ioListener');
@@ -29,7 +30,7 @@ router.get("/header", (req, res) => {
 });
 
 router.get("/registerpage", (req, res) => {
-    res.render("registerpage", {successMessage: undefined});
+    res.render("registerpage", {successMessage: undefined, errorMessage: undefined});
 });
 
 router.get("/loginpage", (req, res) => {
@@ -42,8 +43,10 @@ router.get("/loginpage", (req, res) => {
 
 router.post("/registerPage", (req, res)=>{
     dataServiceAuth.registerUser(req.body).then(() => {
+        console.log("++++++++++++++++++++");
         res.render("registerPage", {successMessage: "User created"});
     }).catch((err) => {
+        console.log("++++++++++++++++++++"+ err);
         res.render("registerPage", {successMessage: undefined, errorMessage: err, user: "req.body.user"});
     });
 });
