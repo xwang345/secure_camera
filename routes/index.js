@@ -34,7 +34,7 @@ router.get("/registerpage", (req, res) => {
 });
 
 router.get("/loginpage", (req, res) => {
-    res.render("loginpage");
+    res.render("loginpage", {errorMessage: undefined});
 });
 
 
@@ -51,17 +51,17 @@ router.post("/registerPage", (req, res)=>{
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/loginpage", (req, res) => {
     dataServiceAuth.checkUser(req.body).then(() => {
-        const username = req.body.user;
-        console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
-        console.log(chalk.bgGreen(JSON.stringify(req.body.user)));
-        req.session.user = {
-            username: username
-        };
-        res.redirect("/employees");
+        // const username = req.body.user;
+        // console.log(chalk.bgGreen(JSON.stringify("==================Login Fuction=============")));
+        // console.log(chalk.bgGreen(JSON.stringify(req.body.user)));
+        // req.session.user = {
+        //     username: username
+        // };
+        res.redirect("/dashboard");
     }).catch((err) => {
-        res.render("login", {errorMessage: err, user: req.body.user});
+        res.render("loginpage", {errorMessage: err, user: req.body.user});
     });
 });
 
