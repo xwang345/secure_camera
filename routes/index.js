@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var ioListener = require('../lib/ioListener');
 
 var router = express.Router();
 
@@ -20,10 +19,5 @@ router.get('/howto', function(req, res, next) {
 router.get('/aboutUs', function(req, res, next) {
     res.render('aboutUs');
 });
-
-
-
-
-
 
 module.exports = router;
