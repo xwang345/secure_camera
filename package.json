@@ -18,5 +18,8 @@
         "morgan": "~1.9.0",
         "multer": "^1.4.1",
         "socket.io": "^2.1.1"
+    },
+    "devDependencies": {
+        "husky": "^1.1.4"
     }
 }
