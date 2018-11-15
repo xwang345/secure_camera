@@ -1,6 +1,5 @@
 {
-    "GCLOUD_PROJECT": "security-camera-221601",
-    "DATA_BACKEND": "datastore",
-    "CLOUD_BUCKET": "security-camera-snapshots"
-
+  "GCLOUD_PROJECT": "security-camera-221601",
+  "DATA_BACKEND": "datastore",
+  "CLOUD_BUCKET": "security-camera-snapshots"
 }
