@@ -1,26 +1,26 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .main__title {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .main__container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
 }
 
 .main__footer {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }

@@ -4,7 +4,12 @@
     "node": true
   },
   "plugins": ["prettier"],
-  "extends": ["prettier"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
