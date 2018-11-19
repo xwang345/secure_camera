@@ -1,51 +1,53 @@
 .deviceList__row {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 0 20px;
 }
 
 .deviceList__list {
-    display: flex;
-    padding: 0;
+  display: flex;
+  padding: 0;
 }
 
 .deviceList__deviceBtn {
-    position: relative;
-    margin-right: 20px;
+  position: relative;
+  margin-right: 20px;
 }
 
 .deviceList__infoCol {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .deviceList__infoCol p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .deviceList__deviceBtn__mesCount {
-    position: absolute;
-    top: -15px;
-    right: -15px;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  opacity: 0;
+  transition: opacity, 200ms;
 }
 
 .deviceList__deviceBtn__mesCount .badge {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .deviceList__deviceBtn__mesCount .fa-bell::before {
-    font-size: 16px;
-    margin-right: 2px;
+  font-size: 16px;
+  margin-right: 2px;
 }
 
 .deviceList__addBtn {
-    width: 200px;
-    margin-bottom: 30px;
+  width: 200px;
+  margin-bottom: 30px;
 }
 
 .deviceList__addBtn__text {
-    margin-left: 5px;
+  margin-left: 5px;
 }

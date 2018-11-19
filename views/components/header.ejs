@@ -13,45 +13,39 @@
                 <a class="nav-link" href="howto">How to use?</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="aboutUs">About Us</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+        <% if(userInfo.email) { %>
             <li class="nav-item">
                 <a href="dashboard" class="btn btn-outline-danger">Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginBox">Log In</a>
+            <li class="nav-item main__header__userDropBtn">
+                <div class="btn-group" role="group">
+                    <button id="headerUserDropBtn" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= userInfo.email %>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="headerUserDropBtn">
+                    <a class="dropdown-item" href="/logOut">Log Out</a>
+                    </div>
+                </div>
             </li>
+        <% } else { %>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logInModal">
+                    Log In
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#signUpModal">
+                    Sign Up
+                </a>
+            </li>
+        <% } %>
         </ul>
     </div>
-</nav>
 
-<form method="POST" action="login">
-<div class="modal fade" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="loginBoxLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginBoxLabel">Log In</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <div class="form-group">
-                <label for="loginAccountInput">Account</label>
-                <input type="text" class="form-control" id="loginAccountInput" name="account" aria-describedby="emailHelp" placeholder="Enter account">
-            </div>
-            <div class="form-group">
-                <label for="loginPasswordInput">Password</label>
-                <input type="password" class="form-control" id="loginPasswordInput" name="password" aria-describedby="emailHelp" placeholder="Enter password">
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
+    <%- include('./loginModel.ejs') %>
+    <%- include('./signUpModel.ejs') %>
+</nav>
