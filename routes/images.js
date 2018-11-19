@@ -32,8 +32,6 @@ router.post(
         return;
       }
 
-      // res.redirect(`${req.baseUrl}/loadAll`)
-
       modelDatastore.list(
         KIND,
         (err, entities) => {
