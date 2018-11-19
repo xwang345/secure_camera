@@ -1,8 +1,10 @@
-var express = require("express");
-var myImages = require("../lib/my-images");
-var modelDatastore = require("../lib/model-datastore");
+const express = require("express");
+const myImages = require("../lib/my-images");
+const modelDatastore = require("../lib/model-datastore");
 
-var router = express.Router();
+const router = express.Router();
+
+const KIND = "Snapshot";
 
 router.setSocketIo = function(socket, io) {
   router.io = io;
@@ -24,7 +26,7 @@ router.post(
     }
 
     // Save the data to the database.
-    modelDatastore.create(data, (err, savedData) => {
+    modelDatastore.create(KIND, data, (err, savedData) => {
       if (err) {
         next(err);
         return;
@@ -32,7 +34,7 @@ router.post(
 
       // res.redirect(`${req.baseUrl}/loadAll`)
 
-      modelDatastore.list((err, entities) => {
+      modelDatastore.list(KIND, (err, entities) => {
         if (err) {
           next(err);
           return;
@@ -53,22 +55,27 @@ router.post(
 );
 
 router.get("/loadAll", (req, res, next) => {
-  modelDatastore.list((err, entities) => {
-    if (err) {
-      next(err);
-      return;
-    }
+  modelDatastore.list(
+    KIND,
+    (err, entities) => {
+      if (err) {
+        next(err);
+        return;
+      }
 
-    if (router.io) {
-      console.log("reload images");
-      router.io.emit("reload images", entities);
-      res.json({ result: "success" });
-    } else {
-      res.json({ result: "fail" });
-    }
+      if (router.io) {
+        console.log("reload images");
+        router.io.emit("reload images", entities);
+        res.json({ result: "success" });
+      } else {
+        res.json({ result: "fail" });
+      }
 
-    res.end();
-  });
+      res.end();
+    },
+    ...[],
+    10
+  );
 });
 
 module.exports = router;
