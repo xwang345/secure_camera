@@ -53,10 +53,12 @@ router.post("/logIn", (req, res) => {
     loginDataAuth
         .checkUser(req.body)
         .then(result => {
+            console.log(result)
             req.session.userInfo = result.userInfo;
             res.redirect("/dashboard");
         })
         .catch(err => {
+            console.log(err)
             res.redirect("/");
         });
 });
