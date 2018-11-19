@@ -1,4 +1,5 @@
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <form method="POST" action="signUp">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,20 +9,18 @@
           </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="signUpEmail">Email address</label>
-                        <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" name="email" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="signUpPassword">Password</label>
-                        <input type="password" class="form-control" id="signUpPassword" name="password_1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="signUpPassword">Password Again</label>
-                        <input type="password" class="form-control" id="signUpPasswordAgain" name="password_2" placeholder="Password">
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="signUpEmail">Email address</label>
+                    <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <input type="password" class="form-control" id="signUpPassword" name="password_1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="signUpPassword">Password Again</label>
+                    <input type="password" class="form-control" id="signUpPasswordAgain" name="password_2" placeholder="Password">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -29,4 +28,5 @@
             </div>
         </div>
     </div>
+    </form>
 </div>
