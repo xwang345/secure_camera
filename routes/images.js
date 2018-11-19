@@ -34,22 +34,30 @@ router.post(
 
       // res.redirect(`${req.baseUrl}/loadAll`)
 
-      modelDatastore.list(KIND, (err, entities) => {
-        if (err) {
-          next(err);
-          return;
-        }
+      modelDatastore.list(
+        KIND,
+        (err, entities) => {
+          if (err) {
+            next(err);
+            return;
+          }
 
-        if (router.io) {
-          console.log("reload images");
-          router.io.emit("reload images", entities);
-          res.json({ result: "success" });
-        } else {
-          res.json({ result: "fail" });
-        }
+          if (router.io) {
+            console.log("reload images");
+            router.io.emit("reload images", entities);
+            res.json({
+              result: "success"
+            });
+          } else {
+            res.json({
+              result: "fail"
+            });
+          }
 
-        res.end();
-      });
+          res.end();
+        },
+        10
+      );
     });
   }
 );
@@ -66,14 +74,17 @@ router.get("/loadAll", (req, res, next) => {
       if (router.io) {
         console.log("reload images");
         router.io.emit("reload images", entities);
-        res.json({ result: "success" });
+        res.json({
+          result: "success"
+        });
       } else {
-        res.json({ result: "fail" });
+        res.json({
+          result: "fail"
+        });
       }
 
       res.end();
     },
-    ...[],
     10
   );
 });
