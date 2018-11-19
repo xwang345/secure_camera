@@ -30,16 +30,14 @@ var io = socketIo(server);
 io.on('connection', function(socket) {
     console.log('A new client is connected...');
 
-    modelDatastore.list((err, entities) => {
+    modelDatastore.list('Snapshot', (err, entities) => {
         if (err) {
             console.log(err)
             return;
         }
 
-        console.log('load images')
-
         socket.emit('load images', entities);
-    });
+    }, 10);
 
     app.setSocketIo(socket, io);
 });
