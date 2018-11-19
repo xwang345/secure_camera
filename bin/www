@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
         }
 
         socket.emit('load images', entities);
-    }, 10);
+    }, 10, { item: "time", option: { descending: true } });
 
     app.setSocketIo(socket, io);
 });
