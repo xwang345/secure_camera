@@ -51,7 +51,7 @@ router.post(
                 }
 
                 res.end();
-            }, ...[''], 10);
+            }, 10, ["time", { descending: true }]);
         });
     }
 );
@@ -76,7 +76,7 @@ router.get("/loadAll", (req, res, next) => {
         }
 
         res.end();
-    }, ...[''], 10);
+    }, 10, ["time", { descending: true }]);
 });
 
 module.exports = router;
