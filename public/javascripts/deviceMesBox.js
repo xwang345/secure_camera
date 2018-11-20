@@ -40,23 +40,19 @@ $(document).ready(function() {
 
         $(".deviceMesBox__mesWindow:first").html(content);
 
-        ImageEventListener(".deviceMesBox__imgElement", "#imgShowBoxId");
+        ImageEventListener(".deviceMesBox__imgElement", "#imgShowBoxId", ".imgShowBox__controlPanel");
     }
 
-    function ImageEventListener(imgEleClass, imgShowId) {
+    function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
         $(imgEleClass).each(function(index) {
             $(this).click(function() {
                 $(imgShowId)
                     .toggleClass("imgShowBox--close")
                     .toggleClass("imgShowBox");
-                $(imgShowId)
+
+                $(imgShowId_ControlPanel + ':first')
                     .children("img:first")
-                    .attr(
-                        "src",
-                        $(this)
-                        .children("img:first")
-                        .attr("src")
-                    );
+                    .attr("src", $(this).children("img:first").attr("src"));
             });
         });
     }
