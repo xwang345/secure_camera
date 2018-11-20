@@ -38,6 +38,10 @@ router.get("/dashboard", (req, res, next) => {
     res.render("dashboard");
 });
 
+router.get("/trustList", (req, res, next) => {
+    res.render("trustList");
+});
+
 router.get("/aboutUs", (req, res, next) => {
     res.render("aboutUs");
 });

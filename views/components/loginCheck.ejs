@@ -1,6 +1,6 @@
 <% if(userInfo.email) { %>
     <li class="nav-item">
-        <a href="dashboard" class="btn btn-outline-danger">Dashboard</a>
+        <a href="dashboard" class="btn btn-outline-danger main__header__dashboardBtn">Dashboard</a>
     </li>
     <li class="nav-item main__header__userDropBtn">
         <div class="btn-group" role="group">
@@ -10,6 +10,9 @@
             <div class="dropdown-menu" aria-labelledby="headerUserDropBtn">
                 <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#changePassModel">
                     Change Password
+                </a>
+                <a class="dropdown-item" href="/trustList" data-toggle="modal" data-target="#trustListModel">
+                    Trust List
                 </a>
                 <a class="dropdown-item" href="/logOut">Log Out</a>
             </div>
@@ -28,38 +31,7 @@
     </li>
 <% } %>
 
-<div class="modal fade" id="changePassModel" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
-    <form method="POST" action="changePassword">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logInModalLabel">Change Password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-            </div>
-            <div class="modal-body">
-                
-                    <div class="form-group">
-                        <label for="changePassCurPass">Current Password</label>
-                        <input type="email" class="form-control" id="changePassCurPass" name="password" aria-describedby="emailHelp" placeholder="Enter current password">
-                    </div>
-                    <div class="form-group">
-                        <label for="changePassNewPass_1">New Password</label>
-                        <input type="password" class="form-control" id="changePassNewPass_1" name="password" placeholder="Enter new password">
-                    </div>
-                    <div class="form-group">
-                        <label for="changePassNewPass_2">New Password Again</label>
-                        <input type="password" class="form-control" id="changePassNewPass_2" name="password" placeholder="Enter new password again">
-                    </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </div>
-    </form>
-</div>
+<%- include('./loginModel.ejs') %>
+<%- include('./signUpModel.ejs') %>
+<%- include('./changePassModel.ejs') %>
 
