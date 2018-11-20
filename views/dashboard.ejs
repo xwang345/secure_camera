@@ -21,14 +21,14 @@
 <body>
     <div class="main__container">
         <div id="imgShowBoxId" class="imgShowBox--close">
-        <%- include("./components/header.ejs") %>
-        <%- include("./components/devicesListRow.ejs") %>
-        <div class="deviceControl__row">
             <span class="closeBtn">
                 <i class="fas fa-times"></i>
             </span>
-                <img src="" alt="" />
-            </div>
+            <img src="" alt="" />
+        </div>
+        <%- include("./components/header.ejs") %>
+        <%- include("./components/devicesListRow.ejs") %>
+        <div class="deviceControl__row">
             <%- include("./components/deviceLive.ejs") %>
             <%- include("./components/deviceMesBox.ejs") %>
         </div>
