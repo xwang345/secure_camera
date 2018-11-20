@@ -60,10 +60,23 @@
     font-size: 0px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .imgShowBox img {
         padding: 10px;
         width: 100%;
         height: auto;
     }
+}
+
+.imgShowBox__controlPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deviceMesBox__mesWindow {
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
 }
