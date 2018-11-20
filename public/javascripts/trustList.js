@@ -1,1 +1,1 @@
-$('.imgupload').imgupload();
+$('#faceUpload').imageupload();
