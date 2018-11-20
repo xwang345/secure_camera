@@ -12,7 +12,7 @@ router.setSocketIo = function(socket, io) {
 };
 
 // add a image to google cloud storage
-router.post("/add", myImages.multer.single("image"), myImages.sendUploadToGCS, (req, res, next) => {
+router.post("/addFace", myImages.multer.single("image"), myImages.sendUploadToGCS, (req, res, next) => {
     let data = req.body;
 
     if (req.file && req.file.cloudStoragePublicUrl) {
