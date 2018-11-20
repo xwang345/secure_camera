@@ -8,6 +8,7 @@ router.setSocketIo = (socket, io) => {
 };
 
 router.use((req, res, next) => {
+    console.log(req.url)
     if (req.session.userInfo && req.session.userInfo.email != "") {
         res.locals.userInfo = req.session.userInfo;
         next();
@@ -20,6 +21,7 @@ router.use((req, res, next) => {
         req.url === "/aboutUs" ||
         req.url === "/"
     ) {
+        console.log(123)
         next();
     } else {
         res.redirect("/");
