@@ -24,6 +24,10 @@ a {
     position: relative;
 }
 
+.main__main {
+    flex: 1 1 auto;
+}
+
 .main__footer {
     display: flex;
     justify-content: center;
