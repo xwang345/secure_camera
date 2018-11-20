@@ -21,6 +21,7 @@ a {
     flex-direction: column;
     height: 100vh;
     padding: 0;
+    position: relative;
 }
 
 .main__footer {
