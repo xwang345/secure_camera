@@ -12,6 +12,8 @@ router.use((req, res, next) => {
         res.locals.userInfo = req.session.userInfo;
         next();
     } else if (
+        req.url === "/test" ||
+        req.url === "/images" ||
         req.url === "/logIn" ||
         req.url === "/signUp" ||
         req.url === "/howto" ||
@@ -26,6 +28,10 @@ router.use((req, res, next) => {
 
 router.get(["/", "/howto"], (req, res, next) => {
     res.render("howto");
+});
+
+router.get("/test", (req, res, next) => {
+    res.render("test");
 });
 
 router.get("/dashboard", (req, res, next) => {
