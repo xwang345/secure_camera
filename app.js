@@ -9,12 +9,14 @@ const CONFIG = require('./config');
 
 const indexRouter = require("./routes/index");
 const imagesRouter = require("./routes/images");
+const trustRouter = require("./routes/trust");
 
 const app = express();
 
 app.setSocketIo = function(socket, io) {
     indexRouter.setSocketIo(socket, io);
     imagesRouter.setSocketIo(socket, io);
+    trustRouter.setSocketIo(socket, io);
 };
 
 // view engine setup
@@ -48,6 +50,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/images", imagesRouter);
+app.use("/trust", trustRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
