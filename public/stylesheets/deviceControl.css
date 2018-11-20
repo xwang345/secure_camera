@@ -74,6 +74,7 @@
 .imgShowBox__faceDetectPanel {
     width: 100%;
     height: 200px;
+    flex: 0 0 auto;
     background-color: #fff;
 }
 
