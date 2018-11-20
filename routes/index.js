@@ -13,7 +13,7 @@ router.use((req, res, next) => {
         next();
     } else if (
         req.url === "/test" ||
-        req.url === new RegExp('/images/*') ||
+        req.url.match('/images/') ||
         req.url === "/logIn" ||
         req.url === "/signUp" ||
         req.url === "/howto" ||
