@@ -85,14 +85,14 @@
 
 @media screen and (max-width: 1400px) {
     .deviceMesBox__container {
-        position: relative;
+        position: absolute;
         right: 0;
     }
 }
 
 @media screen and (max-width: 500px) {
     .deviceMesBox__container {
-        position: relative;
+        position: absolute;
         right: 0;
         width: 100%;
     }

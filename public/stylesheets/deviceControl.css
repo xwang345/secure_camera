@@ -1,6 +1,7 @@
 .deviceControl__row {
     flex: 1 1 auto;
     display: flex;
+    position: relative;
 }
 
 .imgShowBox {
