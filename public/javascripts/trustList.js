@@ -1,1 +1,1 @@
-$('.img-upload').imgupload();
+$('.imgupload').imgupload();
