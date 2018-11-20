@@ -8,20 +8,18 @@ router.setSocketIo = (socket, io) => {
 };
 
 router.use((req, res, next) => {
-    console.log(req.url)
     if (req.session.userInfo && req.session.userInfo.email != "") {
         res.locals.userInfo = req.session.userInfo;
         next();
     } else if (
         req.url === "/test" ||
-        req.url === "/images/*/" ||
+        req.url === new RegExp('/images/*') ||
         req.url === "/logIn" ||
         req.url === "/signUp" ||
         req.url === "/howto" ||
         req.url === "/aboutUs" ||
         req.url === "/"
     ) {
-        console.log(123)
         next();
     } else {
         res.redirect("/");
