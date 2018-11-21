@@ -1,4 +1,13 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+ - "10"
+before_script:
+ - ./node_modules/.bin/knex migrate:latest --knexfile='./app/knexfile.js'
+
+install:
+  - bundle install --path vendor/bundle
+  - npm install
+  
+script:
+ - npm run test
+ 
