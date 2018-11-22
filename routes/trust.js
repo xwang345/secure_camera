@@ -38,8 +38,9 @@ router.post(
         data.description = reqData.description;
 
         if (req.file && req.file.cloudStoragePublicUrl) {
-
+            console.log(123)
             loadImage(req.file.cloudStoragePublicUrl).then((image) => {
+                console.log(image)
                 const canvas = createCanvas(reqData.width, reqData.height);
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(image, reqData.x, reqData.y, reqData.width, reqData.height, 0, 0, reqData.width, reqData.height);
