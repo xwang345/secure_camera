@@ -34,9 +34,10 @@ if (typeof jQuery === 'undefined') {
             if (methods[methodOrOptions]) {
                 methods[methodOrOptions].apply($(this), Array.prototype.slice.call(givenArguments, 1));
             } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
+                if (typeof cropCallback === 'function') {
+                    localCropCallback = cropCallback;
+                }
                 methods.init.apply($(this), givenArguments);
-            } else if (typeof cropCallback === 'function' || !methodOrOptions) {
-                localCropCallback = cropCallback;
             } else {
                 throw new Error('Method "' + methodOrOptions + '" is not defined for imageupload.');
             }
