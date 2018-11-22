@@ -259,9 +259,7 @@ if (typeof jQuery === 'undefined') {
                     $browseFileButton.find('span').text('Change');
                     $removeFileButton.css('display', 'inline-block');
 
-                    let faceImg = $('.thumbnail:first');
-
-                    console.log(faceImg)
+                    cropImg();
                 };
 
                 fileReader.onerror = function() {
@@ -337,6 +335,21 @@ if (typeof jQuery === 'undefined') {
 
             $urlInput.prop('disabled', false);
             $submitUrlButton.prop('disabled', false);
+        });
+    }
+
+    function cropImg() {
+        let image = $('.thumbnail:first')[0];
+        image.cropper({
+            aspectRatio: 4 / 3,
+            crop: function(event) {
+                let x = event.detail.x;
+                let y = event.detail.y;
+                let width = event.detail.width;
+                let height = event.detail.height;
+                console.log(x, y, width, height)
+
+            }
         });
     }
 }(jQuery));
