@@ -2,6 +2,8 @@ $('#faceUpload').imageupload();
 
 let faceImg = $('.thumbnail:first');
 
+console.log(faceImg)
+
 faceImg.cropper({
     aspectRatio: 4 / 3,
     crop: function(event) {
