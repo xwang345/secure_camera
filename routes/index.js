@@ -12,7 +12,6 @@ router.use((req, res, next) => {
         res.locals.userInfo = req.session.userInfo;
         next();
     } else if (
-        req.url === "/test" ||
         req.url.match('/images/') ||
         req.url === "/logIn" ||
         req.url === "/signUp" ||
@@ -30,16 +29,12 @@ router.get(["/", "/howto"], (req, res, next) => {
     res.render("howto");
 });
 
-router.get("/test", (req, res, next) => {
-    res.render("test");
-});
-
 router.get("/dashboard", (req, res, next) => {
     res.render("dashboard");
 });
 
 router.get("/trustList", (req, res, next) => {
-    res.redirect('/trust/')
+    res.redirect(301, '/trust/');
 });
 
 router.get("/aboutUs", (req, res, next) => {

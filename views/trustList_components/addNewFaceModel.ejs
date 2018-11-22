@@ -1,0 +1,42 @@
+<div class="modal fade" id="addNewFaceModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form method="POST" action="/trust/addFace" enctype="multipart/form-data">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDeviceBoxLabel">Add New Face</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="deviceNameInput">Name</label>
+                        <input type="text" name="name" class="form-control" id="deviceNameInput" aria-describedby="emailHelp" placeholder="Enter name">
+                        <small id="deviceNameHelp" class="form-text text-muted">Please give your device a nick name.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceIdInput">Description</label>
+                        <input type="text" name="description" class="form-control" id="deviceIdInput" aria-describedby="emailHelp" placeholder="Enter a description">
+                        <small id="deviceIdHelp" class="form-text text-muted">Please enter your device's id number.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceIdInput">Upload a face photo</label>
+                        <div id="faceUpload" class="imageupload card">
+                            <div class="file-tab card-body">
+                                <label class="btn btn-outline-dark btn-file uploadFace__browseBtn">
+                                    <span>Browse</span>
+                                    <input type="file" name="image">
+                                </label>
+                                <button type="button" class="btn btn-outline-danger">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -2,9 +2,15 @@
     margin: 10px 0px;
 }
 
-.uploadFace__browseBtn {}
-
 .trustFaces__container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.thumbnail {
+    display: block;
+}
+
+.uploadFace__browseBtn {
+    margin-top: 7px;
 }

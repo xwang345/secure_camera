@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css " integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO " crossorigin="anonymous ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/bootstrap-imageupload.min.css">
     <link rel='stylesheet' href='/stylesheets/index.css' />
     <link rel='stylesheet' href='/stylesheets/trustList.css' />
@@ -18,7 +19,7 @@
 
 <body>
     <div class="main__container">
-        <%- include("./components/header.ejs") %>
+        <%- include("./common_components/header.ejs") %>
         <div class="main__main">
             <h1>TRUST LIST</h1>
             <div class="uploadFace__browseBtn__container">
@@ -26,49 +27,7 @@
                     <i class="fas fa-plus"></i>
                     <span class="deviceList__addBtn__text">Add New Face</span>
                 </button>
-
-                <div class="modal fade" id="addNewFaceModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <form method="POST" action="/trust/addFace" enctype="multipart/form-data">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addDeviceBoxLabel">Add New Face</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="deviceNameInput">Name</label>
-                                        <input type="text" name="name" class="form-control" id="deviceNameInput" aria-describedby="emailHelp" placeholder="Enter name">
-                                        <small id="deviceNameHelp" class="form-text text-muted">Please give your device a nick name.</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deviceIdInput">Description</label>
-                                        <input type="text" name="description" class="form-control" id="deviceIdInput" aria-describedby="emailHelp" placeholder="Enter a description">
-                                        <small id="deviceIdHelp" class="form-text text-muted">Please enter your device's id number.</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deviceIdInput">Upload a face photo</label>
-                                        <div id="faceUpload" class="imageupload card">
-                                            <div class="file-tab card-body">
-                                                <label class="btn btn-outline-dark btn-file uploadFace__browseBtn">
-                                                    <span>Browse</span>
-                                                    <input type="file" name="image">
-                                                </label>
-                                                <button type="button" class="btn btn-outline-danger">Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Add</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <%- include('./trustList_components/addNewFaceModel.ejs') %>
             </div>
             <div class="trustFaces__container">
                 <% if(faceList) { %>
@@ -86,12 +45,14 @@
                 <% } %>
             </div>
         </div>
-        <%- include("./components/footer.ejs") %>
+        <%- include("./common_components/footer.ejs") %>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 " crossorigin="anonymous "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy " crossorigin="anonymous "></script>
     <script src="/javascripts/bootstrap-imageupload.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
+    <script src="jquery-cropper.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/index.js"></script>
     <script src="/javascripts/trustList.js"></script>

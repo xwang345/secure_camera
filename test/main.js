@@ -1,8 +1,6 @@
-$('#faceUpload').imageupload();
+var $image = $('#image');
 
-let faceImg = $('.thumbnail:first');
-
-faceImg.cropper({
+$image.cropper({
     aspectRatio: 4 / 3,
     crop: function(event) {
         let x = event.detail.x;
@@ -10,9 +8,13 @@ faceImg.cropper({
         let width = event.detail.width;
         let height = event.detail.height;
         console.log(x, y, width, height)
-            //imageTocanvas(x, y, width, height);
+        imageTocanvas(x, y, width, height);
     }
 });
+
+// Get the Cropper.js instance after initialized
+var cropper = $image.data('cropper');
+cropper.zoom(10);
 
 function imageTocanvas(x, y, width, height) {
 
