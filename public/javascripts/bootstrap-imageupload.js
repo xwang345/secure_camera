@@ -14,19 +14,20 @@ if (typeof jQuery === 'undefined') {
 
     var options = {};
 
+    var cropCallback = null;
+
     var methods = {
         init: init,
         disable: disable,
         enable: enable,
         reset: reset,
-        crop: crop
     };
 
     // -----------------------------------------------------------------------------
     // Plugin Definition
     // -----------------------------------------------------------------------------
 
-    $.fn.imageupload = function(methodOrOptions, cropCallback) {
+    $.fn.imageupload = function(methodOrOptions) {
         var givenArguments = arguments;
 
         return this.filter('div').each(function() {
@@ -34,6 +35,8 @@ if (typeof jQuery === 'undefined') {
                 methods[methodOrOptions].apply($(this), Array.prototype.slice.call(givenArguments, 1));
             } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
                 methods.init.apply($(this), givenArguments);
+            } else if (typeof methodOrOptions === 'function') {
+                cropCallback = methodOrOptions;
             } else {
                 throw new Error('Method "' + methodOrOptions + '" is not defined for imageupload.');
             }

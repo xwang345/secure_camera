@@ -1,4 +1,4 @@
-$('#faceUpload').imageupload('enable', function() {
+$('#faceUpload').imageupload(function() {
 
     let image = $('.thumbnail:first')[0];
     console.log(image)
