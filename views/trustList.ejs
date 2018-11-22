@@ -71,15 +71,19 @@
                 </div>
             </div>
             <div class="trustFaces__container">
-                <div class="card trustFace" style="width: 18rem;">
-                    <img class="card-img-top" src="" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                <% if(faceList) { %>
+                    <% faceList.forEach((faceObject) => { %>
+                    <div class="card trustFace" style="width: 18rem;">
+                        <img class="card-img-top" src=<%= faceObject.imageUrl %> alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= faceObject.name %></h5>
+                            <p class="card-text"><%= faceObject.description %></p>
+                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </div>
                     </div>
-                </div>
+                    <% }); %>
+                <% } %>
             </div>
         </div>
         <%- include("./components/footer.ejs") %>

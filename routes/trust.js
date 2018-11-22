@@ -18,9 +18,9 @@ router.get("/", (req, res, next) => {
             return;
         }
 
-        console.log(entities)
+        let faceList = entities || null;
 
-        res.render("trustList");
+        res.render("trustList", { faceList: faceList });
     });
 });
 
