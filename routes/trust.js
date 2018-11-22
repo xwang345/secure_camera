@@ -43,6 +43,7 @@ router.post(
                 const canvas = createCanvas(reqData.width, reqData.height);
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(image, reqData.x, reqData.y, reqData.width, reqData.height, 0, 0, reqData.width, reqData.height);
+                console.log(canvas.toDataURL())
                 data.imageUrl = canvas.toDataURL();
             })
         }
