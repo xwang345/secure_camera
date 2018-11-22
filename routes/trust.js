@@ -1,6 +1,6 @@
 const express = require("express");
 const myImages = require("../lib/my-images");
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('canvas-prebuilt');
 const modelDatastore = require("../lib/model-datastore");
 
 const router = express.Router();
