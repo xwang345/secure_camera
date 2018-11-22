@@ -47,16 +47,24 @@ router.post(
                 return;
             }
 
-            modelDatastore.list(KIND, (err, entities) => {
-                if (err) {
-                    next(err);
-                    return;
-                }
-
-                res.redirect('/trustList');
-            });
+            res.redirect('/trustList');
         });
     });
+
+router.get("/deleteFace", (req, res, next) => {
+
+    let id = req.body.id;
+
+    modelDatastore._delete(KIND, id, (err) => {
+        if (err) {
+            next(err);
+            return;
+        }
+
+        res.redirect('/trustList');
+    });
+
+});
 
 
 module.exports = router;
