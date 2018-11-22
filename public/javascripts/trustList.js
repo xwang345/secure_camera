@@ -1,8 +1,8 @@
 $('#faceUpload').imageupload(null, function() {
 
-    let image = $('.thumbnail:first')[0];
+    let $image = $('#image')[0];
 
-    image.cropper({
+    $image.cropper({
         aspectRatio: 4 / 3,
         crop: function(event) {
             let x = event.detail.x;
@@ -15,20 +15,6 @@ $('#faceUpload').imageupload(null, function() {
     });
 });
 
-// let faceImg = $('#thumbnailImg');
-
-// console.log(faceImg)
-
-// faceImg.cropper({
-//     aspectRatio: 4 / 3,
-//     crop: function(event) {
-//         let x = event.detail.x;
-//         let y = event.detail.y;
-//         let width = event.detail.width;
-//         let height = event.detail.height;
-//         console.log(x, y, width, height)
-//             //imageTocanvas(x, y, width, height);
-//     }
 // });
 
 // function imageTocanvas(x, y, width, height) {
