@@ -1,6 +1,6 @@
 $('#faceUpload').imageupload();
 
-let faceImg = $('.thumbnail:first');
+let faceImg = $('#thumbnailImg');
 
 console.log(faceImg)
 
