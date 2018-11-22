@@ -14,9 +14,9 @@ $('#faceUpload').imageupload(null, function() {
     });
 });
 
-$(".trustFaces__deleteBtn").each((index) {
-    $(this).on('click', () => {
+$(".trustFaces__deleteBtn").each(function(index) {
+    $(this).on('click', function() {
         let id = $(this).data('id');
         $("#deleteFaceModelInputId").attr('value', id);
-    })
-})
+    });
+});
