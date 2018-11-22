@@ -36,7 +36,6 @@ if (typeof jQuery === 'undefined') {
             } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
                 methods.init.apply($(this), givenArguments);
             } else if (typeof methodOrOptions === 'function') {
-                console.log(123)
                 cropCallback = methodOrOptions;
             } else {
                 throw new Error('Method "' + methodOrOptions + '" is not defined for imageupload.');
@@ -263,11 +262,7 @@ if (typeof jQuery === 'undefined') {
                     $fileTab.prepend(getImageThumbnailHtml(e.target.result));
                     $browseFileButton.find('span').text('Change');
                     $removeFileButton.css('display', 'inline-block');
-
-                    if (cropCallback) {
-                        console.log(456)
-                        cropCallback();
-                    }
+                    console.log(cropCallback);
                 };
 
                 fileReader.onerror = function() {

@@ -1,20 +1,4 @@
-$('#faceUpload').imageupload(function() {
-
-    let image = $('.thumbnail:first')[0];
-    console.log(image)
-
-    // image.cropper({
-    //     aspectRatio: 4 / 3,
-    //     crop: function(event) {
-    //         let x = event.detail.x;
-    //         let y = event.detail.y;
-    //         let width = event.detail.width;
-    //         let height = event.detail.height;
-    //         console.log(x, y, width, height)
-
-    //     }
-    // });
-});
+$('#faceUpload').imageupload();
 
 // let faceImg = $('#thumbnailImg');
 
