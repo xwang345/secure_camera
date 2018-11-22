@@ -1,6 +1,9 @@
-.uploadFace__browseBtn {
+.uploadFace__browseBtn__container {
+    display: flex;
     margin: 10px 0px;
 }
+
+.uploadFace__browseBtn {}
 
 .trustFaces__container {
     display: flex;
