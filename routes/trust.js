@@ -4,7 +4,7 @@ const modelDatastore = require("../lib/model-datastore");
 
 const router = express.Router();
 
-const KIND = "trustFace";
+const KIND = "TrustFace";
 
 router.setSocketIo = function(socket, io) {
     router.io = io;
@@ -34,7 +34,7 @@ router.post("/addFace", myImages.multer.single("image"), myImages.sendUploadToGC
 
             console.log(entities)
 
-            res.end();
+            res.redirect('/trustList');
         });
     });
 });
@@ -48,7 +48,7 @@ router.get("/loadAll", (req, res, next) => {
 
         console.log(entities)
 
-        res.end();
+        res.redirect('/trustList');
     });
 });
 
