@@ -7,6 +7,10 @@
     flex-wrap: wrap;
 }
 
+.trustFace {
+    margin: 10px;
+}
+
 .thumbnail {
     display: block;
     max-width: 100%;
