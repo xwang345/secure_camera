@@ -11,6 +11,19 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 };
 
+router.get("/", (req, res, next) => {
+    modelDatastore.list(KIND, (err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
+
+        console.log(entities)
+
+        res.render("trustList");
+    });
+});
+
 // add a image to google cloud storage
 router.post(
     "/addFace",
@@ -38,25 +51,10 @@ router.post(
                     return;
                 }
 
-                console.log(entities)
-
                 res.redirect('/trustList');
             });
         });
     });
-
-router.get("/loadAll", (req, res, next) => {
-    modelDatastore.list(KIND, (err, entities) => {
-        if (err) {
-            next(err);
-            return;
-        }
-
-        console.log(entities)
-
-        res.redirect('/trustList');
-    });
-});
 
 
 module.exports = router;

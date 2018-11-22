@@ -39,7 +39,7 @@ router.get("/dashboard", (req, res, next) => {
 });
 
 router.get("/trustList", (req, res, next) => {
-    res.render("trustList");
+    res.redirect('/trust/')
 });
 
 router.get("/aboutUs", (req, res, next) => {
