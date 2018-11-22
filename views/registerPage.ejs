@@ -16,6 +16,39 @@
     <link rel='stylesheet' href='/stylesheets/deviceControl.css' />
     <link rel='stylesheet' href='/stylesheets/deviceLive.css' />
     <link rel='stylesheet' href='/stylesheets/deviceMesBox.css' />
+    <script>
+            function checkuser(){
+                var a = document.getElementsByName('user').value;
+                var b = document.getElementById('password').value;
+                var c = document.getElementById('password2').value;
+                // var correct_way = /^[A-Za-z]+$/;
+    
+                if (a == "" || b == "" || c == ""){
+                    alert("Please fill in all fields");
+                    return flase;
+                }
+                if(a.length<3){
+                    alert("Username must be more than 3 characters");
+                    return false;
+                }
+                if(a.length>20){
+                    alert("Username must be less than 20 characters");
+                    return false;
+                }
+
+                if(b.length >13 || c.length > 13){
+                    alert("Password length can not more than 13 characters");
+                    return false;
+                }
+    
+                if(a.match(correct_way)){
+                    ture;
+                }else{
+                    alert("Only alphabets are allowed");
+                    return false;
+                }
+            }
+        </script>
 </head>
 
 <body>

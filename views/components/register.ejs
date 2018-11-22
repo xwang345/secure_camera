@@ -6,7 +6,7 @@
   </div>
 </div>
 <% } else if(errorMessage){ %>
-  <form class="register" action="registerpage" method="POST">
+  <form class="register" action="registerpage" method="POST" onsubmit="return checkuser()">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -38,7 +38,7 @@
 </div>
 </form>
 <% } else { %>
-  <form class="register" action="registerpage" method="POST">
+  <form class="register" action="registerpage" method="POST" onsubmit="return checkuser()">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,6 +51,7 @@
               <div class="form-group">
                   <label for="registerAccountInput">username</label>
                   <input type="text" class="form-control" id="registerBoxAccountInput" name="user"  placeholder="Enter account name" required value="" />
+                  <span id="Message"></span>
               </div>
               <div class="form-group">
                   <label for="registerBoxPasswordInput">Password</label>
