@@ -18,14 +18,15 @@ if (typeof jQuery === 'undefined') {
         init: init,
         disable: disable,
         enable: enable,
-        reset: reset
+        reset: reset,
+        crop: crop
     };
 
     // -----------------------------------------------------------------------------
     // Plugin Definition
     // -----------------------------------------------------------------------------
 
-    $.fn.imageupload = function(methodOrOptions) {
+    $.fn.imageupload = function(methodOrOptions, cropCallback) {
         var givenArguments = arguments;
 
         return this.filter('div').each(function() {
@@ -259,7 +260,9 @@ if (typeof jQuery === 'undefined') {
                     $browseFileButton.find('span').text('Change');
                     $removeFileButton.css('display', 'inline-block');
 
-                    cropImg();
+                    if (cropCallback) {
+                        cropCallback();
+                    }
                 };
 
                 fileReader.onerror = function() {
@@ -335,21 +338,6 @@ if (typeof jQuery === 'undefined') {
 
             $urlInput.prop('disabled', false);
             $submitUrlButton.prop('disabled', false);
-        });
-    }
-
-    function cropImg() {
-        let image = $('.thumbnail:first')[0];
-        image.cropper({
-            aspectRatio: 4 / 3,
-            crop: function(event) {
-                let x = event.detail.x;
-                let y = event.detail.y;
-                let width = event.detail.width;
-                let height = event.detail.height;
-                console.log(x, y, width, height)
-
-            }
         });
     }
 }(jQuery));
