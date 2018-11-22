@@ -1,5 +1,5 @@
 const express = require("express");
-const { createCanvas, loadImage } = require('canvas')
+const { createCanvas, loadImage } = require('canvas-prebuilt')
 const myImages = require("../lib/my-images");
 const modelDatastore = require("../lib/model-datastore");
 
