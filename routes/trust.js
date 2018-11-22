@@ -53,9 +53,8 @@ router.post(
 
 router.get("/deleteFace", (req, res, next) => {
 
-    console.log(req.body)
 
-    let id = req.body.id;
+    let id = req.query.id;
 
     modelDatastore.delete(KIND, id, (err) => {
         if (err) {
