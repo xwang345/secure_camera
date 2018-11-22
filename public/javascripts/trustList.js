@@ -14,7 +14,6 @@ $('#faceUpload').imageupload(function() {
 
     //     }
     // });
-
 });
 
 // let faceImg = $('#thumbnailImg');

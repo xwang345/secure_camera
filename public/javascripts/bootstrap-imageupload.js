@@ -30,6 +30,8 @@ if (typeof jQuery === 'undefined') {
     $.fn.imageupload = function(methodOrOptions) {
         var givenArguments = arguments;
 
+        console.log(typeof methodOrOptions)
+
         return this.filter('div').each(function() {
             if (methods[methodOrOptions]) {
                 methods[methodOrOptions].apply($(this), Array.prototype.slice.call(givenArguments, 1));
