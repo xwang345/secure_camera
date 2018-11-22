@@ -30,14 +30,13 @@ if (typeof jQuery === 'undefined') {
     $.fn.imageupload = function(methodOrOptions) {
         var givenArguments = arguments;
 
-        console.log(typeof methodOrOptions)
-
         return this.filter('div').each(function() {
             if (methods[methodOrOptions]) {
                 methods[methodOrOptions].apply($(this), Array.prototype.slice.call(givenArguments, 1));
             } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
                 methods.init.apply($(this), givenArguments);
             } else if (typeof methodOrOptions === 'function') {
+                console.log(123)
                 cropCallback = methodOrOptions;
             } else {
                 throw new Error('Method "' + methodOrOptions + '" is not defined for imageupload.');
@@ -266,6 +265,7 @@ if (typeof jQuery === 'undefined') {
                     $removeFileButton.css('display', 'inline-block');
 
                     if (cropCallback) {
+                        console.log(456)
                         cropCallback();
                     }
                 };
