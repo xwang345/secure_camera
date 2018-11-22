@@ -1,6 +1,6 @@
 $('#faceUpload').imageupload(null, function() {
 
-    let $image = $('#image')[0];
+    let $image = $('#image');
 
     $image.cropper({
         aspectRatio: 4 / 3,
