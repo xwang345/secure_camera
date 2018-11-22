@@ -9,13 +9,17 @@ $('#faceUpload').imageupload(null, function() {
             let y = event.detail.y;
             let width = event.detail.width;
             let height = event.detail.height;
-            console.log(x, y, width, height)
+
+            $('input[name="imageCropValue_x"]').attr("value", x);
+            $('input[name="imageCropValue_y"]').attr("value", y);
+            $('input[name="imageCropValue_width"]').attr("value", width);
+            $('input[name="imageCropValue_height"]').attr("value", height);
 
         }
     });
 });
 
-// });
+
 
 // function imageTocanvas(x, y, width, height) {
 

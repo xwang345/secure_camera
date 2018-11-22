@@ -9,6 +9,7 @@
 
 .thumbnail {
     display: block;
+    max-width: 100%;
 }
 
 .uploadFace__browseBtn {
