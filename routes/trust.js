@@ -1,5 +1,6 @@
 const express = require("express");
 const myImages = require("../lib/my-images");
+const { createCanvas, loadImage } = require('canvas');
 const modelDatastore = require("../lib/model-datastore");
 
 const router = express.Router();
@@ -35,7 +36,7 @@ router.post(
 
         if (req.file && req.file.cloudStoragePublicUrl) {
 
-            req.imageUrl = req.file.cloudStoragePublicUrl;
+            data.imageUrl = req.file.cloudStoragePublicUrl;
 
         }
 
