@@ -1,5 +1,4 @@
 const express = require("express");
-const { createCanvas, loadImage } = require('canvas-prebuilt')
 const myImages = require("../lib/my-images");
 const modelDatastore = require("../lib/model-datastore");
 
@@ -32,25 +31,12 @@ router.post(
     myImages.sendUploadToGCS,
     (req, res, next) => {
 
-        let reqData = req.body;
-        let data = {};
-        data.name = reqData.name;
-        data.description = reqData.description;
+        let data = req.body;
 
         if (req.file && req.file.cloudStoragePublicUrl) {
-            loadImage(req.file.cloudStoragePublicUrl).then((image) => {
-                const canvas = createCanvas(reqData.width, reqData.height);
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(image, reqData.x, reqData.y, reqData.width, reqData.height, 0, 0, reqData.width, reqData.height);
-                data.imageUrl = canvas.toDataURL();
-                console.log("===========")
-                console.log(req.file.cloudStoragePublicUrl)
-                console.log(image)
-                console.log(canvas)
-                console.log(ctx)
-                console.log(canvas.toDataURL())
-                console.log("===========")
-            })
+
+            req.imageUrl = req.file.cloudStoragePublicUrl;
+
         }
 
         // Save the data to the database.
