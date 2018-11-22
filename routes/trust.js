@@ -19,6 +19,7 @@ router.get("/", (req, res, next) => {
         }
 
         let faceList = entities || null;
+        console.log(entities)
 
         res.render("trustList", { faceList: faceList });
     });
