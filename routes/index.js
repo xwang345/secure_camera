@@ -34,7 +34,6 @@ router.get("/dashboard", (req, res, next) => {
 });
 
 router.get("/trustList", (req, res, next) => {
-    console.log(123)
     res.redirect(301, '/trust');
 });
 
