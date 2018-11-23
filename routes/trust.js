@@ -33,8 +33,6 @@ router.get("/", (req, res, next) => {
 
         res.render("trustList", { faceList: faceList });
     });
-
-    res.render("trustList", { faceList: null });
 });
 
 router.post(
