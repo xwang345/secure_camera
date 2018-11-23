@@ -58,10 +58,10 @@ $(document).ready(function() {
     function trustFace_UploadListner() {
         $('#addNewFaceModel_submitBtn').on('click', function() {
             if (trustFaces_cropImg) {
-                console.log('xxx');
+
                 let nameInput = $('#addNewFaceModel_nameInput');
                 let descriptionInput = $('#addNewFaceModel_descriptionInput');
-                let actionUrl = window.location.protocol + window.location.host + $('#addNewFaceModel_form').attr('action');
+                let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
 
                 let postFormData = new FormData();
                 postFormData.append('name', nameInput);
@@ -82,8 +82,6 @@ $(document).ready(function() {
                         console.log('fail', res)
                     }
                 })
-            } else {
-                console.log('zzz');
             }
         })
     }
