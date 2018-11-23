@@ -59,11 +59,12 @@ function trustFace_UploadListner() {
         console.log(trustFaces_cropImg)
         if (trustFaces_cropImg) {
 
-            let nameInput = $('#addNewFaceModel_nameInput')[0].attr('value');
-            let descriptionInput = $('#addNewFaceModel_descriptionInput')[0].attr('value');
-            let actionUrl = window.location.href + $('#addNewFaceModel_form')[0].attr('action');
-
+            let nameInput = $('#addNewFaceModel_nameInput').attr('value');
             console.log(nameInput)
+            let descriptionInput = $('#addNewFaceModel_descriptionInput')[0].attr('value');
+
+
+            console.log(descriptionInput)
 
             let postData = {
                 name: nameInput,
