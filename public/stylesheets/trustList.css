@@ -5,6 +5,8 @@
 .trustFaces__container {
     display: flex;
     flex-wrap: wrap;
+    margin: -10px;
+    margin-top: 10px;
 }
 
 .trustFace {

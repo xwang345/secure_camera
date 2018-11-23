@@ -1,17 +1,5 @@
-//Loads selected image and unencodes image bytes for Rekognition DetectFaces API
-
-var compareBtn = document.getElementById("compareBtn");
-var compareResult = document.getElementById("compareResult");
-compareBtn.onclick = function() {
-    ProcessImage();
-}
-
-function ProcessImage() {
+function ProcessImage(file1, file2) {
     AnonLog();
-    var control1 = document.getElementById("img1");
-    var control2 = document.getElementById("img2");
-    var file1 = control1.files[0];
-    var file2 = control2.files[0];
 
     // Load base64 encoded image for display 
     var reader1 = new FileReader();
@@ -36,12 +24,7 @@ function ProcessImage() {
                     rekognition.compareFaces(params, function(err, data) {
                         if (err) console.log(err, err.stack); // an error occurred
                         else {
-                            let similarity = data.FaceMatches[0].Similarity;
-                            if (similarity > 70) {
-                                compareResult.innerText = 'Matched';
-                            } else {
-                                compareResult.innerText = 'Not Matched';
-                            }
+                            return data.FaceMatches[0].Similarity;
                         }
                     });
                 };

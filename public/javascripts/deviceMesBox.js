@@ -53,6 +53,9 @@ $(document).ready(function() {
                 $(imgShowId_ControlPanel + ':first')
                     .children("img:first")
                     .attr("src", $(this).children("img:first").attr("src"));
+
+
+
             });
         });
     }
