@@ -69,7 +69,7 @@ $(document).ready(function() {
                 postFormData.append('image', trustFaces_cropImg);
 
                 $.ajax({
-                    url: actionUrl,
+                    url: 'http://35.237.140.171/trust/addFace',
                     type: 'POST',
                     cache: false,
                     data: { 'haha': '123' },
@@ -81,7 +81,7 @@ $(document).ready(function() {
                     error: function(res) {
                         console.log('fail', res)
                     }
-                })
+                });
             }
         })
     }
