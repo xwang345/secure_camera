@@ -62,13 +62,10 @@ function trustFace_UploadListner() {
             let nameInput = $('#addNewFaceModel_nameInput').val();
             let descriptionInput = $('#addNewFaceModel_descriptionInput').val();
 
-
-            console.log(descriptionInput)
-
             let postData = {
                 name: nameInput,
                 description: descriptionInput,
-                image: trustFaces_cropImg
+                image: trustFaces_cropImg.src
             }
 
             socket.emit('add face', postData);

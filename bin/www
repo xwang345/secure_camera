@@ -40,10 +40,6 @@ io.on('connection', function(socket) {
     }, 10, { item: "time", option: { descending: true } });
 
     app.setSocketIo(socket, io);
-
-    socket.on('add face', function(data) {
-        console.log(data);
-    })
 });
 /**
  * Listen on provided port, on all network interfaces.

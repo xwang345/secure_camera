@@ -9,6 +9,10 @@ const KIND = "TrustFace";
 router.setSocketIo = function(socket, io) {
     router.io = io;
     router.socket = socket;
+
+    router.socket.on('add face', function(data) {
+        console.log('123')
+    })
 };
 
 router.get("/", (req, res, next) => {
@@ -26,6 +30,7 @@ router.get("/", (req, res, next) => {
 
     res.render("trustList", { faceList: null });
 });
+
 router.post(
     "/addFace",
     myImages.multer.single("image"),
