@@ -1,5 +1,3 @@
-var socket = io();
-
 $("#imgShowBoxId .closeBtn:first").click(function() {
     $("#imgShowBoxId")
         .toggleClass("imgShowBox--close")
