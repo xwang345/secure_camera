@@ -58,6 +58,7 @@ function trustFace_DeleteListner() {
 function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
         if (trustFaces_cropImg) {
+            console.log('xxx');
             let nameInput = $('#addNewFaceModel_nameInput');
             let descriptionInput = $('#addNewFaceModel_descriptionInput');
             let actionUrl = $('#addNewFaceModel_form').attr('action');
@@ -66,6 +67,8 @@ function trustFace_UploadListner() {
             formData.append('name', nameInput);
             formData.append('description', descriptionInput);
             formData.append('image', trustFaces_cropImg);
+
+            console.log(actionUrl, formData)
 
             $.ajax({
                 url: actionUrl,
@@ -83,7 +86,7 @@ function trustFace_UploadListner() {
                 trustFaces_cropImg = null;
             });
         } else {
-            console.log(trustFaces_cropImg)
+            console.log('zzz');
         }
     })
 }
