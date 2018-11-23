@@ -68,6 +68,8 @@ function trustFace_UploadListner() {
             postFormData.append('description', descriptionInput);
             postFormData.append('image', trustFaces_cropImg);
 
+            console.log('1234')
+            console.log(socket)
             socket.emit("add face", 'hellow');
         }
     })
