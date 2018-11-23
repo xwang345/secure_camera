@@ -13,6 +13,7 @@ router.setSocketIo = function(socket, io) {
 
 router.use((req, res, next) => {
     router.io.emit('x', 'xxx');
+    next();
 })
 
 router.get("/", (req, res, next) => {
