@@ -2,10 +2,14 @@ $('#faceUpload').imageupload(null, function() {
 
     let $image = $('#image');
 
-    // var uploadedImage = new Image();
-    // let previewCanvas = $('#faceUploadCropPreview');
-    // let ctx = previewCanvas.getContext('2d');
-    // uploadedImage.src = $image.attr('src');
+    let uploadedImage = new Image();
+    let previewCanvas = $('#faceUploadCropPreview');
+    let ctx = previewCanvas.getContext('2d');
+
+    uploadedImage.src = $image.attr('src');
+
+    previewCanvas.width = uploadedImage.width;
+    previewCanvas.height = uploadedImage.height;
 
     $image.cropper({
         aspectRatio: 4 / 3,
@@ -14,10 +18,7 @@ $('#faceUpload').imageupload(null, function() {
             let y = event.detail.y;
             let width = event.detail.width;
             let height = event.detail.height;
-
-            // previewCanvas.width = uploadedImage.width;
-            // previewCanvas.height = uploadedImage.height;
-            // ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
+            ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
         }
     });
 
