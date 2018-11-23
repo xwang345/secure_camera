@@ -17,6 +17,8 @@ router.use((req, res, next) => {
         req.url === "/signUp" ||
         req.url === "/howto" ||
         req.url === "/aboutUs" ||
+        req.url === "/trustList" ||
+        req.url === "/trust" ||
         req.url === "/"
     ) {
         next();
@@ -34,6 +36,7 @@ router.get("/dashboard", (req, res, next) => {
 });
 
 router.get("/trustList", (req, res, next) => {
+    console.log(123)
     res.redirect(301, '/trust');
 });
 
