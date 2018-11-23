@@ -1,3 +1,39 @@
+$('#addNewFaceModel_faceUpload').imageupload(null, function() {
+
+    let $image = $('#image');
+
+    $image.cropper({
+        aspectRatio: 4 / 3,
+        crop: function(event) {
+            let x = event.detail.x;
+            let y = event.detail.y;
+            let width = event.detail.width;
+            let height = event.detail.height;
+
+            let uploadedImage = new Image();
+            let cropCanvs = $('#faceUploadCropPreview')[0];
+
+            let ctx = cropCanvs.getContext('2d');
+
+            uploadedImage.src = $image.attr('src');
+
+            uploadedImage.onload = function() {
+                cropCanvs.width = uploadedImage.width;
+                cropCanvs.height = uploadedImage.height;
+                ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
+
+                let cropImg = new Image();
+
+                cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
+                cropImg.onload = function() {
+                    console.log(cropImg)
+                }
+            }
+        }
+    });
+});
+
+
 $(document).ready(function() {
 
 
@@ -6,7 +42,6 @@ $(document).ready(function() {
 
     function trustFace_UploadListner() {
         $('#addNewFaceModel_submitBtn').on('click', function() {
-            console.log(123);
             let nameInput = $('#addNewFaceModel_nameInput');
             let descriptionInput = $('#addNewFaceModel_descriptionInput');
             let actionUrl = $('#addNewFaceModel_form').attr('action');
@@ -45,40 +80,5 @@ $(document).ready(function() {
         });
     }
 
-    function getCropImage(cb) {
-        $('#addNewFaceModel_faceUpload').imageupload(null, function() {
-
-            let $image = $('#image');
-
-            $image.cropper({
-                aspectRatio: 4 / 3,
-                crop: function(event) {
-                    let x = event.detail.x;
-                    let y = event.detail.y;
-                    let width = event.detail.width;
-                    let height = event.detail.height;
-
-                    let uploadedImage = new Image();
-                    let cropCanvs = $('#faceUploadCropPreview')[0];
-
-                    let ctx = cropCanvs.getContext('2d');
-
-                    uploadedImage.src = $image.attr('src');
-
-                    uploadedImage.onload = function() {
-                        cropCanvs.width = uploadedImage.width;
-                        cropCanvs.height = uploadedImage.height;
-                        ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
-
-                        let cropImg = new Image();
-
-                        cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
-                        cropImg.onload = function() {
-                            cb(cropImg);
-                        }
-                    }
-                }
-            });
-        });
-    }
+    function getCropImage(cb) {}
 });
