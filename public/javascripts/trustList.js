@@ -34,7 +34,7 @@ function getCropImage() {
 
                     cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
                     cropImg.onload = function() {
-                        trustFaces_cropImg = cropImg;
+                        trustFaces_cropImg = cropImg.src;
                     }
                 }
             }
@@ -58,10 +58,11 @@ function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
         if (trustFaces_cropImg) {
 
-            let nameInput = $('#addNewFaceModel_nameInput');
-            let descriptionInput = $('#addNewFaceModel_descriptionInput');
+            let nameInput = $('#addNewFaceModel_nameInput').attr('value');
+            let descriptionInput = $('#addNewFaceModel_descriptionInput').attr('value');
             let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
 
+            console.log(nameInput)
             let postData = {
                 name: nameInput,
                 description: descriptionInput,
@@ -70,6 +71,8 @@ function trustFace_UploadListner() {
 
             socket.emit('add face', postData);
 
+
+            trustFaces_cropImg = null;
         }
     })
 }
