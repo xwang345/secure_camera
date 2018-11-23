@@ -11,7 +11,7 @@ $('#addNewFaceModel_faceUpload').imageupload(null, function() {
             let height = event.detail.height;
 
             let uploadedImage = new Image();
-            let cropCanvs = new Canvas();
+            let cropCanvs = document.createElement("canvas");
 
             let ctx = cropCanvs.getContext('2d');
 
@@ -20,6 +20,7 @@ $('#addNewFaceModel_faceUpload').imageupload(null, function() {
             uploadedImage.onload = function() {
                 cropCanvs.width = uploadedImage.width;
                 cropCanvs.height = uploadedImage.height;
+                console.log(x, y, width, height)
                 ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
 
                 let cropImg = new Image();
