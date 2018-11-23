@@ -41,9 +41,8 @@ io.on('connection', function(socket) {
 
     app.setSocketIo(socket, io);
 
-    socket.on('x', function(data) {
+    socket.on('add face', function(data) {
         console.log(data);
-        console.log('haha');
     })
 });
 /**

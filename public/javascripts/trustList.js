@@ -1,8 +1,5 @@
 let trustFaces_cropImg = null;
 
-
-socket.emit('x', 'shabi');
-
 getCropImage();
 trustFace_DeleteListner();
 trustFace_UploadListner();
@@ -65,13 +62,13 @@ function trustFace_UploadListner() {
             let descriptionInput = $('#addNewFaceModel_descriptionInput');
             let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
 
+            let postData = {
+                name: nameInput,
+                description: descriptionInput,
+                image: trustFaces_cropImg
+            }
 
-            let postFormData = new FormData();
-            postFormData.append('name', nameInput);
-            postFormData.append('description', descriptionInput);
-            postFormData.append('image', trustFaces_cropImg);
-
-
+            socket.emit('add face', postData);
 
         }
     })
