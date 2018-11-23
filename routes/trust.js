@@ -24,13 +24,10 @@ router.get("/", (req, res, next) => {
     //     res.render("trustList", { faceList: faceList });
     // });
 
+    console.log(router.io, router.socket)
+
     res.render("trustList", { faceList: null });
 });
-
-router.socket.on("add face", function(data) {
-    console.log(data)
-});
-
 router.post(
     "/addFace",
     myImages.multer.single("image"),
