@@ -8,6 +8,7 @@ router.setSocketIo = (socket, io) => {
 };
 
 router.use((req, res, next) => {
+    router.io.emit('x', 'xxx');
     if (req.session.userInfo && req.session.userInfo.email != "") {
         res.locals.userInfo = req.session.userInfo;
         next();

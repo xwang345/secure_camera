@@ -24,8 +24,6 @@ router.get("/", (req, res, next) => {
     //     res.render("trustList", { faceList: faceList });
     // });
 
-    router.socket.emit('x', 'xxx');
-
     router.io.on('add face', function(data) {
         console.log(123)
         console.log(data)
