@@ -72,7 +72,7 @@ $(document).ready(function() {
                     url: actionUrl,
                     type: 'POST',
                     cache: false,
-                    data: postFormData,
+                    data: { 'haha': '123' },
                     processData: false,
                     contentType: false,
                     success: function(res) {
