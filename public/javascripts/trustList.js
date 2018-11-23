@@ -6,6 +6,7 @@ $(document).ready(function() {
 
     function trustFace_UploadListner() {
         $('#addNewFaceModel_submitBtn').on('click', function() {
+            console.log(123);
             let nameInput = $('#addNewFaceModel_nameInput');
             let descriptionInput = $('#addNewFaceModel_descriptionInput');
             let actionUrl = $('#addNewFaceModel_form').attr('action');
