@@ -71,10 +71,8 @@ $(document).ready(function() {
                 $.ajax({
                     url: 'http://35.237.140.171/trust/addFace',
                     type: 'POST',
-                    cache: false,
-                    data: { 'haha': '123' },
+                    data: postFormData,
                     processData: false,
-                    contentType: false,
                     success: function(res) {
                         console.log('success', res)
                     },
