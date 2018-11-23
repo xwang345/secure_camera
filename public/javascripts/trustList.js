@@ -1,85 +1,86 @@
-$('#addNewFaceModel_faceUpload').imageupload(null, function() {
+let trustFaces_cropImg = null;
 
-    let $image = $('#image');
+getCropImage();
+trustFace_DeleteListner();
+trustFace_UploadListner();
 
-    $image.cropper({
-        aspectRatio: 4 / 3,
-        crop: function(event) {
-            let x = event.detail.x;
-            let y = event.detail.y;
-            let width = event.detail.width;
-            let height = event.detail.height;
+function getCropImage() {
+    $('#addNewFaceModel_faceUpload').imageupload(null, function() {
 
-            let uploadedImage = new Image();
-            let cropCanvs = document.createElement("canvas");
+        let $image = $('#image');
 
-            let ctx = cropCanvs.getContext('2d');
+        $image.cropper({
+            aspectRatio: 4 / 3,
+            crop: function(event) {
+                let x = event.detail.x;
+                let y = event.detail.y;
+                let width = event.detail.width;
+                let height = event.detail.height;
 
-            uploadedImage.src = $image.attr('src');
+                let uploadedImage = new Image();
+                let cropCanvs = document.createElement("canvas");
 
-            uploadedImage.onload = function() {
-                cropCanvs.width = uploadedImage.width;
-                cropCanvs.height = uploadedImage.height;
-                console.log(x, y, width, height)
-                ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
+                let ctx = cropCanvs.getContext('2d');
 
-                let cropImg = new Image();
+                uploadedImage.src = $image.attr('src');
 
-                cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
-                cropImg.onload = function() {
-                    console.log(cropImg)
+                uploadedImage.onload = function() {
+                    cropCanvs.width = uploadedImage.width;
+                    cropCanvs.height = uploadedImage.height;
+
+                    ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
+
+                    let cropImg = new Image();
+
+                    cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
+                    cropImg.onload = function() {
+                        trustFaces_cropImg = cropImg;
+                    }
                 }
             }
-        }
+        });
     });
-});
+}
 
 
-$(document).ready(function() {
 
 
-    trustFace_DeleteListner();
-    trustFace_UploadListner();
+function trustFace_DeleteListner() {
+    $(".trustFaces__deleteBtn").each(function(index) {
+        $(this).on('click', function() {
+            let id = $(this).data('id');
+            $("#deleteFaceModelInputId").attr('value', id);
+        });
+    });
+}
 
-    function trustFace_UploadListner() {
-        $('#addNewFaceModel_submitBtn').on('click', function() {
+function trustFace_UploadListner() {
+    $('#addNewFaceModel_submitBtn').on('click', function() {
+        if (trustFaces_cropImg) {
             let nameInput = $('#addNewFaceModel_nameInput');
             let descriptionInput = $('#addNewFaceModel_descriptionInput');
             let actionUrl = $('#addNewFaceModel_form').attr('action');
 
-            getCropImage(function(cropImg) {
-                let formData = new FormData();
-                formData.append('name', nameInput);
-                formData.append('description', descriptionInput);
-                formData.append('image', cropImg);
+            let formData = new FormData();
+            formData.append('name', nameInput);
+            formData.append('description', descriptionInput);
+            formData.append('image', trustFaces_cropImg);
 
-                $.ajax({
-                    url: actionUrl,
-                    type: 'POST',
-                    cache: false,
-                    data: formData,
-                    processData: false,
-                    contentType: false
-                }).done(function(res) {
-                    console.log('success', res)
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function(res) {
+                console.log('success', res)
+                trustFaces_cropImg = null;
 
-                }).fail(function(res) {
-                    console.log('fail', res)
-                });
-
-
-            })
-        })
-    }
-
-    function trustFace_DeleteListner() {
-        $(".trustFaces__deleteBtn").each(function(index) {
-            $(this).on('click', function() {
-                let id = $(this).data('id');
-                $("#deleteFaceModelInputId").attr('value', id);
+            }).fail(function(res) {
+                console.log('fail', res)
+                trustFaces_cropImg = null;
             });
-        });
-    }
-
-    function getCropImage(cb) {}
-});
+        }
+    })
+}
