@@ -68,23 +68,20 @@ $(document).ready(function() {
                 postFormData.append('description', descriptionInput);
                 postFormData.append('image', trustFaces_cropImg);
 
-                console.log(actionUrl, postFormData)
-
                 $.ajax({
                     url: actionUrl,
                     type: 'POST',
                     cache: false,
                     data: postFormData,
                     processData: false,
-                    contentType: false
-                }).done(function(res) {
-                    console.log('success', res)
-                    trustFaces_cropImg = null;
-
-                }).fail(function(res) {
-                    console.log('fail', res)
-                    trustFaces_cropImg = null;
-                });
+                    contentType: false,
+                    success: function(res) {
+                        console.log('success', res)
+                    },
+                    error: function(res) {
+                        console.log('fail', res)
+                    }
+                })
             } else {
                 console.log('zzz');
             }
