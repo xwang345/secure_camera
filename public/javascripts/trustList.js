@@ -34,7 +34,7 @@ function getCropImage() {
 
                     cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
                     cropImg.onload = function() {
-                        trustFaces_cropImg = cropImg.src;
+                        trustFaces_cropImg = cropImg;
                     }
                 }
             }
@@ -58,7 +58,7 @@ function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
         if (trustFaces_cropImg) {
 
-            let nameInput = $('#addNewFaceModel_nameInput').attr('value');
+            let nameInput = $('#addNewFaceModel_nameInput');
             let descriptionInput = $('#addNewFaceModel_descriptionInput').attr('value');
             let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
 
