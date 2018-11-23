@@ -65,7 +65,7 @@ function trustFace_UploadListner() {
             let postData = {
                 name: nameInput,
                 description: descriptionInput,
-                image: trustFaces_cropImg.src
+                imageSrc: trustFaces_cropImg.src
             }
 
             socket.emit('add face', postData);

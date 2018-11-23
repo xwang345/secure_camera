@@ -11,22 +11,28 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 
     router.socket.on('add face', function(data) {
-        console.log('123')
+        modelDatastore.create(KIND, data, (err, savedData) => {
+            if (err) {
+                next(err);
+                return;
+            }
+            console.log({ state: 0, msg: 'A new face is added!' })
+        });
     })
 };
 
 router.get("/", (req, res, next) => {
-    // modelDatastore.list(KIND, (err, entities) => {
-    //     if (err) {
-    //         next(err);
-    //         return;
-    //     }
+    modelDatastore.list(KIND, (err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
 
-    //     let faceList = entities || null;
-    //     console.log(entities)
+        let faceList = entities || null;
+        console.log(entities)
 
-    //     res.render("trustList", { faceList: faceList });
-    // });
+        res.render("trustList", { faceList: faceList });
+    });
 
     res.render("trustList", { faceList: null });
 });
