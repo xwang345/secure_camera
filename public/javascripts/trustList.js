@@ -56,7 +56,6 @@ function trustFace_DeleteListner() {
 
 function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
-        console.log(trustFaces_cropImg)
         if (trustFaces_cropImg) {
 
             let nameInput = $('#addNewFaceModel_nameInput').val();
