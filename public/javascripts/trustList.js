@@ -59,7 +59,7 @@ function trustFace_UploadListner() {
         console.log(trustFaces_cropImg)
         if (trustFaces_cropImg) {
 
-            let nameInput = $('#addNewFaceModel_nameInput').attr('value');
+            let nameInput = $('#addNewFaceModel_nameInput');
             console.log(nameInput)
             let descriptionInput = $('#addNewFaceModel_descriptionInput')[0].attr('value');
 
