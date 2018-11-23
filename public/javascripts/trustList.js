@@ -61,20 +61,20 @@ $(document).ready(function() {
                 console.log('xxx');
                 let nameInput = $('#addNewFaceModel_nameInput');
                 let descriptionInput = $('#addNewFaceModel_descriptionInput');
-                let actionUrl = window.location.host + $('#addNewFaceModel_form').attr('action');
+                let actionUrl = window.location.protocol + window.location.host + $('#addNewFaceModel_form').attr('action');
 
-                let formData = new FormData();
-                formData.append('name', nameInput);
-                formData.append('description', descriptionInput);
-                formData.append('image', trustFaces_cropImg);
+                let postFormData = new FormData();
+                postFormData.append('name', nameInput);
+                postFormData.append('description', descriptionInput);
+                postFormData.append('image', trustFaces_cropImg);
 
-                console.log(actionUrl, formData)
+                console.log(actionUrl, postFormData)
 
                 $.ajax({
                     url: actionUrl,
                     type: 'POST',
                     cache: false,
-                    data: formData,
+                    data: postFormData,
                     processData: false,
                     contentType: false
                 }).done(function(res) {
