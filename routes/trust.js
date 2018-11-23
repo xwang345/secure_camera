@@ -11,6 +11,10 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 };
 
+router.use((req, res, next) => {
+    router.io.emit('x', 'xxx');
+})
+
 router.get("/", (req, res, next) => {
     // modelDatastore.list(KIND, (err, entities) => {
     //     if (err) {
