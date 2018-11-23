@@ -1,5 +1,10 @@
 let trustFaces_cropImg = null;
 
+socket.on('x', function(data) {
+    console.log(1)
+    console.log(data)
+})
+
 getCropImage();
 trustFace_DeleteListner();
 trustFace_UploadListner();
@@ -68,9 +73,8 @@ function trustFace_UploadListner() {
             postFormData.append('description', descriptionInput);
             postFormData.append('image', trustFaces_cropImg);
 
-            console.log('1234')
-            console.log(socket)
-            socket.emit("add face", 'hellow');
+
+
         }
     })
 }
