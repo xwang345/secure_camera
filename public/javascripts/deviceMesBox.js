@@ -17,10 +17,6 @@ socket.on("load images", function(entities) {
     loadImages(entities);
 });
 
-socket.on("x", function(data) {
-    console.log(1)
-    console.log(data)
-})
 
 function loadImages(entities) {
     var content = "";
