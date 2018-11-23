@@ -17,8 +17,6 @@ router.use((req, res, next) => {
         req.url === "/signUp" ||
         req.url === "/howto" ||
         req.url === "/aboutUs" ||
-        req.url === "/trustList" ||
-        req.url === "/trust" ||
         req.url === "/"
     ) {
         next();
