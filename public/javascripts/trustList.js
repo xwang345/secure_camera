@@ -35,6 +35,7 @@ function getCropImage() {
                     cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
                     cropImg.onload = function() {
                         trustFaces_cropImg = cropImg;
+                        console.log(trustFaces_cropImg)
                     }
                 }
             }
@@ -81,6 +82,8 @@ function trustFace_UploadListner() {
                 console.log('fail', res)
                 trustFaces_cropImg = null;
             });
+        } else {
+            console.log(trustFaces_cropImg)
         }
     })
 }
