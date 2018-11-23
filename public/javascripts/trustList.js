@@ -1,6 +1,6 @@
 let trustFaces_cropImg = null;
 
-socket.on("x", function(data) {
+socket.emit("add face", function(data) {
     console.log(1)
     console.log(data)
 })
