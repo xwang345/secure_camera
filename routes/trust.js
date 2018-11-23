@@ -11,15 +11,6 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 };
 
-router.use((req, res, next) => {
-    router.io.on('add face', function(data) {
-        console.log(123)
-        console.log(data)
-    })
-
-    next();
-})
-
 router.get("/", (req, res, next) => {
     // modelDatastore.list(KIND, (err, entities) => {
     //     if (err) {
