@@ -27,7 +27,10 @@ router.get("/", (req, res, next) => {
     res.render("trustList", { faceList: null });
 });
 
-// add a image to google cloud storage
+router.io.on("add face", function(data) {
+    console.log(data)
+});
+
 router.post(
     "/addFace",
     myImages.multer.single("image"),
