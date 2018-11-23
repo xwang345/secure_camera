@@ -63,15 +63,10 @@ $(document).ready(function() {
                 let descriptionInput = $('#addNewFaceModel_descriptionInput');
                 let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
 
-                let postFormData = new FormData();
-                postFormData.append('name', nameInput);
-                postFormData.append('description', descriptionInput);
-                postFormData.append('image', trustFaces_cropImg);
-
                 $.ajax({
                     url: 'http://35.237.140.171/trust/addFace',
                     type: 'POST',
-                    data: postFormData,
+                    data: {},
                     processData: false,
                     success: function(res) {
                         console.log('success', res)
@@ -80,6 +75,11 @@ $(document).ready(function() {
                         console.log('fail', res)
                     }
                 });
+
+                let postFormData = new FormData();
+                postFormData.append('name', nameInput);
+                postFormData.append('description', descriptionInput);
+                postFormData.append('image', trustFaces_cropImg);
             }
         })
     }
