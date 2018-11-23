@@ -58,9 +58,9 @@ function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
         if (trustFaces_cropImg) {
 
-            let nameInput = $('#addNewFaceModel_nameInput');
-            let descriptionInput = $('#addNewFaceModel_descriptionInput').attr('value');
-            let actionUrl = window.location.href + $('#addNewFaceModel_form').attr('action');
+            let nameInput = $('#addNewFaceModel_nameInput')[0].attr('value');
+            let descriptionInput = $('#addNewFaceModel_descriptionInput')[0].attr('value');
+            let actionUrl = window.location.href + $('#addNewFaceModel_form')[0].attr('action');
 
             console.log(nameInput)
             let postData = {
