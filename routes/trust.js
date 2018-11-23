@@ -11,13 +11,14 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 
     router.socket.on('add face', function(data) {
-        modelDatastore.create(KIND, data, (err, savedData) => {
-            if (err) {
-                console.log({ state: 1, msg: 'A new face cannot be added!' })
-                return;
-            }
-            console.log({ state: 0, msg: 'A new face is added!' })
-        });
+        console.log(data)
+            // modelDatastore.create(KIND, data, (err, savedData) => {
+            //     if (err) {
+            //         console.log({ state: 1, msg: 'A new face cannot be added!' })
+            //         return;
+            //     }
+            //     console.log({ state: 0, msg: 'A new face is added!' })
+            // });
     })
 };
 
