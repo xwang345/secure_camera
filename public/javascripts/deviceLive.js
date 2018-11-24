@@ -6,7 +6,8 @@ $('#deviceSwitch').on('click', function() {
     socket.emit('toggle device');
 })
 
-socket.on('update device status', function(data) {
+socket.on('update deivce status', function(data) {
+    console.log('hahaha')
     console.log(data)
     if (data === 'off') {
         $('#deviceSwitch').html('TURN OFF');
