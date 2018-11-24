@@ -54,6 +54,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('change device status', function(data) {
+        console.log('change device status', data)
         io.emit('update deivce status', data);
     })
 
