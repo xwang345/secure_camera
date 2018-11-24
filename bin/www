@@ -11,6 +11,8 @@ var socketIo = require('socket.io');
 var argv = require('argv')
 var modelDatastore = require("../lib/model-datastore");
 
+let deviceStatus = 'off';
+
 
 
 /**
@@ -40,16 +42,19 @@ io.on('connection', function(socket) {
     }, 10, { item: "time", option: { descending: true } });
 
     socket.on('toggle device', function() {
-        let curDeviceState = app.locals.deviceStatus;
 
-        if (curDeviceState === 'on') {
+        if (deviceStatus === 'on') {
             io.emit('turnOff camera')
-            app.locals.deviceStatus = 'off'
-        } else if (curDeviceState === 'off') {
+            deviceStatus = 'off'
+        } else if (deviceStatus === 'off') {
             io.emit('turnOn camera')
-            app.locals.deviceStatus = 'on'
+            deviceStatus = 'on'
         }
 
+    })
+
+    socket.on('change device status', function(data) {
+        io.emit('update deivce status', data);
     })
 
     app.setSocketIo(socket, io);
