@@ -45,6 +45,7 @@ app.use(session({
 
 app.use((req, res, next) => {
     app.locals.userInfo = {};
+    app.locals.deviceStatus = 'N/A'
     next();
 })
 

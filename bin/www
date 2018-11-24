@@ -42,13 +42,15 @@ io.on('connection', function(socket) {
     app.setSocketIo(socket, io);
 });
 
-io.on('test', function(data) {
-        console.log('test');
-        console.log(data)
-    })
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
+io.on('toggle device', function() {
+    let curDeviceState = app.locals.deviceStatus;
+    console.log(curDeviceState)
+})
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
 server.listen(port, argv.fe_ip);
 
