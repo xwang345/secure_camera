@@ -4,6 +4,7 @@ $(document).ready(function() {
     new JSMpeg.Player(url, { canvas: canvas });
 
     $('#deviceSwitch').on('click', function() {
+        console.log('123')
         socket.emit('toggle device')
     })
 });
