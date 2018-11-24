@@ -39,14 +39,14 @@ io.on('connection', function(socket) {
         socket.emit('load images', entities);
     }, 10, { item: "time", option: { descending: true } });
 
+    socket.on('toggle device', function() {
+        console.log(1234);
+        let curDeviceState = app.locals.deviceStatus;
+        console.log(curDeviceState)
+    })
+
     app.setSocketIo(socket, io);
 });
-
-io.on('toggle device', function() {
-    console.log(1234);
-    let curDeviceState = app.locals.deviceStatus;
-    console.log(curDeviceState)
-})
 
 
 /**
