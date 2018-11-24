@@ -40,9 +40,16 @@ io.on('connection', function(socket) {
     }, 10, { item: "time", option: { descending: true } });
 
     socket.on('toggle device', function() {
-        console.log(1234);
         let curDeviceState = app.locals.deviceStatus;
-        console.log(curDeviceState)
+
+        if (curDeviceState === 'on') {
+            io.emit('turnOff camera')
+            app.locals.deviceStatus = 'off'
+        } else if (curDeviceState === 'off') {
+            io.emit('turnOn camera')
+            app.locals.deviceStatus = 'on'
+        }
+
     })
 
     app.setSocketIo(socket, io);
