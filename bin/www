@@ -43,6 +43,7 @@ io.on('connection', function(socket) {
 });
 
 io.on('toggle device', function() {
+    console.log(1234);
     let curDeviceState = app.locals.deviceStatus;
     console.log(curDeviceState)
 })
