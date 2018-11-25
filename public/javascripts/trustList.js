@@ -42,7 +42,7 @@ function getCropImage() {
                     cropCanvs.height = uploadedImage.height;
 
                     ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
-
+                    console.log(cropFaceInput);
                     reader.readAsDataURL(cropCanvs.toDataURL('image/png', 1.0))
                 }
             }
