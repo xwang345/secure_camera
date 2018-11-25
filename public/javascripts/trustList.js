@@ -41,6 +41,7 @@ function getCropImage() {
 
                         reader.onloadend = function() {
                             cropFaceInput.binary = reader.result;
+                            console.log(cropFaceInput)
                         }
 
                         reader.readAsBinaryString(blob);
