@@ -40,7 +40,7 @@ function getCropImage() {
                         var reader = new FileReader();
 
                         reader.onloadend = function() {
-                            console.log(reader.result);
+                            cropFaceInput.binary = reader.result;
                         }
 
                         reader.readAsBinaryString(blob);
