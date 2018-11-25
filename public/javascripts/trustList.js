@@ -23,17 +23,10 @@ function getCropImage() {
                 let ctx = cropCanvs.getContext('2d');
 
                 let cropFaceInput = {
-                    dom: $('#cropFaceInput'),
+                    dom: $('#cropFaceInput')[0],
                     binary: null
                 }
 
-                var reader = new FileReader();
-
-                reader.addEventListener("load", function() {
-                    console.log('LOAD');
-                    cropFaceInput.binary = reader.result;
-                    console.log(cropFaceInput.binary)
-                });
 
                 uploadedImage.src = $image.attr('src');
 
@@ -42,8 +35,16 @@ function getCropImage() {
                     cropCanvs.height = uploadedImage.height;
 
                     ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
-                    console.log(cropFaceInput);
-                    reader.readAsDataURL(cropCanvs.toDataURL('image/png', 1.0))
+
+                    cropCanvs.toBlob((blob) => {
+                        var reader = new FileReader();
+
+                        reader.onloadend = function() {
+                            console.log(reader.result);
+                        }
+
+                        reader.readAsBinaryString(blob);
+                    })
                 }
             }
         });
