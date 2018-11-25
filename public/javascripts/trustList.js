@@ -22,6 +22,17 @@ function getCropImage() {
 
                 let ctx = cropCanvs.getContext('2d');
 
+                let cropFaceInput = {
+                    dom: $('#cropFaceInput'),
+                    binary: null
+                }
+
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function() {
+                    cropFaceInput.binary = reader.result;
+                });
+
                 uploadedImage.src = $image.attr('src');
 
                 uploadedImage.onload = function() {
@@ -30,12 +41,7 @@ function getCropImage() {
 
                     ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
 
-                    let cropImg = new Image();
-
-                    cropImg.src = cropCanvs.toDataURL('image/png', 1.0);
-                    cropImg.onload = function() {
-                        trustFaces_cropImg = cropImg;
-                    }
+                    reader.readAsDataURL(cropCanvs.toDataURL('image/png', 1.0))
                 }
             }
         });
