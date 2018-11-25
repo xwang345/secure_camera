@@ -30,7 +30,9 @@ function getCropImage() {
                 var reader = new FileReader();
 
                 reader.addEventListener("load", function() {
+                    console.log('LOAD');
                     cropFaceInput.binary = reader.result;
+                    console.log(cropFaceInput.binary)
                 });
 
                 uploadedImage.src = $image.attr('src');
