@@ -6,13 +6,12 @@ cropImageBinary = getCropImage();
 trustFace_DeleteListner();
 trustFace_UploadListner();
 
-addNewFaceModel_submitBtn.on('click', function(e) {
-    e.preventDefault();
+addNewFaceModel_submitBtn.on('click', function() {
     console.log(123);
-    console.log(cropImageBinary)
-    if (cropImageBinary) {
-        sendData(cropImageBinary);
-    }
+    // console.log(cropImageBinary)
+    // if (cropImageBinary) {
+    //     sendData(cropImageBinary);
+    // }
 });
 
 function sendData(cropImageBinary) {
