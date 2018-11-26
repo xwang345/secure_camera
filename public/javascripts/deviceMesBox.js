@@ -1,5 +1,3 @@
-import { detectFaces } from './module/facial.js';
-
 $("#imgShowBoxId .closeBtn:first").click(function() {
     $("#imgShowBoxId")
         .toggleClass("imgShowBox--close")

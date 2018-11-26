@@ -1,5 +1,3 @@
-export { compareFaces, detectFaces };
-
 function compareFaces(file1, file2) {
     AnonLog();
 
