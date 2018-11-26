@@ -93,16 +93,12 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
 function faceDetectCardEventListener(faceDetectCardId, data) {
     $(faceDetectCardId).click(function() {
-        let image = new Image();
         let imageElement = $('.imgShowBox__img:first');
-        image.src = imageElement.attr('src');
-        image.onload = function() {
-            let boundingBox = data.FaceMatches[0].Face.BoundingBox;
-            let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
-            console.log(image.width, image.height)
-            imgShowBoxBoundingBox
-                .attr('width', boundingBox.width * image.width)
-                .attr('height', boundingBox.width * image.height)
-        }
+        let boundingBox = data.FaceMatches[0].Face.BoundingBox;
+        let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
+        console.log(boundingBox.width, imageElement.width())
+        imgShowBoxBoundingBox
+            .attr('width', boundingBox.width * imageElement.width())
+            .attr('height', boundingBox.width * image.height)
     })
 }
