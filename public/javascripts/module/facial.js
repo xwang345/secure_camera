@@ -52,37 +52,41 @@ function detectFaces(imageUrl, cb) {
 
         ctx.drawImage(image, 0, 0);
 
-        console.log(canvas)
+        let imgDataUrl = canvas.toDataURL('image/png', 1.0);
 
-        canvas.toBlob((blob) => {
-            console.log(12345)
-            console.log(blob)
-                // var reader = new FileReader();
+        let imgBlob = dataURLToBlob(imgDataUrl);
 
-            // reader.onloadend = function() {
-            //     console.log(3);
+        console.log(imgBlob)
 
-            //     return function(e) {
+        // canvas.toBlob((blob) => {
+        //     console.log(12345)
+        //     console.log(blob)
+        //         // var reader = new FileReader();
 
-            //         AWS.region = "us-east-2";
-            //         var rekognition = new AWS.Rekognition();
-            //         var params = {
-            //             Image: {
-            //                 Bytes: e.target.result
-            //             }
-            //         };
+        //     // reader.onloadend = function() {
+        //     //     console.log(3);
 
-            //         rekognition.detectFaces(params, function(err, data) {
-            //             if (err) console.log(err, err.stack); // an error occurred
-            //             else {
-            //                 cb(data);
-            //             }
-            //         });
-            //     };
-            // }
+        //     //     return function(e) {
 
-            // reader.readAsArrayBuffer(blob);
-        })
+        //     //         AWS.region = "us-east-2";
+        //     //         var rekognition = new AWS.Rekognition();
+        //     //         var params = {
+        //     //             Image: {
+        //     //                 Bytes: e.target.result
+        //     //             }
+        //     //         };
+
+        //     //         rekognition.detectFaces(params, function(err, data) {
+        //     //             if (err) console.log(err, err.stack); // an error occurred
+        //     //             else {
+        //     //                 cb(data);
+        //     //             }
+        //     //         });
+        //     //     };
+        //     // }
+
+        //     // reader.readAsArrayBuffer(blob);
+        // })
     }
 }
 
@@ -103,4 +107,16 @@ function AnonLog() {
         var secretAccessKey = AWS.config.credentials.secretAccessKey;
         var sessionToken = AWS.config.credentials.sessionToken;
     });
+}
+
+function dataURLToBlob(dataurl) {
+    var arr = dataurl.split(',');
+    var mime = arr[0].match(/:(.*?);/)[1];
+    var bstr = atob(arr[1]);
+    var n = bstr.length;
+    var u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
 }
