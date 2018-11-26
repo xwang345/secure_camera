@@ -12,7 +12,18 @@ router.setSocketIo = function(socket, io) {
 
     router.socket.on('add face', function(data) {
         myImages.sendCropUploadToGCS(data, function(cropUrl) {
-            console.log(cropUrl)
+            let cropData = {};
+            cropData.name = data.name;
+            cropData.description = data.description;
+            cropData.url = cropUrl;
+
+            modelDatastore.create(KIND, data, (err, savedData) => {
+                if (err) {
+                    next(err);
+                    return;
+                }
+                res.json({ state: 0, msg: 'A new face is added!' })
+            });
         });
     })
 };
