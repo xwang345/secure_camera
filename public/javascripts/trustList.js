@@ -1,12 +1,14 @@
-var foaddNewFaceModelForm = document.getElementById("addNewFaceModel_form");
+var addNewFaceModel_form = document.getElementById("addNewFaceModel_form");
+var addNewFaceModel_submitBtn = document.getElementById("addNewFaceModel_submitBtn");
 
 let cropImageBinary = null;
 cropImageBinary = getCropImage();
 trustFace_DeleteListner();
 trustFace_UploadListner();
 
-foaddNewFaceModelForm.addEventListener('submit', function(e) {
+addNewFaceModel_submitBtn.on('click', function(e) {
     e.preventDefault();
+    console.log(123);
     console.log(cropImageBinary)
     if (cropImageBinary) {
         sendData(cropImageBinary);
