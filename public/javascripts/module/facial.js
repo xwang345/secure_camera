@@ -51,7 +51,9 @@ function detectFaces(imageUrl, cb) {
 
             ctx.drawImage(img, 0, 0);
 
-            console.log(canvas);
+            canvas.toBlob((blob) => {
+                console.log(blob);
+            })
             URL.revokeObjectURL(url);
         };
 
