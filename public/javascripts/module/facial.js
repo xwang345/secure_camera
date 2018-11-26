@@ -3,27 +3,35 @@ function compareFaces(imageUrl_1, imageUrl_2, cb) {
 
     loadImgUrl(imageUrl_1, function(imageBytes_1) {
         loadImgUrl(imageUrl_2, function(imageBytes_2) {
-            AWS.region = "us-east-2";
-            var rekognition = new AWS.Rekognition();
-            var params = {
-                // trust face
-                SourceImage: {
-                    Bytes: imageBytes_1
-                },
+            detectFaces(imageUrl_1, function(result_1) {
+                detectFaces(imageUrl_2, function(result_2) {
+                    if (result_1.FaceDetails.length > 0 && result_2.FaceDetails.length > 0) {
+                        AWS.region = "us-east-2";
+                        var rekognition = new AWS.Rekognition();
+                        var params = {
+                            // trust face
+                            SourceImage: {
+                                Bytes: imageBytes_1
+                            },
 
-                // snapshot
-                TargetImage: {
-                    Bytes: imageBytes_2
-                },
-                SimilarityThreshold: 0.0
-            };
+                            // snapshot
+                            TargetImage: {
+                                Bytes: imageBytes_2
+                            },
+                            SimilarityThreshold: 0.0
+                        };
 
-            rekognition.compareFaces(params, function(err, data) {
-                if (err) console.log(err, err.stack); // an error occurred
-                else {
-                    cb(data.FaceMatches[0].Similarity);
-                }
-            });
+                        rekognition.compareFaces(params, function(err, data) {
+                            if (err) console.log(err, err.stack); // an error occurred
+                            else {
+                                cb(data.FaceMatches[0].Similarity);
+                            }
+                        });
+                    } else {
+                        cb(null);
+                    }
+                })
+            })
         })
     })
 }

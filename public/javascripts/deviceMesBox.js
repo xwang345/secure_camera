@@ -56,13 +56,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
-
-                detectFaces(imgUrl, function(data) {
-                    console.log(data);
-                })
                 faceList.forEach((element) => {
-
-
                     compareFaces(element.url, imgUrl, function(result) {
                         console.log(result)
                     })
