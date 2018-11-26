@@ -79,9 +79,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                             let similarity = result.FaceMatches[0].Similarity;
                             if (similarity > 75) {
                                 trustFacesObj.matched = true;
+                                let name = element.name.replace(/\s+/g, "");
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard${element.name}${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                <div id="imgShowBoxFaceDetectCard${name}${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
                                         <p class="card-text">${element.description}</p>
@@ -89,7 +90,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 </div>
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result);
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
                             }
 
                             if (index === array.length - 1 && trustFacesObj.matched === false) {
