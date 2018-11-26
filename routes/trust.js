@@ -61,6 +61,7 @@ router.get("/", (req, res, next) => {
 //     });
 
 router.post("/addFace", (req, res, next) => {
+    console.log(req.body)
     res.json({ msg: 'success' });
 })
 
