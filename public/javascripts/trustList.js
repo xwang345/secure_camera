@@ -10,8 +10,6 @@ getCropImage(function(result) {
 trustFace_DeleteListner();
 
 addNewFaceModel_submitBtn.on('click', function() {
-    console.log('click');
-    console.log(cropImageBinary);
 
     if (cropImageBinary) {
         sendData(cropImageBinary);
@@ -37,27 +35,28 @@ function sendData(cropImageBinary) {
     let data = "";
 
     // 所以，如果用户已经选择了一个文件
-    if (file.binary) {
-        // 在请求体中开始新的一部分
-        data += "--" + boundary + "\r\n";
+    console.log(file.binary)
+        // if (file.binary) {
+        //     // 在请求体中开始新的一部分
+        //     data += "--" + boundary + "\r\n";
 
-        // 把它描述成表单数据
-        data += 'content-disposition: form-data; '
-            // 定义表单数据的名称
-            +
-            'name="' + file.dom.name + '"; '
-            // 提供文件的真实名字
-            +
-            'filename="' + file.dom.files[0].name + '"\r\n';
-        // 和文件的MIME类型
-        data += 'Content-Type: ' + 'image/png' + '\r\n';
+    //     // 把它描述成表单数据
+    //     data += 'content-disposition: form-data; '
+    //         // 定义表单数据的名称
+    //         +
+    //         'name="' + file.dom.name + '"; '
+    //         // 提供文件的真实名字
+    //         +
+    //         'filename="' + file.dom.files[0].name + '"\r\n';
+    //     // 和文件的MIME类型
+    //     data += 'Content-Type: ' + 'image/png' + '\r\n';
 
-        // 元数据和数据之间有一条空行。
-        data += '\r\n';
+    //     // 元数据和数据之间有一条空行。
+    //     data += '\r\n';
 
-        // 添加二进制数据到请求体中
-        data += file.binary + '\r\n';
-    }
+    //     // 添加二进制数据到请求体中
+    //     data += file.binary + '\r\n';
+    // }
 
     // 文本数据是简单的
     // 开始一个新的部分在请求体中
