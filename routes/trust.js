@@ -35,30 +35,35 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post(
-    "/addFace",
-    myImages.multer.single("image"),
-    myImages.sendUploadToGCS,
-    (req, res, next) => {
+// router.post(
+//     "/addFace",
+//     myImages.multer.single("image"),
+//     myImages.sendUploadToGCS,
+//     (req, res, next) => {
 
-        let data = req.body;
+//         let data = req.body;
 
-        if (req.file && req.file.cloudStoragePublicUrl) {
+//         if (req.file && req.file.cloudStoragePublicUrl) {
 
-            data.imageUrl = req.file.cloudStoragePublicUrl;
+//             data.imageUrl = req.file.cloudStoragePublicUrl;
 
-        }
+//         }
 
-        // Save the data to the database.
-        modelDatastore.create(KIND, data, (err, savedData) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.json({ state: 0, msg: 'A new face is added!' })
-            res.redirect('/trustList');
-        });
-    });
+//         // Save the data to the database.
+//         modelDatastore.create(KIND, data, (err, savedData) => {
+//             if (err) {
+//                 next(err);
+//                 return;
+//             }
+//             res.json({ state: 0, msg: 'A new face is added!' })
+//             res.redirect('/trustList');
+//         });
+//     });
+
+router.post("/addFace", (req, res, next) => {
+    console.log(req);
+    res.send('Hello')
+})
 
 router.get("/deleteFace", (req, res, next) => {
 
