@@ -96,10 +96,8 @@ function faceDetectCardEventListener(faceDetectCardId, data) {
         let imageElement = $('.imgShowBox__img:first');
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
-        console.log(data.FaceMatches[0].Face)
-        console.log(boundingBox, imageElement.width())
         imgShowBoxBoundingBox
-            .attr('width', boundingBox.width * imageElement.width())
-            .attr('height', boundingBox.width * image.height)
+            .attr('width', boundingBox.Width * imageElement.width())
+            .attr('height', boundingBox.Height * imageElement.height())
     })
 }
