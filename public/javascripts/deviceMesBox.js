@@ -93,6 +93,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data) {
+    console.log(faceDetectCardId, data)
     $(faceDetectCardId).click(function() {
         var boundingBox = data.FaceMatches[0].Face.BoundingBox;
         console.log(boundingBox)
