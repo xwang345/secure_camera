@@ -68,9 +68,15 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                 if (trustFacesObj.arr === null) {
                     trustFacesObj.arr = faceList;
 
+                    if (faceList.length === 0) {
+                        $('#imgShowBoxFaceDetectPanel').html(`
+                                <p style="color: red; ">There is not any trust face!</p>
+                        `);
+
+                    }
+
                     faceList.forEach((element, index, array) => {
                         compareFaces(element.url, imgUrl, function(result) {
-                            console.log(result)
                             if (!result) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
                                     <p style="color: red; ">There is not any trust face!</p>
