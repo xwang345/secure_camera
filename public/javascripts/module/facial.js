@@ -49,7 +49,7 @@ function detectFaces(imageUrl, cb) {
             canvas.width = img.width;
             canvas.height = img.height;
 
-            ctx.drawImage(image, 0, 0);
+            ctx.drawImage(img, 0, 0);
 
             console.log(canvas);
             URL.revokeObjectURL(url);
