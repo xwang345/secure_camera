@@ -73,7 +73,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                             if (similarity > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard + ${element.name} + ${index}" class="card imgShowBox__faceDetectCard" style="width: 18rem;">
+                                <div id="imgShowBoxFaceDetectCard${element.name}${index}" class="card imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
                                         <p class="card-text">${element.description}</p>
@@ -81,7 +81,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                                 </div>
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard + ${element.name} + ${index}`, result);
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result);
                             }
 
                         })
