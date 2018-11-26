@@ -34,7 +34,7 @@
                 <% if(faceList) { %>
                     <% faceList.forEach((faceObject) => { %>
                     <div class="card trustFace" style="width: 18rem;">
-                        <img class="card-img-top" src="<%= faceObject.imageUrl %>" />
+                        <img class="card-img-top" src=<%= faceObject.url %> />
                         <div class="card-body">
                             <h5 class="card-title"><%= faceObject.name %></h5>
                             <p class="card-text"><%= faceObject.description %></p>

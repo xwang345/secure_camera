@@ -78,9 +78,9 @@ function trustFace_UploadListner() {
             socket.emit('add face', postData);
 
             socket.on('add face result', function(res) {
-                console.log(res)
+
                 if (res.resCode === 0) {
-                    console.log(res.msg)
+                    location.reload();
                 }
             })
 
