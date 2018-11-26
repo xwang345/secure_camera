@@ -17,13 +17,14 @@ addNewFaceModel_submitBtn.on('click', function() {
 });
 
 function sendData(cropImageBinary) {
-    let file = {
-        dom: $("#cropFaceInput")[0],
-        binary: cropImageBinary
-    };
-
     let name = $('#addNewFaceModel_nameInput')[0];
     let description = $('#addNewFaceModel_descriptionInput')[0];
+
+    let file = {
+        dom: $("#cropFaceInput")[0],
+        filename: new Date() + name.value,
+        binary: cropImageBinary
+    };
 
     // 我们需要一个XMLHttpRequest 实例
     let XHR = new XMLHttpRequest();
@@ -46,7 +47,7 @@ function sendData(cropImageBinary) {
         'name="' + file.dom.name + '"; '
         // 提供文件的真实名字
         +
-        'filename="' + file.dom.files[0].name + '"\r\n';
+        'filename="' + file.filename + '"\r\n';
     // 和文件的MIME类型
     data += 'Content-Type: ' + 'image/png' + '\r\n';
 
