@@ -69,6 +69,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                     faceList.forEach((element, index) => {
                         compareFaces(element.url, imgUrl, function(result) {
+                            console.log(result)
                             if (!result) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
                                     <p>There is not any trust face!</p>
