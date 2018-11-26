@@ -61,7 +61,7 @@ router.get("/", (req, res, next) => {
 //     });
 
 router.post("/addFace", (req, res, next) => {
-    res.redirect('http://baidu.com')
+    res.json({ msg: 'success' });
 })
 
 router.get("/deleteFace", (req, res, next) => {
