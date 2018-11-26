@@ -100,6 +100,7 @@ function faceDetectCardEventListener(faceDetectCardId, data) {
             .css('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
             .css('height', Math.round(boundingBox.Height * imageElement.height()) + 'px')
             .css('top', Math.round(boundingBox.Top * imageElement.height()) + 'px')
-            .css('Left', Math.round(boundingBox.Left * imageElement.width()) + 'px')
+            .css('left', Math.round(boundingBox.Left * imageElement.width()) + 'px')
+            .css('opacity', 1)
     })
 }
