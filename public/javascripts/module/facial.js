@@ -43,52 +43,44 @@ function detectFaces(imageUrl, cb) {
     let image = new Image();
     image.src = imageUrl;
 
-    let imgCanvas = document.createElement("canvas");
-    let ctx = imgCanvas.getContext('2d');
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext('2d');
 
     image.onload = function() {
-        imgCanvas.width = image.width;
-        imgCanvas.height = image.height;
+        canvas.width = image.width;
+        canvas.height = image.height;
 
-        ctx.drawImage(image, 0, 0);
+        ctx.drawImage(image);
 
-        let imgDataUrl = imgCanvas.toDataURL('image/png', 1.0);
+        consolo.log(canvas)
 
-        console.log(imgDataUrl)
+        canvas.toBlob((blob) => {
+            console.log(12345)
 
-        let imgBlob = dataURLToBlob(imgDataUrl);
+            var reader = new FileReader();
 
-        console.log(imgBlob)
+            reader.onloadend = function() {
+                return function(e) {
 
-        // canvas.toBlob((blob) => {
-        //     console.log(12345)
-        //     console.log(blob)
-        //         // var reader = new FileReader();
+                    AWS.region = "us-east-2";
+                    var rekognition = new AWS.Rekognition();
+                    var params = {
+                        Image: {
+                            Bytes: e.target.result
+                        }
+                    };
 
-        //     // reader.onloadend = function() {
-        //     //     console.log(3);
+                    rekognition.detectFaces(params, function(err, data) {
+                        if (err) console.log(err, err.stack); // an error occurred
+                        else {
+                            cb(data);
+                        }
+                    });
+                };
+            }
 
-        //     //     return function(e) {
-
-        //     //         AWS.region = "us-east-2";
-        //     //         var rekognition = new AWS.Rekognition();
-        //     //         var params = {
-        //     //             Image: {
-        //     //                 Bytes: e.target.result
-        //     //             }
-        //     //         };
-
-        //     //         rekognition.detectFaces(params, function(err, data) {
-        //     //             if (err) console.log(err, err.stack); // an error occurred
-        //     //             else {
-        //     //                 cb(data);
-        //     //             }
-        //     //         });
-        //     //     };
-        //     // }
-
-        //     // reader.readAsArrayBuffer(blob);
-        // })
+            reader.readAsArrayBuffer(blob);
+        })
     }
 }
 
