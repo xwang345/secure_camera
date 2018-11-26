@@ -59,8 +59,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
             $(imgShowBox__imgContainer + ':first')
                 .children("img:first")
-                .attr("src", imgUrl)
-                .attr('id', `imgShowBoxImage_${imgUrl}`)
+                .attr("src", imgUrl).
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
@@ -81,7 +80,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 </div>
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result, `#imgShowBoxImage_${imgUrl}`);
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result);
                             }
 
                         })
@@ -92,10 +91,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
     });
 }
 
-function faceDetectCardEventListener(faceDetectCardId, data, imgId) {
+function faceDetectCardEventListener(faceDetectCardId, data) {
     $(faceDetectCardId).click(function() {
-        console.log(imgId)
-        let image = $(imgId);
+        let image = $('.imgShowBox__img');
         console.log(image)
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
