@@ -66,7 +66,17 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
                     faceList.forEach((element) => {
                         compareFaces(element.url, imgUrl, function(result) {
-                            console.log(element, result)
+                            if (result > 75) {
+                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                let newHtml = oldHtml + `
+                                <div>
+                                    ${element.name}
+                                </div>
+                                `;
+
+                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                            }
+
                         })
                     })
                 }
