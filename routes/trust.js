@@ -27,6 +27,19 @@ router.setSocketIo = function(socket, io) {
             });
         });
     })
+
+    router.socket.on('request trustFaces', function() {
+        modelDatastore.list(KIND, (err, entities) => {
+            if (err) {
+                next(err);
+                return;
+            }
+
+            let faceList = entities || null;
+
+            router.socket.emit('get trustFaces', faceList)
+        });
+    })
 };
 
 router.get("/", (req, res, next) => {

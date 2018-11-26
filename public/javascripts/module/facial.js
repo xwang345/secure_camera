@@ -1,43 +1,34 @@
-function compareFaces(file1, file2) {
+function compareFaces(imageUrl_1, imageUrl_2) {
     AnonLog();
 
-    // Load base64 encoded image for display 
-    var reader1 = new FileReader();
-    reader1.onload = (function(theFile) {
-        return function(e1) {
-            // Load base64 encoded image for display 
-            var reader2 = new FileReader();
-            reader2.onload = (function(theFile) {
-                return function(e2) {
-                    //Call Rekognition  
-                    AWS.region = "us-east-2";
-                    var rekognition = new AWS.Rekognition();
-                    var params = {
-                        SourceImage: {
-                            Bytes: e1.target.result
-                        },
-                        TargetImage: {
-                            Bytes: e2.target.result
-                        },
-                        SimilarityThreshold: 0.0
-                    };
-                    rekognition.compareFaces(params, function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else {
-                            return data.FaceMatches[0].Similarity;
-                        }
-                    });
-                };
-            })(file2);
-            reader2.readAsArrayBuffer(file2);
-        };
-    })(file1);
-    reader1.readAsArrayBuffer(file1);
+    loadImgUrl(imageUrl_1, function(imageBytes_1) {
+        loadImgUrl(imageUrl_2, function(imageBytes_2) {
+            AWS.region = "us-east-2";
+            var rekognition = new AWS.Rekognition();
+            var params = {
+                // trust face
+                SourceImage: {
+                    Bytes: imageBytes_1
+                },
+
+                // snapshot
+                TargetImage: {
+                    Bytes: imageBytes_2
+                },
+                SimilarityThreshold: 0.0
+            };
+
+            rekognition.compareFaces(params, function(err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else {
+                    return data.FaceMatches[0].Similarity;
+                }
+            });
+        })
+    })
 }
 
-function detectFaces(imageUrl, cb) {
-    AnonLog();
-
+function loadImgUrl(imageUrl, cb) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
         var url = URL.createObjectURL(this.response);
@@ -56,20 +47,7 @@ function detectFaces(imageUrl, cb) {
 
                 reader.onloadend = (function(file) {
                     return function(e) {
-                        AWS.region = "us-east-2";
-                        var rekognition = new AWS.Rekognition();
-                        var params = {
-                            Image: {
-                                Bytes: e.target.result
-                            }
-                        };
-
-                        rekognition.detectFaces(params, function(err, data) {
-                            if (err) console.log(err, err.stack); // an error occurred
-                            else {
-                                cb(data);
-                            }
-                        });
+                        cb(e.target.result)
                     };
                 })(blob)
 
@@ -82,7 +60,27 @@ function detectFaces(imageUrl, cb) {
     xhr.open('GET', imageUrl, true);
     xhr.responseType = 'blob';
     xhr.send();
+}
 
+function detectFaces(imageUrl, cb) {
+    AnonLog();
+
+    loadImgUrl(imageUrl, function(imgBytes) {
+        AWS.region = "us-east-2";
+        var rekognition = new AWS.Rekognition();
+        var params = {
+            Image: {
+                Bytes: imgBytes
+            }
+        };
+
+        rekognition.detectFaces(params, function(err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else {
+                cb(data);
+            }
+        });
+    })
 }
 
 

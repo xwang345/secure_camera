@@ -54,9 +54,14 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .children("img:first")
                 .attr("src", imgUrl);
 
-            detectFaces(imgUrl, function(result) {
-                console.log(result);
+            socket.emit('request trustFaces');
+            socket.on('get turstFaces', function(faceList) {
+
             })
+
+            // compareFaces(imgUrl, function(result) {
+            //     console.log(result)
+            // })
         });
     });
 }
