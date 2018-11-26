@@ -69,7 +69,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                     faceList.forEach((element, index) => {
                         compareFaces(element.url, imgUrl, function(result) {
                             let similarity = result.FaceMatches[0].Similarity;
-                            console.log(result)
                             if (similarity > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
@@ -94,6 +93,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
 function faceDetectCardEventListener(faceDetectCardId, data) {
     $(faceDetectCardId).click(function() {
-        console.log(data)
+        let boundingBox = data.FaceMatches[0].Face.BoundingBox;
+        console.log(boundingBox)
     })
 }
