@@ -38,6 +38,8 @@ function compareFaces(file1, file2) {
 function detectFaces(imageUrl, cb) {
     AnonLog();
 
+    console.log(imageUrl)
+
     let image = new Image();
     image.src = imageUrl;
 
@@ -50,10 +52,9 @@ function detectFaces(imageUrl, cb) {
 
         ctx.drawImage(image, 0, 0);
 
-        console.log(1);
+        console.log(canvas)
 
         canvas.toBlob((blob) => {
-            console.log(2);
             var reader = new FileReader();
 
             reader.onload = function() {
