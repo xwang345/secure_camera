@@ -33,6 +33,7 @@ function loadImgUrl(imageUrl, cb) {
     xhr.onload = function() {
         var url = URL.createObjectURL(this.response);
         var img = new Image();
+        img.crossOrigin = 'anonymous';
         let canvas = document.createElement("canvas");
         let ctx = canvas.getContext('2d');
         img.src = url;
