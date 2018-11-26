@@ -75,7 +75,11 @@ function trustFace_UploadListner() {
                 imgBuffer: cropImageBuffer
             }
 
-            socket.emit('add face', postData);
+            socket.emit('add face', postData, function(res) {
+                if (res.resCode === '0') {
+                    console.log(res.msg)
+                }
+            });
 
             cropImageBuffer = null;
         }

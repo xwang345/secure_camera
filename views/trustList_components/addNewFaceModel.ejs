@@ -10,8 +10,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="addNewFaceModel_nameInput" required>Name</label>
-                        <input type="text" name="name" id="addNewFaceModel_nameInput" class="form-control"  aria-describedby="emailHelp" placeholder="Enter name">
+                        <label for="addNewFaceModel_nameInput">Name</label>
+                        <input type="text" name="name" id="addNewFaceModel_nameInput" class="form-control"  aria-describedby="emailHelp" placeholder="Enter name" required>
                         <small id="deviceNameHelp" class="form-text text-muted">Please give your device a nick name.</small>
                     </div>
                     <div class="form-group">
@@ -25,7 +25,7 @@
                             <div class="file-tab card-body">
                                 <label class="btn btn-outline-dark btn-file uploadFace__browseBtn">
                                     <span>Browse</span>
-                                    <input type="file">
+                                    <input type="file" name="image">
                                 </label>
                                 <button type="button" class="btn btn-outline-danger">Remove</button>
                             </div>
