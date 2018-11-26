@@ -97,9 +97,9 @@ function faceDetectCardEventListener(faceDetectCardId, data) {
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
         imgShowBoxBoundingBox
-            .attr('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
-            .attr('height', Math.round(boundingBox.Height * imageElement.height()) + 'px')
-            .attr('top', Math.round(boundingBox.Top * imageElement.height()) + 'px')
-            .attr('Left', Math.round(boundingBox.Left * imageElement.width()) + 'px')
+            .css('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
+            .css('height', Math.round(boundingBox.Height * imageElement.height()) + 'px')
+            .css('top', Math.round(boundingBox.Top * imageElement.height()) + 'px')
+            .css('Left', Math.round(boundingBox.Left * imageElement.width()) + 'px')
     })
 }
