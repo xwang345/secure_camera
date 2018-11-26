@@ -17,12 +17,12 @@ addNewFaceModel_submitBtn.on('click', function() {
 
 function sendData(cropImageBinary) {
     let file = {
-        dom: $("#cropFaceInput"),
+        dom: $("#cropFaceInput")[0],
         binary: cropImageBinary
     };
 
-    let name = $('#addNewFaceModel_nameInput');
-    let description = $('#addNewFaceModel_descriptionInput');
+    let name = $('#addNewFaceModel_nameInput')[0];
+    let description = $('#addNewFaceModel_descriptionInput')[0];
 
     // 我们需要一个XMLHttpRequest 实例
     let XHR = new XMLHttpRequest();
