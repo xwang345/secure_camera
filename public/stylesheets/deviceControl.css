@@ -24,10 +24,6 @@
     flex: 1 1 auto;
 }
 
-.imgShowBox__imgContainer img {
-    height: 100%;
-}
-
 .imgShowBox__imgBoundingBox {
     position: absolute;
     z-index: 1000;
@@ -108,10 +104,6 @@
         width: 100%;
         height: auto;
         flex: 0 1 auto;
-    }
-    .imgShowBox__imgContainer img {
-        width: 100%;
-        height: auto;
     }
 }
 
