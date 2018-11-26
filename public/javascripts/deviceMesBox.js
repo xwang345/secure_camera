@@ -1,3 +1,5 @@
+import detectFaces from './module/facial';
+
 $("#imgShowBoxId .closeBtn:first").click(function() {
     $("#imgShowBoxId")
         .toggleClass("imgShowBox--close")
@@ -44,16 +46,19 @@ function loadImages(entities) {
 function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
+            let imgUrl = $(this).children("img:first").attr("src");
+
             $(imgShowId)
                 .toggleClass("imgShowBox--close")
                 .toggleClass("imgShowBox");
 
             $(imgShowId_ControlPanel + ':first')
                 .children("img:first")
-                .attr("src", $(this).children("img:first").attr("src"));
+                .attr("src", imgUrl);
 
-
-
+            detectFaces(imgUrl, function(result) {
+                console.log(result);
+            });
         });
     });
 }

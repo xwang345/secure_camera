@@ -1,4 +1,6 @@
-function ProcessImage(file1, file2) {
+export { compareFaces, detectFaces };
+
+function compareFaces(file1, file2) {
     AnonLog();
 
     // Load base64 encoded image for display 
@@ -34,6 +36,50 @@ function ProcessImage(file1, file2) {
     })(file1);
     reader1.readAsArrayBuffer(file1);
 }
+
+function detectFaces(imageUrl, cb) {
+    AnonLog();
+
+    let image = new Image();
+    image.src = imageUrl;
+
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext('2d');
+
+    image.onload = function() {
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        ctx.drawImage(image, 0, 0);
+
+        canvas.toBlob((blob) => {
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                return function(e) {
+
+                    AWS.region = "us-east-2";
+                    var rekognition = new AWS.Rekognition();
+                    var params = {
+                        Image: {
+                            Bytes: e.target.result
+                        }
+                    };
+
+                    rekognition.detectFaces(params, function(err, data) {
+                        if (err) console.log(err, err.stack); // an error occurred
+                        else {
+                            cb(data);
+                        }
+                    });
+                };
+            }
+
+            reader.readAsArrayBuffer(blob);
+        })
+    }
+}
+
 
 
 //Provides anonymous log on to AWS services
