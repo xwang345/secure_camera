@@ -96,7 +96,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                             if (index === array.length - 1 && trustFacesObj.matched === false) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">Unknown Face</h5>
                                     </div>
