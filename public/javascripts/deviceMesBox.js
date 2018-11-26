@@ -55,6 +55,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .attr("src", imgUrl);
 
             detectFaces(imgUrl, function(result) {
+                console.log(123);
                 console.log(result);
             });
         });

@@ -44,6 +44,8 @@ function detectFaces(imageUrl, cb) {
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext('2d');
 
+    console.log('abc')
+
     image.onload = function() {
         canvas.width = image.width;
         canvas.height = image.height;
