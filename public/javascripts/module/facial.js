@@ -49,10 +49,9 @@ function detectFaces(imageUrl, cb) {
         canvas.width = image.width;
         canvas.height = image.height;
 
-        consolo.log(canvas);
         ctx.drawImage(image, 0, 0);
 
-        consolo.log(canvas);
+        console.log(canvas);
 
         canvas.toBlob((blob) => {
             console.log(12345)
