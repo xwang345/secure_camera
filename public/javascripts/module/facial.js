@@ -38,49 +38,71 @@ function compareFaces(file1, file2) {
 function detectFaces(imageUrl, cb) {
     AnonLog();
 
-    let image = new Image();
-    image.src = imageUrl;
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        var url = URL.createObjectURL(this.response);
+        var img = new Image();
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext('2d');
+        img.src = url;
+        img.onload = function() {
+            canvas.width = image.width;
+            canvas.height = image.height;
 
-    let canvas = document.createElement("canvas");
-    let ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0);
 
-    image.onload = function() {
+            console.log(canvas);
+            URL.revokeObjectURL(url);
+        };
 
-        canvas.width = image.width;
-        canvas.height = image.height;
+    };
+    xhr.open('GET', imageUrl, true);
+    xhr.responseType = 'blob';
+    xhr.send();
 
-        ctx.drawImage(image, 0, 0);
+    // let image = new Image();
+    // image.src = imageUrl;
 
-        console.log(canvas);
+    // let canvas = document.createElement("canvas");
+    // let ctx = canvas.getContext('2d');
 
-        canvas.toBlob((blob) => {
-            console.log(12345)
+    // image.onload = function() {
 
-            var reader = new FileReader();
+    //     canvas.width = image.width;
+    //     canvas.height = image.height;
 
-            reader.onloadend = function() {
-                return function(e) {
+    //     ctx.drawImage(image, 0, 0);
 
-                    AWS.region = "us-east-2";
-                    var rekognition = new AWS.Rekognition();
-                    var params = {
-                        Image: {
-                            Bytes: e.target.result
-                        }
-                    };
+    //     console.log(canvas);
 
-                    rekognition.detectFaces(params, function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else {
-                            cb(data);
-                        }
-                    });
-                };
-            }
+    //     canvas.toBlob((blob) => {
+    //         console.log(12345)
 
-            reader.readAsArrayBuffer(blob);
-        })
-    }
+    //         var reader = new FileReader();
+
+    //         reader.onloadend = function() {
+    //             return function(e) {
+
+    //                 AWS.region = "us-east-2";
+    //                 var rekognition = new AWS.Rekognition();
+    //                 var params = {
+    //                     Image: {
+    //                         Bytes: e.target.result
+    //                     }
+    //                 };
+
+    //                 rekognition.detectFaces(params, function(err, data) {
+    //                     if (err) console.log(err, err.stack); // an error occurred
+    //                     else {
+    //                         cb(data);
+    //                     }
+    //                 });
+    //             };
+    //         }
+
+    //         reader.readAsArrayBuffer(blob);
+    //     })
+    // }
 }
 
 
