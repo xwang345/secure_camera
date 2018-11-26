@@ -1,16 +1,15 @@
 var addNewFaceModel_form = document.getElementById("addNewFaceModel_form");
 var addNewFaceModel_submitBtn = $("#addNewFaceModel_submitBtn");
-console.log(1234)
+
 let cropImageBinary = null;
 cropImageBinary = getCropImage();
 trustFace_DeleteListner();
 
 addNewFaceModel_submitBtn.on('click', function() {
-    console.log(123);
-    // console.log(cropImageBinary)
-    // if (cropImageBinary) {
-    //     sendData(cropImageBinary);
-    // }
+    console.log(cropImageBinary)
+        // if (cropImageBinary) {
+        //     sendData(cropImageBinary);
+        // }
 });
 
 function sendData(cropImageBinary) {
