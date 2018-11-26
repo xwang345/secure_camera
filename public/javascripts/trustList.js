@@ -34,7 +34,7 @@ function sendData(cropImageBinary) {
     let data = "";
 
     // 所以，如果用户已经选择了一个文件
-    if (file.cropImageBinary) {
+    if (file.binary) {
         // 在请求体中开始新的一部分
         data += "--" + boundary + "\r\n";
 
@@ -85,12 +85,12 @@ function sendData(cropImageBinary) {
 
     // 定义成功提交数据执行的语句
     XHR.addEventListener('load', function(event) {
-        alert('✌！数据已发送且响应已加载。');
+        alert('success');
     });
 
     // 定义发生错误时做的事
     XHR.addEventListener('error', function(event) {
-        alert('哎呀！出了问题。');
+        alert('error');
     });
 
     // 建立请求
