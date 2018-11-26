@@ -54,6 +54,8 @@ function detectFaces(imageUrl, cb) {
 
         let imgDataUrl = canvas.toDataURL('image/png', 1.0);
 
+        console.log(imgDataUrl)
+
         let imgBlob = dataURLToBlob(imgDataUrl);
 
         console.log(imgBlob)
