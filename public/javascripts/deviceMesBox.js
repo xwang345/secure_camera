@@ -50,7 +50,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
             };
 
             $('#imgShowBoxFaceDetectPanel').html('');
-            $('.imgShowBox__imgBoundingBox').css('opacity', 1)
+            $('.imgShowBox__imgBoundingBox').css('opacity', 0)
 
             let imgUrl = $(this).children("img:first").attr("src");
 
