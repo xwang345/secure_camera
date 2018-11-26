@@ -28,8 +28,8 @@ router.setSocketIo = function(socket, io) {
         });
     })
 
-    router.socket.on('request trustFaces', function(url) {
-        console.log('request trustFaces', url);
+    router.socket.on('request trustFaces', function() {
+
 
         modelDatastore.list(KIND, (err, entities) => {
             if (err) {
@@ -39,7 +39,7 @@ router.setSocketIo = function(socket, io) {
 
             let faceList = entities || null;
 
-            router.socket.emit('get trustFaces', faceList)
+            router.io.emit('get trustFaces', faceList)
         });
     })
 };

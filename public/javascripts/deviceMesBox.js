@@ -54,7 +54,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .children("img:first")
                 .attr("src", imgUrl);
 
-            socket.emit('request trustFaces', imgUrl);
+            socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
                 console.log('get trustFaces', faceList)
                 faceList.forEach((element) => {
