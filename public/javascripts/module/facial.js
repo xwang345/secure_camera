@@ -40,7 +40,6 @@ function detectFaces(imageUrl, cb) {
 
     let image = new Image();
     image.src = imageUrl;
-    image.crossOrigin = "anonymous";
 
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext('2d');
