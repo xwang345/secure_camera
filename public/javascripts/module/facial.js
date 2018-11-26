@@ -55,10 +55,13 @@ function detectFaces(imageUrl, cb) {
         console.log(canvas)
 
         canvas.toBlob((blob) => {
+
+            console.log(blob)
             var reader = new FileReader();
 
-            reader.onload = function() {
+            reader.onloadend = function() {
                 console.log(3);
+
                 return function(e) {
 
                     AWS.region = "us-east-2";
