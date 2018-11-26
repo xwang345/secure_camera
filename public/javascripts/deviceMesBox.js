@@ -69,7 +69,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                             if (result > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div class="card" style="width: 18rem;">
+                                <div class="card imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
                                         <p class="card-text">${element.description}</p>
