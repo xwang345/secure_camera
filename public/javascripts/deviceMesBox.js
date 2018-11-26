@@ -54,7 +54,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .children("img:first")
                 .attr("src", imgUrl);
 
-            detectFaces(imgUrl)
+            detectFaces(imgUrl, function(result) {
+                console.log(result);
+            })
         });
     });
 }
