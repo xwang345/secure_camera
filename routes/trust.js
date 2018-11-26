@@ -28,7 +28,8 @@ router.setSocketIo = function(socket, io) {
         });
     })
 
-    router.socket.on('request trustFaces', function() {
+    router.socket.on('request trustFaces', function(url) {
+        console.log('request trustFaces', url);
 
         modelDatastore.list(KIND, (err, entities) => {
             if (err) {
