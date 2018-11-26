@@ -63,7 +63,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
             //     })
             // })
 
-            detectFaces(imgUrl, function(data) {
+            compareFaces(imgUrl, imgUrl, function(data) {
                 console.log(data)
             })
 
