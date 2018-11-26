@@ -96,19 +96,20 @@ function detectFaces(imageUrl, cb) {
 
 //Provides anonymous log on to AWS services
 function AnonLog() {
-
-    // Configure the credentials provider to use your identity pool
-    AWS.config.region = 'us-east-2'; // Region
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-east-2:eaa573bd-b153-4088-8a64-384862359380',
-    });
-    // Make the call to obtain credentials
-    AWS.config.credentials.get(function() {
-        // Credentials will be available when this function is called.
-        var accessKeyId = AWS.config.credentials.accessKeyId;
-        var secretAccessKey = AWS.config.credentials.secretAccessKey;
-        var sessionToken = AWS.config.credentials.sessionToken;
-    });
+    if (!AWS.config.credentials) {
+        // Configure the credentials provider to use your identity pool
+        AWS.config.region = 'us-east-2'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-2:eaa573bd-b153-4088-8a64-384862359380',
+        });
+        // Make the call to obtain credentials
+        AWS.config.credentials.get(function() {
+            // Credentials will be available when this function is called.
+            var accessKeyId = AWS.config.credentials.accessKeyId;
+            var secretAccessKey = AWS.config.credentials.secretAccessKey;
+            var sessionToken = AWS.config.credentials.sessionToken;
+        });
+    }
 }
 
 function dataURLToBlob(dataurl) {
