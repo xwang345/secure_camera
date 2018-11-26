@@ -56,13 +56,14 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
-                console.log('1234');
-                console.log(faceList)
+                faceList.forEach((element) => {
+                    compareFaces(element.url, imgUrl, function(result) {
+                        console.log(result)
+                    })
+                })
             })
 
-            // compareFaces(imgUrl, function(result) {
-            //     console.log(result)
-            // })
+
         });
     });
 }
