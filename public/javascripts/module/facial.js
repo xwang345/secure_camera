@@ -52,7 +52,29 @@ function detectFaces(imageUrl, cb) {
             ctx.drawImage(img, 0, 0);
 
             canvas.toBlob((blob) => {
-                console.log(blob);
+                var reader = new FileReader();
+
+                reader.onloadend = function() {
+                    return function(e) {
+
+                        AWS.region = "us-east-2";
+                        var rekognition = new AWS.Rekognition();
+                        var params = {
+                            Image: {
+                                Bytes: e.target.result
+                            }
+                        };
+
+                        rekognition.detectFaces(params, function(err, data) {
+                            if (err) console.log(err, err.stack); // an error occurred
+                            else {
+                                cb(data);
+                            }
+                        });
+                    };
+                }
+
+                reader.readAsArrayBuffer(blob);
             })
             URL.revokeObjectURL(url);
         };
@@ -62,49 +84,6 @@ function detectFaces(imageUrl, cb) {
     xhr.responseType = 'blob';
     xhr.send();
 
-    // let image = new Image();
-    // image.src = imageUrl;
-
-    // let canvas = document.createElement("canvas");
-    // let ctx = canvas.getContext('2d');
-
-    // image.onload = function() {
-
-    //     canvas.width = image.width;
-    //     canvas.height = image.height;
-
-    //     ctx.drawImage(image, 0, 0);
-
-    //     console.log(canvas);
-
-    //     canvas.toBlob((blob) => {
-    //         console.log(12345)
-
-    //         var reader = new FileReader();
-
-    //         reader.onloadend = function() {
-    //             return function(e) {
-
-    //                 AWS.region = "us-east-2";
-    //                 var rekognition = new AWS.Rekognition();
-    //                 var params = {
-    //                     Image: {
-    //                         Bytes: e.target.result
-    //                     }
-    //                 };
-
-    //                 rekognition.detectFaces(params, function(err, data) {
-    //                     if (err) console.log(err, err.stack); // an error occurred
-    //                     else {
-    //                         cb(data);
-    //                     }
-    //                 });
-    //             };
-    //         }
-
-    //         reader.readAsArrayBuffer(blob);
-    //     })
-    // }
 }
 
 
