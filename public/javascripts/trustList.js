@@ -30,8 +30,8 @@ function getCropImage(cb) {
                 uploadedImage.src = $image.attr('src');
 
                 uploadedImage.onload = function() {
-                    cropCanvs.width = uploadedImage.width;
-                    cropCanvs.height = uploadedImage.height;
+                    cropCanvs.width = width;
+                    cropCanvs.height = height;
 
                     ctx.drawImage(uploadedImage, x, y, width, height, 0, 0, width, height);
 
