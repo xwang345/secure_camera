@@ -1,9 +1,9 @@
 var addNewFaceModel_form = document.getElementById("addNewFaceModel_form");
 
-let cropImageBinary = null;
+let cropImageBuffer = null;
 
 getCropImage(function(result) {
-    cropImageBinary = result;
+    cropImageBuffer = result;
 });
 
 trustFace_DeleteListner();
@@ -42,7 +42,7 @@ function getCropImage(cb) {
                             cb(reader.result);
                         }
 
-                        reader.readAsBinaryString(blob);
+                        reader.readAsArrayBuffer(blob);
                     })
                 }
             }
@@ -64,7 +64,7 @@ function trustFace_DeleteListner() {
 
 function trustFace_UploadListner() {
     $('#addNewFaceModel_submitBtn').on('click', function() {
-        if (cropImageBinary) {
+        if (cropImageBuffer) {
 
             let nameInput = $('#addNewFaceModel_nameInput').val();
             let descriptionInput = $('#addNewFaceModel_descriptionInput').val();
@@ -72,12 +72,12 @@ function trustFace_UploadListner() {
             let postData = {
                 name: nameInput,
                 description: descriptionInput,
-                imgBinary: cropImageBinary
+                imgBuffer: cropImageBuffer
             }
 
             socket.emit('add face', postData);
 
-            cropImageBinary = null;
+            cropImageBuffer = null;
         }
     })
 }
