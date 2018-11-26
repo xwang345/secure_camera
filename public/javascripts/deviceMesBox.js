@@ -56,6 +56,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
+                console.log('1234');
                 console.log(faceList)
             })
 
