@@ -66,7 +66,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
                     faceList.forEach((element) => {
                         compareFaces(element.url, imgUrl, function(result) {
-                            console.log(result)
+                            console.log(element, result)
                         })
                     })
                 }
