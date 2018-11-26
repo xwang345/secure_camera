@@ -18,9 +18,13 @@
     transition: 200ms;
 }
 
-.imgShowBox img {
+.imgShowBox .imgShowBox__imgContainer {
     margin-bottom: 10px;
     flex: 1 1 auto;
+}
+
+.imgShowBox__imgContainer img {
+    width: 100%;
 }
 
 .imgShowBox--close {
@@ -91,7 +95,7 @@
 }
 
 @media screen and (max-width: 1400px) {
-    .imgShowBox img {
+    .imgShowBox .imgShowBox__imgContainer {
         width: 100%;
         height: auto;
         flex: 0 1 auto;
