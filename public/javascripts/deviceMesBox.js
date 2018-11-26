@@ -93,5 +93,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data) {
-    console.log($(faceDetectCardId))
+    $(faceDetectCardId).click(function() {
+        console.log(123);
+    })
 }
