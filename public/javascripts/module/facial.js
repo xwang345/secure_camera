@@ -43,16 +43,16 @@ function detectFaces(imageUrl, cb) {
     let image = new Image();
     image.src = imageUrl;
 
-    let canvas = document.createElement("canvas");
-    let ctx = canvas.getContext('2d');
+    let imgCanvas = document.createElement("canvas");
+    let ctx = imgCanvas.getContext('2d');
 
     image.onload = function() {
-        canvas.width = image.width;
-        canvas.height = image.height;
+        imgCanvas.width = image.width;
+        imgCanvas.height = image.height;
 
         ctx.drawImage(image, 0, 0);
 
-        let imgDataUrl = canvas.toDataURL('image/png', 1.0);
+        let imgDataUrl = imgCanvas.toDataURL('image/png', 1.0);
 
         console.log(imgDataUrl)
 
