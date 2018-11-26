@@ -10,10 +10,9 @@ getCropImage(function(result) {
 trustFace_DeleteListner();
 
 addNewFaceModel_submitBtn.on('click', function() {
-    console.log(cropImageBinary)
-        // if (cropImageBinary) {
-        //     sendData(cropImageBinary);
-        // }
+    if (cropImageBinary) {
+        sendData(cropImageBinary);
+    }
 });
 
 function sendData(cropImageBinary) {
