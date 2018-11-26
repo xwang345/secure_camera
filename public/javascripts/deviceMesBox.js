@@ -42,6 +42,11 @@ function loadImages(entities) {
 }
 
 function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
+
+    let trustFacesObj = {
+        arr: null
+    };
+
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
             let imgUrl = $(this).children("img:first").attr("src");
@@ -56,13 +61,15 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
-                console.log('get trustFaces', faceList)
-                console.log('---------')
-                faceList.forEach((element) => {
-                    compareFaces(element.url, imgUrl, function(result) {
-                        console.log(result)
+                if (trustFacesObj.arr === null) {
+                    trustFacesObj.arr = faceList;
+
+                    faceList.forEach((element) => {
+                        compareFaces(element.url, imgUrl, function(result) {
+                            console.log(result)
+                        })
                     })
-                })
+                }
             })
         });
     });
