@@ -69,6 +69,13 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                     faceList.forEach((element, index) => {
                         compareFaces(element.url, imgUrl, function(result) {
+                            if (!result) {
+                                $('#imgShowBoxFaceDetectPanel').html(`
+                                    <p>There is not any trust face!</p>
+                                `);
+                            }
+
+
                             let similarity = result.FaceMatches[0].Similarity;
                             if (similarity > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
