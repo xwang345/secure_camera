@@ -2,7 +2,11 @@ var addNewFaceModel_form = document.getElementById("addNewFaceModel_form");
 var addNewFaceModel_submitBtn = $("#addNewFaceModel_submitBtn");
 
 let cropImageBinary = null;
-cropImageBinary = getCropImage();
+
+getCropImage(function(result) {
+    cropImageBinary = result;
+});
+
 trustFace_DeleteListner();
 
 addNewFaceModel_submitBtn.on('click', function() {
@@ -99,7 +103,7 @@ function sendData(cropImageBinary) {
     XHR.send(data);
 }
 
-function getCropImage() {
+function getCropImage(cb) {
     $('#addNewFaceModel_faceUpload').imageupload(null, function() {
 
         let $image = $('#image');
@@ -129,7 +133,7 @@ function getCropImage() {
                         var reader = new FileReader();
 
                         reader.onloadend = function() {
-                            return reader.result;
+                            cb(reader.result);
                         }
 
                         reader.readAsBinaryString(blob);
