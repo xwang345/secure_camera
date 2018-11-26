@@ -44,18 +44,20 @@ function detectFaces(imageUrl, cb) {
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext('2d');
 
-    console.log('abc')
-
     image.onload = function() {
         canvas.width = image.width;
         canvas.height = image.height;
 
         ctx.drawImage(image, 0, 0);
 
+        console.log(1);
+
         canvas.toBlob((blob) => {
+            console.log(2);
             var reader = new FileReader();
 
             reader.onload = function() {
+                console.log(3);
                 return function(e) {
 
                     AWS.region = "us-east-2";
