@@ -54,13 +54,17 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .children("img:first")
                 .attr("src", imgUrl);
 
-            socket.emit('request trustFaces');
-            socket.on('get trustFaces', function(faceList) {
-                faceList.forEach((element) => {
-                    compareFaces(element.url, imgUrl, function(result) {
-                        console.log(result)
-                    })
-                })
+            // socket.emit('request trustFaces');
+            // socket.on('get trustFaces', function(faceList) {
+            //     faceList.forEach((element) => {
+            //         compareFaces(element.url, imgUrl, function(result) {
+            //             console.log(result)
+            //         })
+            //     })
+            // })
+
+            detectFaces(imgUrl, function(data) {
+                console.log(data)
             })
 
 
