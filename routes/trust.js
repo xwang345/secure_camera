@@ -11,13 +11,7 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 
     router.socket.on('add face', function(data) {
-        modelDatastore.create(KIND, data, (err, savedData) => {
-            if (err) {
-                console.log(err)
-                return;
-            }
-            console.log({ state: 0, msg: 'A new face is added!' })
-        });
+        console.log(data);
     })
 };
 
@@ -60,10 +54,6 @@ router.get("/", (req, res, next) => {
 //         });
 //     });
 
-router.post("/addFace", (req, res, next) => {
-    console.log(req);
-    res.json({ msg: 'success' });
-})
 
 router.get("/deleteFace", (req, res, next) => {
 
