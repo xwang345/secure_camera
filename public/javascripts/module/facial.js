@@ -24,7 +24,7 @@ function compareFaces(imageUrl_1, imageUrl_2, cb) {
                         rekognition.compareFaces(params, function(err, data) {
                             if (err) console.log(err, err.stack); // an error occurred
                             else {
-                                cb(data.FaceMatches[0].Similarity);
+                                cb(data);
                             }
                         });
                     } else {

@@ -66,7 +66,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
                     faceList.forEach((element) => {
                         compareFaces(element.url, imgUrl, function(result) {
-                            if (result > 75) {
+                            let similarity = result.FaceMatches[0].Similarity;
+                            console.log(result)
+                            if (similarity > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
                                 <div class="card imgShowBox__faceDetectCard" style="width: 18rem;">
