@@ -5,8 +5,9 @@ cropImageBinary = getCropImage();
 trustFace_DeleteListner();
 trustFace_UploadListner();
 
-foaddNewFaceModelForm.on('submit', function(e) {
+foaddNewFaceModelForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    console.log(cropImageBinary)
     if (cropImageBinary) {
         sendData(cropImageBinary);
     }
@@ -78,6 +79,8 @@ function sendData(cropImageBinary) {
     // 一旦完成，关闭请求体
     data += "--" + boundary + "--";
 
+    console.log(data)
+
     // 定义成功提交数据执行的语句
     XHR.addEventListener('load', function(event) {
         alert('✌！数据已发送且响应已加载。');
@@ -93,8 +96,7 @@ function sendData(cropImageBinary) {
 
     // 添加需要的HTTP报头来处理多部分表单数据POST请求
     XHR.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-    console.log(data)
-        // 最后，发送数据。
+    // 最后，发送数据。
     XHR.send(data);
 }
 
