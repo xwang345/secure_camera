@@ -29,19 +29,14 @@ router.setSocketIo = function(socket, io) {
     })
 
     router.socket.on('request trustFaces', function() {
-        let count = 0;
-
 
         modelDatastore.list(KIND, (err, entities) => {
             if (err) {
                 next(err);
                 return;
             }
-            count++;
 
             let faceList = entities || null;
-
-            console.log(count)
 
             router.socket.emit('get trustFaces', faceList)
         });
