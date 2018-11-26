@@ -4,7 +4,6 @@ var addNewFaceModel_submitBtn = document.getElementById("addNewFaceModel_submitB
 let cropImageBinary = null;
 cropImageBinary = getCropImage();
 trustFace_DeleteListner();
-trustFace_UploadListner();
 
 addNewFaceModel_submitBtn.on('click', function() {
     console.log(123);
