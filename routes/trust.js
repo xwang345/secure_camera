@@ -11,8 +11,9 @@ router.setSocketIo = function(socket, io) {
     router.socket = socket;
 
     router.socket.on('add face', function(data) {
-        var cropUrl = myImages.sendCropUploadToGCS(data);
-        console.log(cropUrl)
+        myImages.sendCropUploadToGCS(data, function(cropUrl) {
+            console.log(cropUrl)
+        });
     })
 };
 
