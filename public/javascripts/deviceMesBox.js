@@ -54,7 +54,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .children("img:first")
                 .attr("src", imgUrl);
 
-            socket.emit('detect a image', imgUrl)
+            detectFaces(imgUrl)
         });
     });
 }

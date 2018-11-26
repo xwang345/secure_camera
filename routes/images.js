@@ -1,7 +1,6 @@
 const express = require("express");
 const myImages = require("../lib/my-images");
 const modelDatastore = require("../lib/model-datastore");
-const facial = require("../lib/facial");
 
 const router = express.Router();
 
@@ -10,12 +9,6 @@ const KIND = "Snapshot";
 router.setSocketIo = function(socket, io) {
     router.io = io;
     router.socket = socket;
-
-    router.socket.on('detect a image', function(imgUrl) {
-        facial.detectFaces(imgUrl, function(result) {
-            console.log(result)
-        })
-    })
 };
 
 // add a image to google cloud storage
