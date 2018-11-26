@@ -17,7 +17,7 @@ router.setSocketIo = function(socket, io) {
             cropData.description = data.description;
             cropData.url = cropUrl;
 
-            modelDatastore.create(KIND, data, (err, savedData) => {
+            modelDatastore.create(KIND, cropData, (err, savedData) => {
                 if (err) {
                     console.log(err);
                     return;
