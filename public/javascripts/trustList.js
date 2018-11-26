@@ -1,6 +1,6 @@
 var addNewFaceModel_form = document.getElementById("addNewFaceModel_form");
-var addNewFaceModel_submitBtn = document.getElementById("addNewFaceModel_submitBtn");
-
+var addNewFaceModel_submitBtn = $("#addNewFaceModel_submitBtn");
+console.log(1234)
 let cropImageBinary = null;
 cropImageBinary = getCropImage();
 trustFace_DeleteListner();
