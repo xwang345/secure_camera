@@ -49,6 +49,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 arr: null
             };
 
+            $('#imgShowBoxFaceDetectPanel').html('');
+
             let imgUrl = $(this).children("img:first").attr("src");
 
             $(imgShowId)
@@ -64,22 +66,22 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 if (trustFacesObj.arr === null) {
                     trustFacesObj.arr = faceList;
 
-                    faceList.forEach((element) => {
+                    faceList.forEach((element, index) => {
                         compareFaces(element.url, imgUrl, function(result) {
                             let similarity = result.FaceMatches[0].Similarity;
                             console.log(result)
                             if (similarity > 75) {
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div class="card imgShowBox__faceDetectCard" style="width: 18rem;">
+                                <div id="imgShowBoxFaceDetectCard + ${element.name} + ${index}" class="card imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
                                         <p class="card-text">${element.description}</p>
                                     </div>
                                 </div>
                                 `;
-
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard + ${element.name} + ${index}`, result);
                             }
 
                         })
@@ -88,4 +90,12 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
             })
         });
     });
+}
+
+function faceDetectCardEventListener(faceDetectCardId, data) {
+    $(faceDetectCardId).click(function() {
+        var boundingBox = data.FaceMatches[0].Face.BoundingBox;
+        console.log(boundingBox)
+
+    })
 }
