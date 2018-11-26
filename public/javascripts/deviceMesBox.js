@@ -59,7 +59,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
             $(imgShowBox__imgContainer + ':first')
                 .children("img:first")
-                .attr("src", imgUrl).
+                .attr("src", imgUrl);
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
