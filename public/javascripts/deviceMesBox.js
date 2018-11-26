@@ -46,7 +46,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
             let trustFacesObj = {
-                arr: null
+                arr: null,
+                matched: false
             };
 
             $('#imgShowBoxFaceDetectPanel').html('');
@@ -67,18 +68,18 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                 if (trustFacesObj.arr === null) {
                     trustFacesObj.arr = faceList;
 
-                    faceList.forEach((element, index) => {
+                    faceList.forEach((element, index, array) => {
                         compareFaces(element.url, imgUrl, function(result) {
                             console.log(result)
                             if (!result) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
-                                    <p>There is not any trust face!</p>
+                                    <p style="color: red; ">There is not any trust face!</p>
                                 `);
                             }
 
-
                             let similarity = result.FaceMatches[0].Similarity;
                             if (similarity > 75) {
+                                trustFacesObj.matched = true;
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
                                 <div id="imgShowBoxFaceDetectCard${element.name}${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
@@ -90,6 +91,19 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
                                 faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result);
+                            }
+
+                            if (index === array.length - 1 && trustFacesObj.matched === false) {
+                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                let newHtml = oldHtml + `
+                                <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Unknown Face</h5>
+                                    </div>
+                                </div>
+                                `;
+                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result);
                             }
 
                         })
