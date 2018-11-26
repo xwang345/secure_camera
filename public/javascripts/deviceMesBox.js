@@ -38,10 +38,10 @@ function loadImages(entities) {
 
     $(".deviceMesBox__mesWindow:first").html(content);
 
-    ImageEventListener(".deviceMesBox__imgElement", "#imgShowBoxId", ".imgShowBox__controlPanel");
+    ImageEventListener(".deviceMesBox__imgElement", "#imgShowBoxId", ".imgShowBox__imgContainer");
 }
 
-function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
+function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
@@ -57,7 +57,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
                 .toggleClass("imgShowBox--close")
                 .toggleClass("imgShowBox");
 
-            $(imgShowId_ControlPanel + ':first')
+            $(imgShowBox__imgContainer + ':first')
                 .children("img:first")
                 .attr("src", imgUrl);
 
