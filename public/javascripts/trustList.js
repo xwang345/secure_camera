@@ -54,7 +54,7 @@ function sendData(cropImageBinary) {
     data += '\r\n';
 
     // 添加二进制数据到请求体中
-    data += file.binary + '\r\n';
+    data += '1234' + '\r\n';
 
 
     // 文本数据是简单的
