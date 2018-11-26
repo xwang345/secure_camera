@@ -80,7 +80,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 </div>
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result);
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.name}${index}`, result, imgUrl);
                             }
 
                         })
@@ -91,9 +91,12 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
     });
 }
 
-function faceDetectCardEventListener(faceDetectCardId, data) {
+function faceDetectCardEventListener(faceDetectCardId, data, imgUrl) {
     $(faceDetectCardId).click(function() {
+        let image = $(`img[src=${imgUrl}]`);
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
-        console.log(boundingBox)
+        let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
+        console.log(image)
+        imgShowBoxBoundingBox.attr('width', boundingBox.width * image.attr('width'));
     })
 }
