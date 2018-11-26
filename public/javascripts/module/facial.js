@@ -55,6 +55,7 @@ function detectFaces(imageUrl, cb) {
                 var reader = new FileReader();
 
                 reader.onloadend = function() {
+                    console.log(1)
                     return function(e) {
 
                         AWS.region = "us-east-2";
