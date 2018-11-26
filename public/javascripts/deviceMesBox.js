@@ -94,10 +94,11 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
 function faceDetectCardEventListener(faceDetectCardId, data, imgId) {
     $(faceDetectCardId).click(function() {
+        console.log(imgId)
         let image = $(imgId);
+        console.log(image)
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
-        console.log(image)
         imgShowBoxBoundingBox.attr('width', boundingBox.width * image.attr('width'));
     })
 }
