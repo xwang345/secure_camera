@@ -43,12 +43,12 @@ function loadImages(entities) {
 
 function ImageEventListener(imgEleClass, imgShowId, imgShowId_ControlPanel) {
 
-    let trustFacesObj = {
-        arr: null
-    };
-
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
+            let trustFacesObj = {
+                arr: null
+            };
+
             let imgUrl = $(this).children("img:first").attr("src");
 
             $(imgShowId)
