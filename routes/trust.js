@@ -39,7 +39,7 @@ router.setSocketIo = function(socket, io) {
 
             let faceList = entities || null;
 
-            router.io.emit('get trustFaces', faceList)
+            router.io.sockets.emit('get trustFaces', faceList)
         });
     })
 };
