@@ -62,7 +62,7 @@ function sendData(cropImageBinary) {
     data += "--" + boundary + "\r\n";
 
     // 说它是表单数据，并命名它
-    data += 'content-disposition: form-data; name="' + name.name + '"\r\n';
+    data += 'content-disposition: form-data; name="' + name.name + ';"\r\n';
     // 元数据和数据之间有一条空行。
     data += '\r\n';
 
@@ -72,7 +72,7 @@ function sendData(cropImageBinary) {
     data += "--" + boundary + "\r\n";
 
     // 说它是表单数据，并命名它
-    data += 'content-disposition: form-data; name="' + description.name + '"\r\n';
+    data += 'content-disposition: form-data; name="' + description.name + ';"\r\n';
     // 元数据和数据之间有一条空行。
     data += '\r\n';
 
