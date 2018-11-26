@@ -93,8 +93,8 @@ function sendData(cropImageBinary) {
 
     // 添加需要的HTTP报头来处理多部分表单数据POST请求
     XHR.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-
-    // 最后，发送数据。
+    console.log(data)
+        // 最后，发送数据。
     XHR.send(data);
 }
 
