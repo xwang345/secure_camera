@@ -1,4 +1,4 @@
-import detectFaces from './module/facial';
+import { detectFaces } from './module/facial.js';
 
 $("#imgShowBoxId .closeBtn:first").click(function() {
     $("#imgShowBoxId")
