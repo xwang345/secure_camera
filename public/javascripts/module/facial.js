@@ -55,33 +55,33 @@ function detectFaces(imageUrl, cb) {
         console.log(canvas)
 
         canvas.toBlob((blob) => {
-
+            console.log(12345)
             console.log(blob)
-            var reader = new FileReader();
+                // var reader = new FileReader();
 
-            reader.onloadend = function() {
-                console.log(3);
+            // reader.onloadend = function() {
+            //     console.log(3);
 
-                return function(e) {
+            //     return function(e) {
 
-                    AWS.region = "us-east-2";
-                    var rekognition = new AWS.Rekognition();
-                    var params = {
-                        Image: {
-                            Bytes: e.target.result
-                        }
-                    };
+            //         AWS.region = "us-east-2";
+            //         var rekognition = new AWS.Rekognition();
+            //         var params = {
+            //             Image: {
+            //                 Bytes: e.target.result
+            //             }
+            //         };
 
-                    rekognition.detectFaces(params, function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else {
-                            cb(data);
-                        }
-                    });
-                };
-            }
+            //         rekognition.detectFaces(params, function(err, data) {
+            //             if (err) console.log(err, err.stack); // an error occurred
+            //             else {
+            //                 cb(data);
+            //             }
+            //         });
+            //     };
+            // }
 
-            reader.readAsArrayBuffer(blob);
+            // reader.readAsArrayBuffer(blob);
         })
     }
 }
