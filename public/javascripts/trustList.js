@@ -21,7 +21,6 @@ function sendData(cropImageBinary) {
     let description = $('#addNewFaceModel_descriptionInput')[0];
 
     let file = {
-        dom: $("#cropFaceInput")[0],
         filename: new Date() + name.value,
         binary: cropImageBinary
     };
@@ -35,29 +34,27 @@ function sendData(cropImageBinary) {
     // 将我们的请求主体存储于一个字符串中
     let data = "";
 
-    console.log(file)
+    // 所以，如果用户已经选择了一个文件
 
-    // // 所以，如果用户已经选择了一个文件
+    // 在请求体中开始新的一部分
+    data += "--" + boundary + "\r\n";
 
-    // // 在请求体中开始新的一部分
-    // data += "--" + boundary + "\r\n";
+    // 把它描述成表单数据
+    data += 'content-disposition: form-data; '
+        // 定义表单数据的名称
+        +
+        'name="image"; '
+        // 提供文件的真实名字
+        +
+        'filename="' + file.filename + '"\r\n';
+    // 和文件的MIME类型
+    data += 'Content-Type: ' + 'image/png' + '\r\n';
 
-    // // 把它描述成表单数据
-    // data += 'content-disposition: form-data; '
-    //     // 定义表单数据的名称
-    //     +
-    //     'name="' + file.dom.name + '"; '
-    //     // 提供文件的真实名字
-    //     +
-    //     'filename="' + file.filename + '"\r\n';
-    // // 和文件的MIME类型
-    // data += 'Content-Type: ' + 'image/png' + '\r\n';
+    // 元数据和数据之间有一条空行。
+    data += '\r\n';
 
-    // // 元数据和数据之间有一条空行。
-    // data += '\r\n';
-
-    // // 添加二进制数据到请求体中
-    // data += file.binary + '\r\n';
+    // 添加二进制数据到请求体中
+    data += file.binary + '\r\n';
 
 
     // 文本数据是简单的
