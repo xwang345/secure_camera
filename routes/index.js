@@ -25,10 +25,10 @@ router.use((req, res, next) => {
     }
 });
 
-router.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-})
+// router.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     next();
+// })
 
 router.get(["/", "/howto"], (req, res, next) => {
     res.render("howto");
