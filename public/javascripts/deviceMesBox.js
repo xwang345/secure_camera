@@ -94,7 +94,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 function faceDetectCardEventListener(faceDetectCardId, data) {
     $(faceDetectCardId).click(function() {
         let image = new Image();
-        image.src = $('.imgShowBox__img')[0].attr('src');
+        let imageElement = $('.imgShowBox__img')[0];
+        image.src = imageElement.attr('src');
         image.onload = function() {
             let boundingBox = data.FaceMatches[0].Face.BoundingBox;
             let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
