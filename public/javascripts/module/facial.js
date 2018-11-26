@@ -45,12 +45,11 @@ function detectFaces(imageUrl, cb) {
     let ctx = canvas.getContext('2d');
 
     image.onload = function() {
-        console.log(123);
 
         canvas.width = image.width;
         canvas.height = image.height;
 
-        ctx.drawImage(image);
+        ctx.drawImage(image, 0, 0);
 
         consolo.log(canvas)
 
