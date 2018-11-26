@@ -19,10 +19,10 @@ router.setSocketIo = function(socket, io) {
 
             modelDatastore.create(KIND, data, (err, savedData) => {
                 if (err) {
-                    next(err);
+                    console.log(err);
                     return;
                 }
-                res.json({ state: 0, msg: 'A new face is added!' })
+                console.log('A new face is added!')
             });
         });
     })
