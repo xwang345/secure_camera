@@ -54,10 +54,8 @@ function detectFaces(imageUrl, cb) {
             canvas.toBlob((blob) => {
                 var reader = new FileReader();
 
-                reader.onloadend = function() {
-                    console.log(1)
+                reader.onloadend = (function(file) {
                     return function(e) {
-
                         AWS.region = "us-east-2";
                         var rekognition = new AWS.Rekognition();
                         var params = {
@@ -73,7 +71,7 @@ function detectFaces(imageUrl, cb) {
                             }
                         });
                     };
-                }
+                })(blob)
 
                 reader.readAsArrayBuffer(blob);
             })
