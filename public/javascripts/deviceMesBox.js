@@ -101,7 +101,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     'Left:' + firstFaceBoundingBox.Left.toFixed(2) +
                                     "";
                                 let similarity = firstFace.Similarity;
-                                if (similarity >= 75) {
+                                if (similarity >= 70) {
 
                                     if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
                                         trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
@@ -149,7 +149,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
-    console.log(faceDetectCardId, data)
+
     $(faceDetectCardId).click(function() {
         console.log(123)
         let imageElement = $('.imgShowBox__img:first');
