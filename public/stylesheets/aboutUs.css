@@ -1,7 +1,7 @@
 .main__main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .aboutUs__infoContainer {
@@ -12,4 +12,5 @@
 .aboutUs__infoCard {
     width: 100% !important;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 }
