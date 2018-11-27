@@ -122,7 +122,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                 if (index === array.length - 1) {
                                     console.log(trustFacesObj.faceInSnapshot)
-                                    for (var e in trustFacesObj.faceInSnapshot) {
+                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(e => {
                                         console.log(e.Similarity)
                                         if (e.Similarity < 75) {
                                             let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
@@ -137,7 +137,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             $('#imgShowBoxFaceDetectPanel').html(newHtml)
                                             faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, result, 'red');
                                         }
-                                    }
+                                    })
                                 }
 
                             }
