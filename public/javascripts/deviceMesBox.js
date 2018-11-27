@@ -121,10 +121,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 }
 
                                 if (index === array.length - 1) {
-                                    console.log(trustFacesObj.faceInSnapshot)
-                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(e => {
-                                        console.log(e)
-                                        if (e.Similarity < 75) {
+                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
+
+                                        if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
                                             let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                             let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                             let newHtml = oldHtml + `
