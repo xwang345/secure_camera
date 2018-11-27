@@ -124,7 +124,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
 
                                         if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
-                                            let faceCardId = Date.now().toString() + Math.random(10000);
+                                            let faceCardId = Date.now().toString() + Math.floor(Math.random(10000));
                                             let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                             let newHtml = oldHtml + `
                                             <div id="imgShowBoxFaceDetectCard_unknown_${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
