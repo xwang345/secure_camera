@@ -106,6 +106,18 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
                                         trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
                                     }
+                                    let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
+                                    let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                    let newHtml = oldHtml + `
+                                        <div id="imgShowBoxFaceDetectCard_${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${element.name}</h5>
+                                                <p class="card-text">${element.description}</p>
+                                            </div>
+                                        </div>
+                                    `;
+                                    $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, firstFace);
                                 }
 
                                 if (index === array.length - 1) {
@@ -122,19 +134,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             `;
                                             $('#imgShowBoxFaceDetectPanel').html(newHtml)
                                             faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, trustFacesObj.faceInSnapshot[key], 'red');
-                                        } else {
-                                            let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
-                                            let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                            let newHtml = oldHtml + `
-                                                <div id="imgShowBoxFaceDetectCard_${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">${element.name}</h5>
-                                                        <p class="card-text">${element.description}</p>
-                                                    </div>
-                                                </div>
-                                            `;
-                                            $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, trustFacesObj.faceInSnapshot[key]);
                                         }
                                     })
                                 }
@@ -150,6 +149,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
+    console.log(faceDetectCardId, data)
     $(faceDetectCardId).click(function() {
         console.log(123)
         let imageElement = $('.imgShowBox__img:first');
