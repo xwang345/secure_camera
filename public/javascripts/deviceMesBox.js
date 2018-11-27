@@ -103,7 +103,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 </div>
                                 `;
                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result);
+                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
                             }
 
                         })
@@ -114,16 +114,20 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
     });
 }
 
-function faceDetectCardEventListener(faceDetectCardId, data) {
+function faceDetectCardEventListener(faceDetectCardId, data, color) {
     $(faceDetectCardId).click(function() {
         let imageElement = $('.imgShowBox__img:first');
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
-        let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox')
+        let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox');
+
+        color = color || 'yellow';
+
         imgShowBoxBoundingBox
             .css('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
             .css('height', Math.round(boundingBox.Height * imageElement.height()) + 'px')
             .css('top', Math.round(boundingBox.Top * imageElement.height()) + 'px')
             .css('left', Math.round(boundingBox.Left * imageElement.width()) + 'px')
-            .css('opacity', 1)
+            .css('border-color', color)
+            .css('opacity', 1);
     })
 }
