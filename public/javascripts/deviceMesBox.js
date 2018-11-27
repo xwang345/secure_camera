@@ -46,8 +46,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
     $(imgEleClass).each(function(index) {
         $(this).click(function() {
             let trustFacesObj = {
-                arr: null,
-                matched: false
+                faceList: null,
+                faceInSnapshot: null
+
             };
 
             $('#imgShowBoxFaceDetectPanel').html('');
@@ -65,13 +66,25 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
             socket.emit('request trustFaces');
             socket.on('get trustFaces', function(faceList) {
-                if (trustFacesObj.arr === null) {
-                    trustFacesObj.arr = faceList;
+                if (trustFacesObj.faceList === null) {
+                    trustFacesObj.faceList = faceList;
 
                     faceList.forEach((element, index, array) => {
                         compareFaces(element.url, imgUrl, function(result) {
 
-                            console.log(result)
+                            if (!trustFacesObj.faceInSnapshot) {
+                                result.FaceMatches.forEach(e => {
+                                    console.log(e.BoundingBox.Width.toFixed(2))
+                                    console.log(e.BoundingBox.Height.toFixed(2))
+                                    console.log(e.BoundingBox.Top.toFixed(2))
+                                    console.log(e.BoundingBox.Left.toFixed(2))
+                                })
+
+                                trustFacesObj.faceInSnapshot = true;
+                            }
+
+
+
                             if (!result) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
                                     <p style="color: red; ">There is not any trust face!</p>
@@ -80,11 +93,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                             let similarity = result.FaceMatches[0].Similarity;
                             if (similarity > 75) {
-                                trustFacesObj.matched = true;
-                                let name = element.name.replace(/\s+/g, "");
+
                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                 let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard${name}${index}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
                                         <p class="card-text">${element.description}</p>
@@ -122,7 +134,7 @@ function faceDetectCardEventListener(faceDetectCardId, data, color) {
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox');
 
-        color = color || 'green';
+        color = color || 'yellow';
 
         imgShowBoxBoundingBox
             .css('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
