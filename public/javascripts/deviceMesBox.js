@@ -90,48 +90,55 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             "";
 
                                         trustFacesObj.faceInSnapshot[snapshotId] = e;
-
-                                        console.log(trustFacesObj.faceInSnapshot)
-
-
                                     })
 
                                     trustFacesObj.faceInSnapshot = true;
                                 }
-
-                                let similarity = result.FaceMatches[0].Similarity;
+                                let firstFace = result.FaceMatches[0];
+                                let firstFaceBoundingBox = firstFace.Face.BoundingBox;
+                                let firstFaceId = "" +
+                                    'Width:' + firstFaceBoundingBox.Width.toFixed(2) +
+                                    'Height:' + firstFaceBoundingBox.Height.toFixed(2) +
+                                    'Top:' + firstFaceBoundingBox.Top.toFixed(2) +
+                                    'Left:' + firstFaceBoundingBox.Left.toFixed(2) +
+                                    "";
+                                let similarity = firstFace.Similarity;
                                 if (similarity > 75) {
-
+                                    if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
+                                        trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
+                                    }
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${element.name}</h5>
-                                        <p class="card-text">${element.description}</p>
-                                    </div>
-                                </div>
-                                `;
+                                        <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${element.name}</h5>
+                                                <p class="card-text">${element.description}</p>
+                                            </div>
+                                        </div>
+                                    `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
                                     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
                                 }
 
-                                if (index === array.length - 1 && trustFacesObj.matched === false) {
-                                    let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                    let newHtml = oldHtml + `
-                                <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Unknown Face</h5>
-                                    </div>
-                                </div>
-                                `;
-                                    $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
-                                }
+                                // if (index === array.length - 1 && trustFacesObj.matched === false) {
+                                //     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                //     let newHtml = oldHtml + `
+                                // <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                //     <div class="card-body">
+                                //         <h5 class="card-title">Unknown Face</h5>
+                                //     </div>
+                                // </div>
+                                // `;
+                                //     $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                //     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
+                                // }
 
                             }
 
                         })
-                    })
+                    });
+
+                    console.log(trustFacesObj.faceInSnapshot);
                 }
             })
         });
