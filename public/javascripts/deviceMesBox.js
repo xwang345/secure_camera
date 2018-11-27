@@ -70,6 +70,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                     faceList.forEach((element, index, array) => {
                         compareFaces(element.url, imgUrl, function(result) {
+
+                            console.log(result)
                             if (!result) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
                                     <p style="color: red; ">There is not any trust face!</p>
@@ -120,7 +122,7 @@ function faceDetectCardEventListener(faceDetectCardId, data, color) {
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox');
 
-        color = color || 'yellow';
+        color = color || 'green';
 
         imgShowBoxBoundingBox
             .css('width', Math.round(boundingBox.Width * imageElement.width()) + 'px')
