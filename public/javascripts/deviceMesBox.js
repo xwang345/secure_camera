@@ -47,7 +47,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
         $(this).click(function() {
             let trustFacesObj = {
                 faceList: null,
-                faceInSnapshot: null
+                faceInSnapshot: {}
 
             };
 
@@ -88,7 +88,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             'Left:' + snapBoundingBox.Left.toFixed(2) +
                                             "";
 
-                                        trustFacesObj.faceInSnapshot[snapshotId] = '123';
+                                        trustFacesObj.faceInSnapshot[snapshotId] = e;
 
                                         connsole.log(trustFacesObj.faceInSnapshot)
 
