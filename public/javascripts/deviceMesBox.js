@@ -72,6 +72,12 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                     faceList.forEach((element, index, array) => {
                         compareFaces(element.url, imgUrl, function(result) {
 
+                            if (!result) {
+                                $('#imgShowBoxFaceDetectPanel').html(`
+                                    <p style="color: red; ">There is not any trust face!</p>
+                                `);
+                            }
+
                             if (!trustFacesObj.faceInSnapshot) {
                                 result.FaceMatches.forEach(e => {
                                     console.log(e.BoundingBox.Width.toFixed(2))
@@ -81,14 +87,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 })
 
                                 trustFacesObj.faceInSnapshot = true;
-                            }
-
-
-
-                            if (!result) {
-                                $('#imgShowBoxFaceDetectPanel').html(`
-                                    <p style="color: red; ">There is not any trust face!</p>
-                                `);
                             }
 
                             let similarity = result.FaceMatches[0].Similarity;
