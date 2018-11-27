@@ -80,10 +80,17 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                 if (!trustFacesObj.faceInSnapshot) {
                                     result.FaceMatches.forEach(e => {
-                                        console.log(e.Face.BoundingBox.Width.toFixed(2))
-                                        console.log(e.Face.BoundingBox.Height.toFixed(2))
-                                        console.log(e.Face.BoundingBox.Top.toFixed(2))
-                                        console.log(e.Face.BoundingBox.Left.toFixed(2))
+                                        let snapBoundingBox = e.Face.BoundingBox
+                                        let snapshotId = `
+                                            ${snapBoundingBox.Width.toFixed(2)}
+                                            ${snapBoundingBox.Height.toFixed(2)}
+                                            ${snapBoundingBox.Top.toFixed(2)}
+                                            ${snapBoundingBox.Left.toFixed(2)}
+                                        `;
+
+
+                                        trustFacesObj.faceInSnapshot[snapshotId] = e;
+
                                     })
 
                                     trustFacesObj.faceInSnapshot = true;
