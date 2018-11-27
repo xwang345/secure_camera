@@ -117,7 +117,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                         </div>
                                     `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${faceCardId}`, result);
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, result);
                                 }
 
                                 if (index === array.length - 1) {
