@@ -120,25 +120,24 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
                                 }
 
-                                // if (index === array.length - 1 && trustFacesObj.matched === false) {
-                                //     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                //     let newHtml = oldHtml + `
-                                // <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                //     <div class="card-body">
-                                //         <h5 class="card-title">Unknown Face</h5>
-                                //     </div>
-                                // </div>
-                                // `;
-                                //     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                //     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
-                                // }
+                                if (index === array.length - 1) {
+                                    console.log(trustFacesObj.faceInSnapshot);
+                                    //     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                    //     let newHtml = oldHtml + `
+                                    // <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                    //     <div class="card-body">
+                                    //         <h5 class="card-title">Unknown Face</h5>
+                                    //     </div>
+                                    // </div>
+                                    // `;
+                                    //     $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                    //     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
+                                }
 
                             }
 
                         })
                     });
-
-                    console.log(trustFacesObj.faceInSnapshot);
                 }
             })
         });
