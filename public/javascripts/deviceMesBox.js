@@ -102,13 +102,14 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     "";
                                 let similarity = firstFace.Similarity;
                                 if (similarity >= 75) {
-                                    console.log(trustFacesObj.faceInSnapshot[firstFaceId])
+
                                     if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
                                         trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
                                     }
+                                    let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
-                                        <div id="imgShowBoxFaceDetectCard${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                        <div id="imgShowBoxFaceDetectCard${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                             <div class="card-body">
                                                 <h5 class="card-title">${element.name}</h5>
                                                 <p class="card-text">${element.description}</p>
@@ -116,23 +117,24 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                         </div>
                                     `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${element.url}`, result);
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${faceCardId}`, result);
                                 }
 
                                 if (index === array.length - 1) {
                                     for (e in trustFacesObj.faceInSnapshot) {
 
                                         if (e.Similarity < 75) {
+                                            let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                             let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                             let newHtml = oldHtml + `
-                                            <div id="imgShowBoxFaceDetectCard_unknown${element.url}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                            <div id="imgShowBoxFaceDetectCard_unknown${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Unknown Face</h5>
                                                 </div>
                                             </div>
                                             `;
                                             $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown${element.url}`, result, 'red');
+                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, result, 'red');
                                         }
                                     }
                                 }
