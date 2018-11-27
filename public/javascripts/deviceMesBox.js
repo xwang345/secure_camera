@@ -91,7 +91,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                         trustFacesObj.faceInSnapshot[snapshotId] = e;
 
-                                        connsole.log(trustFacesObj.faceInSnapshot)
+                                        console.log(trustFacesObj.faceInSnapshot)
 
 
                                     })
