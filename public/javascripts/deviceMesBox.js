@@ -87,7 +87,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             'Top:' + snapBoundingBox.Top.toFixed(2) +
                                             'Left:' + snapBoundingBox.Left.toFixed(2) +
                                             "";
-                                        console.log(e)
+
+                                        trustFacesObj.faceInSnapshot[snapshotId] = '123';
+
+                                        connsole.log(trustFacesObj.faceInSnapshot)
 
 
                                     })
