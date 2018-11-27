@@ -122,7 +122,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                 if (index === array.length - 1) {
                                     console.log(trustFacesObj.faceInSnapshot)
-                                    for (e in trustFacesObj.faceInSnapshot) {
+                                    for (var e in trustFacesObj.faceInSnapshot) {
                                         console.log(e.Similarity)
                                         if (e.Similarity < 75) {
                                             let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
