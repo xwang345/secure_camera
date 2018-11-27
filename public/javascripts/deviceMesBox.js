@@ -109,7 +109,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
-                                        <div id="imgShowBoxFaceDetectCard${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                        <div id="imgShowBoxFaceDetectCard_${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                             <div class="card-body">
                                                 <h5 class="card-title">${element.name}</h5>
                                                 <p class="card-text">${element.description}</p>
@@ -124,10 +124,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
 
                                         if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
-                                            let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
+                                            let faceCardId = Date.now().toString();
                                             let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                             let newHtml = oldHtml + `
-                                            <div id="imgShowBoxFaceDetectCard_unknown${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                            <div id="imgShowBoxFaceDetectCard_unknown_${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Unknown Face</h5>
                                                 </div>
@@ -150,6 +150,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
+    console.log(123)
     $(faceDetectCardId).click(function() {
         let imageElement = $('.imgShowBox__img:first');
         let boundingBox = data.FaceMatches[0].Face.BoundingBox;
