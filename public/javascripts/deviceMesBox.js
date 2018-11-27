@@ -104,9 +104,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     "";
                                 let similarity = firstFace.Similarity;
                                 if (similarity > 75) {
-                                    if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
-                                        trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
-                                    }
+                                    console.log(trustFacesObj.faceInSnapshot[firstFaceId])
+                                        // if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
+                                        //     trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
+                                        // }
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
                                         <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
