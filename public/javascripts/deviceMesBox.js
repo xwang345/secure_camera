@@ -81,15 +81,15 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 if (!trustFacesObj.faceInSnapshot) {
                                     result.FaceMatches.forEach(e => {
                                         let snapBoundingBox = e.Face.BoundingBox
-                                        let snapshotId = `
-                                            ${snapBoundingBox.Width.toFixed(2)}
-                                            ${snapBoundingBox.Height.toFixed(2)}
-                                            ${snapBoundingBox.Top.toFixed(2)}
-                                            ${snapBoundingBox.Left.toFixed(2)}
-                                        `;
-
-
+                                        let snapshotId = "" +
+                                            snapBoundingBox.Width.toFixed(2) +
+                                            snapBoundingBox.Height.toFixed(2) +
+                                            snapBoundingBox.Top.toFixed(2) +
+                                            snapBoundingBox.Left.toFixed(2) +
+                                            "";
                                         trustFacesObj.faceInSnapshot[snapshotId] = e;
+                                        console.log(trustFacesObj.faceInSnapshot)
+
 
                                     })
 
