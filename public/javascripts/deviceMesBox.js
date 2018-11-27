@@ -91,8 +91,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                         trustFacesObj.faceInSnapshot[snapshotId] = e;
                                     })
-
-                                    trustFacesObj.faceInSnapshot = true;
                                 }
                                 let firstFace = result.FaceMatches[0];
                                 let firstFaceBoundingBox = firstFace.Face.BoundingBox;
