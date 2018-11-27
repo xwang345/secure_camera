@@ -117,7 +117,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                         </div>
                                     `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, result);
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, firstFace);
                                 }
 
                                 if (index === array.length - 1) {
@@ -134,7 +134,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             </div>
                                             `;
                                             $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, result, 'red');
+                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, trustFacesObj.faceInSnapshot[key], 'red');
                                         }
                                     })
                                 }
@@ -150,10 +150,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 }
 
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
-    console.log(123)
     $(faceDetectCardId).click(function() {
+        console.log(123)
         let imageElement = $('.imgShowBox__img:first');
-        let boundingBox = data.FaceMatches[0].Face.BoundingBox;
+        let boundingBox = data.Face.BoundingBox;
         let imgShowBoxBoundingBox = $('.imgShowBox__imgBoundingBox');
 
         color = color || 'yellow';
