@@ -123,7 +123,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 if (index === array.length - 1) {
                                     console.log(trustFacesObj.faceInSnapshot)
                                     Object.keys(trustFacesObj.faceInSnapshot).forEach(e => {
-                                        console.log(e.Similarity)
+                                        console.log(e)
                                         if (e.Similarity < 75) {
                                             let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                             let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
