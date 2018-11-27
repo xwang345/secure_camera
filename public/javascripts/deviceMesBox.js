@@ -78,6 +78,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 `);
                             }
 
+                            console.log(result)
+
                             if (!trustFacesObj.faceInSnapshot) {
                                 result.FaceMatches.forEach(e => {
                                     console.log(e.BoundingBox.Width.toFixed(2))
