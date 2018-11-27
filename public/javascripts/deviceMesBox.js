@@ -76,26 +76,24 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 $('#imgShowBoxFaceDetectPanel').html(`
                                     <p style="color: red; ">There is not any trust face!</p>
                                 `);
-                            }
+                            } else {
 
-                            console.log(result)
+                                if (!trustFacesObj.faceInSnapshot) {
+                                    result.FaceMatches.forEach(e => {
+                                        console.log(e.BoundingBox.Face.Width.toFixed(2))
+                                        console.log(e.BoundingBox.Face.Height.toFixed(2))
+                                        console.log(e.BoundingBox.Face.Top.toFixed(2))
+                                        console.log(e.BoundingBox.Face.Left.toFixed(2))
+                                    })
 
-                            if (!trustFacesObj.faceInSnapshot) {
-                                result.FaceMatches.forEach(e => {
-                                    console.log(e.BoundingBox.Width.toFixed(2))
-                                    console.log(e.BoundingBox.Height.toFixed(2))
-                                    console.log(e.BoundingBox.Top.toFixed(2))
-                                    console.log(e.BoundingBox.Left.toFixed(2))
-                                })
+                                    trustFacesObj.faceInSnapshot = true;
+                                }
 
-                                trustFacesObj.faceInSnapshot = true;
-                            }
+                                let similarity = result.FaceMatches[0].Similarity;
+                                if (similarity > 75) {
 
-                            let similarity = result.FaceMatches[0].Similarity;
-                            if (similarity > 75) {
-
-                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                let newHtml = oldHtml + `
+                                    let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                    let newHtml = oldHtml + `
                                 <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">${element.name}</h5>
@@ -103,21 +101,23 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     </div>
                                 </div>
                                 `;
-                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
-                            }
+                                    $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
+                                }
 
-                            if (index === array.length - 1 && trustFacesObj.matched === false) {
-                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                let newHtml = oldHtml + `
+                                if (index === array.length - 1 && trustFacesObj.matched === false) {
+                                    let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                    let newHtml = oldHtml + `
                                 <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">Unknown Face</h5>
                                     </div>
                                 </div>
                                 `;
-                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
+                                    $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
+                                }
+
                             }
 
                         })
