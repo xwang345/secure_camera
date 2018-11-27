@@ -101,14 +101,14 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                     'Left:' + firstFaceBoundingBox.Left.toFixed(2) +
                                     "";
                                 let similarity = firstFace.Similarity;
-                                if (similarity > 75) {
+                                if (similarity >= 75) {
                                     console.log(trustFacesObj.faceInSnapshot[firstFaceId])
                                     if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
                                         trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
                                     }
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
-                                        <div id="imgShowBoxFaceDetectCard_$${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                        <div id="imgShowBoxFaceDetectCard_${element.url}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                             <div class="card-body">
                                                 <h5 class="card-title">${element.name}</h5>
                                                 <p class="card-text">${element.description}</p>
@@ -116,21 +116,25 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                         </div>
                                     `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard${name}${index}`, result);
+                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${element.url}`, result);
                                 }
 
                                 if (index === array.length - 1) {
-                                    console.log(trustFacesObj.faceInSnapshot);
-                                    //     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                    //     let newHtml = oldHtml + `
-                                    // <div id="imgShowBoxFaceDetectCard_unknown_${index}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                    //     <div class="card-body">
-                                    //         <h5 class="card-title">Unknown Face</h5>
-                                    //     </div>
-                                    // </div>
-                                    // `;
-                                    //     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    //     faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${index}`, result, 'red');
+                                    trustFacesObj.faceInSnapshot.forEach(e => {
+
+                                        if (e.Similarity < 75) {
+                                            let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                            let newHtml = oldHtml + `
+                                            <div id="imgShowBoxFaceDetectCard_unknown_${element.url}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Unknown Face</h5>
+                                                </div>
+                                            </div>
+                                            `;
+                                            $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${element.url}`, result, 'red');
+                                        }
+                                    })
                                 }
 
                             }
