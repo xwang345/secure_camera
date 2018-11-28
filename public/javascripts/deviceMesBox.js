@@ -90,9 +90,9 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             "";
                                         trustFacesObj.faceInSnapshot[snapshotId] = {};
                                         trustFacesObj.faceInSnapshot[snapshotId].face = e;
+                                        trustFacesObj.faceInSnapshot[snapshotId].id = Date.now().toString() + Math.floor(Math.random(10000)).toString();
+                                        trustFacesObj.faceInSnapshot[snapshotId].trusted = false;
                                     })
-
-                                    console.log(trustFacesObj.faceInSnapshot)
                                 }
                                 let firstFace = result.FaceMatches[0];
                                 let firstFaceBoundingBox = firstFace.Face.BoundingBox;
@@ -106,39 +106,49 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 if (similarity >= 70) {
 
                                     let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
-                                    let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                    let newHtml = oldHtml + `
-                                        <div id="imgShowBoxFaceDetectCard_${faceCardId}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">${element.name}</h5>
-                                                <p class="card-text">${element.description}</p>
-                                            </div>
-                                        </div>
-                                    `;
-                                    $('#imgShowBoxFaceDetectPanel').html(newHtml)
 
                                     trustFacesObj.faceInSnapshot[firstFaceId].face = firstFace;
                                     trustFacesObj.faceInSnapshot[firstFaceId].id = faceCardId;
+                                    trustFacesObj.faceInSnapshot[snapshotId].trusted = true;
+                                    trustFacesObj.faceInSnapshot[snapshotId].info = element;
                                 }
 
                                 if (index === array.length - 1) {
+                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
+                                        if (trustFacesObj.faceInSnapshot[key].face) {
 
-                                    console.log(trustFacesObj.faceInSnapshot)
-                                        // Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
-                                        //     if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
-                                        //         let faceCardId = Date.now().toString() + Math.floor(Math.random(10000)).toString();
-                                        //         let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                        //         let newHtml = oldHtml + `
-                                        //         <div id="imgShowBoxFaceDetectCard_unknown_${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                        //             <div class="card-body">
-                                        //                 <h5 class="card-title">Unknown Face</h5>
-                                        //             </div>
-                                        //         </div>
-                                        //         `;
-                                        //         $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                        //         faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, trustFacesObj.faceInSnapshot[key], 'red');
-                                        //     }
-                                        // })
+                                            let Faceobject = trustFacesObj.faceInSnapshot[key];
+
+                                            console.log(Faceobject)
+
+                                            if (Faceobject.trusted) {
+
+                                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                                let newHtml = oldHtml + `
+                                                    <div id="imgShowBoxFaceDetectCard_${Faceobject.id}" class="card bg-success text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">${Faceobject.info.name}</h5>
+                                                            <p class="card-text">${Faceobject.info.description}</p>
+                                                        </div>
+                                                    </div>
+                                                `;
+
+                                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
+
+                                            } else {
+                                                let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                                let newHtml = oldHtml + `
+                                                <div id="imgShowBoxFaceDetectCard_unknown_${Faceobject.id}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Unknown Face</h5>
+                                                    </div>
+                                                </div>
+                                                `;
+
+                                                $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                            }
+                                        }
+                                    })
                                 }
 
                             }
