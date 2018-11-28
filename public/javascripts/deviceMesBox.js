@@ -109,8 +109,8 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                     trustFacesObj.faceInSnapshot[firstFaceId].face = firstFace;
                                     trustFacesObj.faceInSnapshot[firstFaceId].id = faceCardId;
-                                    trustFacesObj.faceInSnapshot[snapshotId].trusted = true;
-                                    trustFacesObj.faceInSnapshot[snapshotId].info = element;
+                                    trustFacesObj.faceInSnapshot[firstFaceId].trusted = true;
+                                    trustFacesObj.faceInSnapshot[firstFaceId].info = element;
                                 }
 
                                 if (index === array.length - 1) {
