@@ -45,8 +45,9 @@ driver.getTitle().then(function(title){
     driver.findElement(By.name("email")).sendKeys("senecastudentproject+ryan@gmail.com");
     driver.findElement(By.name("password")).sendKeys("HurraHomeTest");
     driver.findElement(By.tagName("button")).click();
-    driver.wait(until.findElement(By.name('')));
-    driver.findElement(By.className("dropdown-toggle withoutripple")).click();
+    driver.manage().timeouts().pageLoadTimeout(10);
+    driver.findElement(By.className("dropdown relative")).click();
+    driver.findElement(By.linkText("/secured/public-profile")).click();
     // driver.findElement(By.)
 });
 
