@@ -89,7 +89,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             'Left:' + snapBoundingBox.Left.toFixed(2) +
                                             "";
 
-                                        trustFacesObj.faceInSnapshot[snapshotId] = e;
+                                        trustFacesObj.faceInSnapshot[snapshotId].face = e;
                                     })
 
                                     console.log(trustFacesObj.faceInSnapshot)
@@ -105,9 +105,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                 let similarity = firstFace.Similarity;
                                 if (similarity >= 70) {
 
-                                    if (similarity >= trustFacesObj.faceInSnapshot[firstFaceId].Similarity) {
-                                        trustFacesObj.faceInSnapshot[firstFaceId] = firstFace;
-                                    }
                                     let faceCardId = element.name.replace(/\s+/g, "") + Date.now().toString();
                                     let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                     let newHtml = oldHtml + `
@@ -119,25 +116,29 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                         </div>
                                     `;
                                     $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                    faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_${faceCardId}`, firstFace);
+
+                                    trustFacesObj.faceInSnapshot[firstFaceId].face = firstFace;
+                                    trustFacesObj.faceInSnapshot[firstFaceId].id = faceCardId;
                                 }
 
                                 if (index === array.length - 1) {
-                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
-                                        if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
-                                            let faceCardId = Date.now().toString() + Math.floor(Math.random(10000)).toString();
-                                            let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
-                                            let newHtml = oldHtml + `
-                                            <div id="imgShowBoxFaceDetectCard_unknown_${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Unknown Face</h5>
-                                                </div>
-                                            </div>
-                                            `;
-                                            $('#imgShowBoxFaceDetectPanel').html(newHtml)
-                                            faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, trustFacesObj.faceInSnapshot[key], 'red');
-                                        }
-                                    })
+
+                                    console.log(trustFacesObj.faceInSnapshot)
+                                        // Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
+                                        //     if (trustFacesObj.faceInSnapshot[key].Similarity < 75) {
+                                        //         let faceCardId = Date.now().toString() + Math.floor(Math.random(10000)).toString();
+                                        //         let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
+                                        //         let newHtml = oldHtml + `
+                                        //         <div id="imgShowBoxFaceDetectCard_unknown_${faceCardId}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                        //             <div class="card-body">
+                                        //                 <h5 class="card-title">Unknown Face</h5>
+                                        //             </div>
+                                        //         </div>
+                                        //         `;
+                                        //         $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                        //         faceDetectCardEventListener(`#imgShowBoxFaceDetectCard_unknown_${faceCardId}`, trustFacesObj.faceInSnapshot[key], 'red');
+                                        //     }
+                                        // })
                                 }
 
                             }
