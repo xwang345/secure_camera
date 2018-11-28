@@ -119,8 +119,6 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
                                             let Faceobject = trustFacesObj.faceInSnapshot[key];
 
-                                            console.log(Faceobject)
-
                                             if (Faceobject.trusted) {
 
                                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
@@ -138,7 +136,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             } else {
                                                 let oldHtml = $('#imgShowBoxFaceDetectPanel').html();
                                                 let newHtml = oldHtml + `
-                                                <div id="imgShowBoxFaceDetectCard_unknown_${Faceobject.id}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
+                                                <div id="imgShowBoxFaceDetectCard_${Faceobject.id}" class="card bg-danger text-white imgShowBox__faceDetectCard" style="width: 18rem;">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Unknown Face</h5>
                                                     </div>
@@ -146,6 +144,17 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                                 `;
 
                                                 $('#imgShowBoxFaceDetectPanel').html(newHtml)
+                                            }
+                                        }
+                                    })
+
+                                    Object.keys(trustFacesObj.faceInSnapshot).forEach(key => {
+                                        if (trustFacesObj.faceInSnapshot[key].face) {
+                                            let Faceobject = trustFacesObj.faceInSnapshot[key];
+                                            if (Faceobject.trusted) {
+                                                faceDetectCardEventListener(`imgShowBoxFaceDetectCard_${Faceobject.id}`, Faceobject.face);
+                                            } else {
+                                                faceDetectCardEventListener(`imgShowBoxFaceDetectCard_${Faceobject.id}`, Faceobject.face, 'red');
                                             }
                                         }
                                     })
@@ -163,7 +172,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
 
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
 
-    $(faceDetectCardId).click(function() {
+    $(`#${faceDetectCardId}`).click(function() {
         console.log(123)
         let imageElement = $('.imgShowBox__img:first');
         let boundingBox = data.Face.BoundingBox;
