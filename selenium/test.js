@@ -3,6 +3,7 @@
 // runs test against http://crossbrowsertesting.github.io/selenium_example_page.html
 
 var webdriver = require('selenium-webdriver');
+var By = require('selenium-webdriver').By;
 var SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
 var request = require('request');
 var assert = require('selenium-webdriver/testing/assert');
@@ -37,10 +38,16 @@ var driver = new webdriver.Builder()
 driver.getSession().then(function(session){
     sessionId = session.id_; //need for API calls
 });
-driver.get('http://crossbrowsertesting.github.io/selenium_example_page.html');
+driver.get('https://app.hurrahome.com/account/login');
 driver.getTitle().then(function(title){
     console.log('page title is ', title);
-    assert(title).equals('Selenium Test Example Page');
+    assert(title).equals('Log into HurraHome | HurraHome.com | Trusted Home Cleaning');
+    driver.findElement(By.name("email")).sendKeys("senecastudentproject+ryan@gmail.com");
+    driver.findElement(By.name("password")).sendKeys("HurraHomeTest");
+    driver.findElement(By.tagName("button")).click();
+    driver.wait(until.findElement(By.name('')));
+    driver.findElement(By.className("dropdown-toggle withoutripple")).click();
+    // driver.findElement(By.)
 });
 
 driver.quit();
