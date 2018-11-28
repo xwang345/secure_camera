@@ -1,5 +1,6 @@
 .deviceMesBox__container {
     width: 300px;
+    height: 100%;
     display: flex;
     position: relative;
     flex-direction: column;
