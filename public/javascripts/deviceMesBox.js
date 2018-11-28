@@ -88,7 +88,7 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                                             'Top:' + snapBoundingBox.Top.toFixed(2) +
                                             'Left:' + snapBoundingBox.Left.toFixed(2) +
                                             "";
-
+                                        trustFacesObj.faceInSnapshot[snapshotId] = {};
                                         trustFacesObj.faceInSnapshot[snapshotId].face = e;
                                     })
 
