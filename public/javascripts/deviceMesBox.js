@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-$(document).ready(function() {
-    var socket = io();
-
-    socket.on('reload images', function(entities) {
-        loadImages(entities);
-        console.log('reload images');
-    });
-=======
 let imgList = {};
 
 
@@ -44,7 +35,6 @@ socket.on("load images", function(entities) {
 
     loadImages(entities);
 });
->>>>>>> fb877e40... add send user email feature is done
 
     socket.on('load images', function(entities) {
         loadImages(entities);
@@ -63,9 +53,6 @@ socket.on("load images", function(entities) {
                 </div>
             `;
 
-<<<<<<< HEAD
-            content += imgElement;
-=======
         content += imgElement;
     });
 
@@ -244,14 +231,10 @@ function ImageEventListener(imgEleClass, imgShowId, imgShowBox__imgContainer) {
                     });
                 }
             })
->>>>>>> fb877e40... add send user email feature is done
         });
+    });
+}
 
-<<<<<<< HEAD
-        $(".deviceMesBox__mesWindow:first").html(content);
-    }
-});
-=======
 function faceDetectCardEventListener(faceDetectCardId, data, color) {
 
     $(`#${faceDetectCardId}`).click(function() {
@@ -270,4 +253,3 @@ function faceDetectCardEventListener(faceDetectCardId, data, color) {
             .css('opacity', 1);
     })
 }
->>>>>>> fb877e40... add send user email feature is done
